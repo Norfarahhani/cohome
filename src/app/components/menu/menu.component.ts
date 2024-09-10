@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { addIcons } from 'ionicons';
-import { library, playCircle, radio, search } from 'ionicons/icons';
+import { personCircleOutline, barChartOutline, folderOpenOutline, homeOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-menu',
@@ -9,6 +9,6 @@ import { library, playCircle, radio, search } from 'ionicons/icons';
 })
 export class MenuComponent {
   constructor() {
-    addIcons({ library, playCircle, radio, search });
+    addIcons({ homeOutline,folderOpenOutline, barChartOutline, personCircleOutline });
   }
 }
