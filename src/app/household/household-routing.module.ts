@@ -4,8 +4,13 @@ import { IndexPage } from './index/index.page';
 import { CreatePage } from './create/create.page';
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   redirectTo: 'index',
+  //   pathMatch: 'full',
+  // },
   {
-    path: 'index',
+    path: '',
     component: IndexPage
   },
   {

@@ -1,5 +1,3 @@
-
-
 <ion-content class="ion-padding">
   <ion-grid>
     <ion-row class="ion-justify-content-center">
@@ -11,7 +9,12 @@
 
           <ion-card-content>
             <ion-item>
-              <ion-label label-placement="floating" fill="outline" position="floating">Email</ion-label>
+              <ion-label
+                label-placement="floating"
+                fill="outline"
+                position="floating"
+                >Email</ion-label
+              >
               <ion-input type="email" required></ion-input>
             </ion-item>
 
@@ -20,25 +23,30 @@
               <ion-input type="password" required></ion-input>
             </ion-item>
 
-            <ion-button [routerLink]="['/household/index']" size="small" expand="block" color="primary" class="ion-margin-top"
+            <ion-button
+              [routerLink]="['/menu']"
+              size="small"
+              expand="block"
+              color="primary"
+              class="ion-margin-top"
               >Login</ion-button
             >
             <br />
-        
-              <ion-row class="ion-justify-content-center">
-                <ion-col size="auto" class="ion-text-center">
-                  <ion-text>
-                    <p style="display: inline;">Don't have an account?</p>
-                    <ion-text color="primary">
-                      <a [routerLink]="['/auth/register']" style="text-decoration: none; margin-left: 5px;">Sign Up</a>
-                    </ion-text>
-                  </ion-text>
-                </ion-col>
-              </ion-row>
-         
-            
-            
 
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="auto" class="ion-text-center">
+                <ion-text>
+                  <p style="display: inline">Don't have an account?</p>
+                  <ion-text color="primary">
+                    <a
+                      [routerLink]="['/auth/register']"
+                      style="text-decoration: none; margin-left: 5px"
+                      >Sign Up</a
+                    >
+                  </ion-text>
+                </ion-text>
+              </ion-col>
+            </ion-row>
           </ion-card-content>
         </ion-card>
       </ion-col>

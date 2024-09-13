@@ -1,18 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
-import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { MenuComponent } from './menu/menu.component';
-import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
-  declarations: [HeaderComponent, MenuComponent, LayoutComponent],
+  declarations: [HeaderComponent],
   imports: [
     CommonModule,
-    FormsModule,
-    IonicModule,
+    IonicModule
   ],
-  exports: [HeaderComponent, MenuComponent, LayoutComponent]
+  exports: [HeaderComponent]
 })
 export class ComponentsModule { }
