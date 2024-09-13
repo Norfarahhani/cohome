@@ -11,4 +11,8 @@ export class HeaderComponent  implements OnInit {
 
   ngOnInit() {}
 
+  onCreateClick() {
+    console.log('Create button clicked');
+    // Add your logic for what happens when the button is clicked
+  }
 }

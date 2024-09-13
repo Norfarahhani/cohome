@@ -5,11 +5,12 @@ import { ComponentsModule } from '../components/components.module';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { IndexPage } from './index/index.page';
+import { CreatePage } from './create/create.page';
 
 
 
 @NgModule({
-  declarations: [IndexPage],
+  declarations: [IndexPage, CreatePage],
   imports: [
     CommonModule,
     FormsModule,
