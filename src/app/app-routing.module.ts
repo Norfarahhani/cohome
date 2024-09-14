@@ -20,7 +20,7 @@ const routes: Routes = [
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfileModule)
   },
   {
-    path: 'menu',
+    path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
 ];
