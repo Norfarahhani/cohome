@@ -7,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexPage implements OnInit {
 
+  selectedSegment: string = 'card1'; 
+
   constructor() { }
 
   ngOnInit() {
   }
-
+  public alertButtons = ['Invite'];
+  public alertInputs = [
+    {
+      type: 'email',
+      placeholder: 'Enter Email',
+    },
+  ];
 }
 

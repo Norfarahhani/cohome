@@ -2,7 +2,95 @@
 <app-search></app-search>
 
 <ion-content class="ion-padding">
-  <ion-text color="dark">
-    <h1>Welcome!</h1>
-  </ion-text>
+
+  <div class="segment-container">
+    <ion-segment [(ngModel)]="selectedSegment" color="primary" class="split-segment">
+      <ion-segment-button value="card1">
+        <ion-label>Create</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="card2">
+        <ion-label>Join</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <!-- Display Card 1 -->
+  <ion-card shape="round" *ngIf="selectedSegment === 'card1'">
+    <ion-card-header>
+      <ion-card-title>Create household</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-input class="ion-margin-bottom" label="Household name" label-placement="floating" fill="outline"
+        shape="round" placeholder="Enter household name" required></ion-input>
+
+      <ion-input class="ion-margin-bottom" label="Address" label-placement="floating" fill="outline" shape="round"
+        placeholder="Enter address" required></ion-input>
+
+      <ion-button [routerLink]="['/home']" size="small" expand="block" color="success" shape="round"
+        class="lowercase-button">Create</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Display Card 2 -->
+  <ion-card *ngIf="selectedSegment === 'card2'">
+    <ion-card-header>
+      <ion-card-title>Join household</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+
+      <ion-input label="Household code" label-placement="floating" fill="outline" shape="round"
+        placeholder="Enter household code" required></ion-input>
+
+      <ion-button [routerLink]="['/home']" size="small" expand="block" color="success" shape="round"
+        class="ion-margin-top lowercase-button">Request</ion-button>
+
+    </ion-card-content>
+  </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-text color="dark">
+          <strong>MINI HOUSE</strong>
+        </ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-icon id="present-alert" style="font-size: 24px" class="ion-float-right" name="add-circle-outline"></ion-icon>
+        <ion-alert trigger="present-alert" header="Invite Member" [buttons]="alertButtons"
+          [inputs]="alertInputs"></ion-alert>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list>
+    <ion-item-sliding>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-avatar>
+                <img style="max-width: 85%; max-height: 85%;" alt="Silhouette of a person's head"
+                  src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+              </ion-avatar>
+            </ion-col>
+            <ion-col size="9" >
+              <ion-row>
+                <ion-text>
+                  <strong>zaffran</strong>
+                </ion-text>
+              </ion-row>
+              <ion-row class="ion-margin-bottom">
+                <ion-text>
+                  0113456789
+                </ion-text>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

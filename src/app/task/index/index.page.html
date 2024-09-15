@@ -1,15 +1,53 @@
 <app-header></app-header>
-<ion-content class="ion-margin">
-  <!-- <app-search
-    [items]="items"
-    (filteredItemsChange)="onFilteredItemsChange($event)"
-  ></app-search> -->
-  <app-search></app-search>
-  <ion-text color="success">
-    <h1>Task</h1>
-  </ion-text>
-  <!-- yang bawah ni untuk keluarkan list daripada search -->
-  <!-- <ion-list>
-    <ion-item *ngFor="let item of filteredItems"> {{ item }} </ion-item>
-  </ion-list> -->
+
+<app-search></app-search>
+
+<ion-content class="ion-padding">
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-text color="dark">
+        <strong>TASK</strong>
+      </ion-text>
+    </ion-col>
+    <ion-col  >
+      <ion-icon id="present-alert" style="font-size: 24px" class="ion-float-right" name="add-circle-outline"></ion-icon>
+      <ion-alert trigger="present-alert" header="Create Task" [buttons]="alertButtons"
+        [inputs]="alertInputs"></ion-alert>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<ion-list>
+  <ion-item-sliding>
+    <ion-item>
+      <ion-grid>
+        <ion-checkbox>
+        <ion-row>
+          <ion-col >
+            <ion-icon size="large" name="receipt-outline"></ion-icon>
+          </ion-col>
+          <ion-col size="6" >
+            <ion-row >
+              <ion-text>
+                <strong>Clean kicthen</strong>
+              </ion-text>
+            </ion-row>
+            <ion-row class="ion-margin-bottom">
+              <ion-text>
+                Due : 16 sep
+              </ion-text>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-checkbox>
+      </ion-grid>
+    </ion-item>
+    <ion-item-options side="end">
+      <ion-item-option color="danger">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+
+  </ion-item-sliding>
+</ion-list>
 </ion-content>

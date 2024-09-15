@@ -13,7 +13,14 @@ export class IndexPage implements OnInit {
 
   ngOnInit() {
   }
-
+  public alertButtons = ['Save'];
+  public alertInputs = [
+    {
+      type: 'task',
+      placeholder: 'Enter Task',
+    },
+    
+  ];
   // This method gets triggered when the child emits the filtered items
   // onFilteredItemsChange(updatedFilteredItems: string[]) {
   //   this.filteredItems = updatedFilteredItems;
