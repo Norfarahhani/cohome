@@ -1,7 +1,15 @@
 <app-header></app-header>
 <ion-content class="ion-margin">
+  <!-- <app-search
+    [items]="items"
+    (filteredItemsChange)="onFilteredItemsChange($event)"
+  ></app-search> -->
   <app-search></app-search>
   <ion-text color="success">
     <h1>Task</h1>
   </ion-text>
+  <!-- yang bawah ni untuk keluarkan list daripada search -->
+  <!-- <ion-list>
+    <ion-item *ngFor="let item of filteredItems"> {{ item }} </ion-item>
+  </ion-list> -->
 </ion-content>

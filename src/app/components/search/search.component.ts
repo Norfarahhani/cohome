@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search',
@@ -6,17 +6,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent {
+  // @Input() items: string[] = []; // Accepts the array of items from the parent
+  // @Output() filteredItemsChange: EventEmitter<string[]> = new EventEmitter<string[]>();
 
-  searchTerm: string = '';
-  items: string[] = ['Apple', 'Banana', 'Orange', 'Pineapple', 'Strawberry'];
-  filteredItems: string[] = [];
+  // filteredItems: string[] = [];
 
   constructor() {
-    this.filteredItems = this.items;
+    // this.filteredItems = this.items;
   }
 
-  filterItems(event: any) {
-    const searchTerm = event.target.value.toLowerCase();
-    this.filteredItems = this.items.filter(item => item.toLowerCase().includes(searchTerm));
-  }
+  // Emit the filtered items whenever the input changes
+  // filterItems(event: any) {
+  //   const searchTerm = event.target.value.toLowerCase();
+  //   this.filteredItems = this.items.filter(item =>
+  //     item.toLowerCase().includes(searchTerm)
+  //   );
+  //   this.filteredItemsChange.emit(this.filteredItems); // Emit the updated filtered items
+  // }
 }
