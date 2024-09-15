@@ -1,0 +1,8 @@
+<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="filterItems($event)" [debounce]="500">
+</ion-searchbar>
+
+<ion-list>
+  <ion-item *ngFor="let item of filteredItems">
+    {{ item }}
+  </ion-item>
+</ion-list>

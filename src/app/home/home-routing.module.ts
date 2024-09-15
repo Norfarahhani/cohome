@@ -21,6 +21,15 @@ const routes: Routes = [
         path: 'profile',
         loadChildren: () => import('../profile/profile.module').then((m) => m.ProfileModule),
       },
+      {
+        path: 'task',
+        loadChildren: () => import('../task/task.module').then((m) => m.TaskModule),
+      },
+      {
+        path: 'expense',
+        loadChildren: () => import('../expense/expense.module').then((m) => m.ExpenseModule),
+      },
+      
     ],
   },
 ];
