@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-task-index',
@@ -9,7 +11,7 @@ export class IndexPage implements OnInit {
   // items: string[] = ['Apple', 'Banana', 'Orange', 'Pineapple', 'Strawberry'];
   // filteredItems: string[] = this.items;
 
-  constructor() { }
+  constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {
   }
@@ -19,8 +21,17 @@ export class IndexPage implements OnInit {
       type: 'task',
       placeholder: 'Enter Task',
     },
-    
+
   ];
+
+  // Method to open the modal
+  async openTaskModal() {
+    const modal = await this.modalCtrl.create({
+      component: TaskModalComponent // Specify the modal component
+    });
+    await modal.present();
+  }
+
   // This method gets triggered when the child emits the filtered items
   // onFilteredItemsChange(updatedFilteredItems: string[]) {
   //   this.filteredItems = updatedFilteredItems;

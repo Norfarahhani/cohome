@@ -3,51 +3,55 @@
 <app-search></app-search>
 
 <ion-content class="ion-padding">
-<ion-grid>
-  <ion-row>
-    <ion-col>
-      <ion-text color="dark">
-        <strong>TASK</strong>
-      </ion-text>
-    </ion-col>
-    <ion-col  >
-      <ion-icon id="present-alert" style="font-size: 24px" class="ion-float-right" name="add-circle-outline"></ion-icon>
-      <ion-alert trigger="present-alert" header="Create Task" [buttons]="alertButtons"
-        [inputs]="alertInputs"></ion-alert>
-    </ion-col>
-  </ion-row>
-</ion-grid>
-<ion-list>
-  <ion-item-sliding>
-    <ion-item>
-      <ion-grid>
-        <ion-checkbox>
-        <ion-row>
-          <ion-col >
-            <ion-icon size="large" name="receipt-outline"></ion-icon>
-          </ion-col>
-          <ion-col size="6" >
-            <ion-row >
-              <ion-text>
-                <strong>Clean kicthen</strong>
-              </ion-text>
-            </ion-row>
-            <ion-row class="ion-margin-bottom">
-              <ion-text>
-                Due : 16 sep
-              </ion-text>
-            </ion-row>
-          </ion-col>
-        </ion-row>
-      </ion-checkbox>
-      </ion-grid>
-    </ion-item>
-    <ion-item-options side="end">
-      <ion-item-option color="danger">
-        <ion-icon slot="icon-only" name="trash"></ion-icon>
-      </ion-item-option>
-    </ion-item-options>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-text color="dark">
+          <strong>TASK</strong>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-  </ion-item-sliding>
-</ion-list>
+  <ion-list>
+    <ion-item-sliding>
+      <ion-item>
+        <ion-grid>
+          <ion-checkbox>
+            <ion-row>
+              <ion-col>
+                <ion-icon size="large" name="receipt-outline"></ion-icon>
+              </ion-col>
+              <ion-col>
+                <ion-row>
+                  <ion-text>
+                    <strong>Clean kitchen</strong>
+                  </ion-text>
+                </ion-row>
+                <ion-row class="ion-margin-bottom">
+                  <ion-text>
+                    Due: 16 Sep
+                  </ion-text>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-checkbox>
+        </ion-grid>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <!-- FAB Button -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openTaskModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <!-- Optional: Create Task Action Sheet, Modal, etc. can be triggered here -->
+  </ion-fab>
+
 </ion-content>

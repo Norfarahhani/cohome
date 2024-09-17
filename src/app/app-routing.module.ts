@@ -38,6 +38,7 @@ const routes: Routes = [
     path: 'expense',
     loadChildren: () => import('./expense/expense.module').then( m => m.ExpenseModule)
   },
+
 ];
 
 @NgModule({

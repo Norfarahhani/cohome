@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { IndexPage } from './index/index.page';
 import { TaskRoutingModule } from './task-routing.module';
+import { CreatePage } from './create/create.page';
 
 
 
 @NgModule({
-  declarations: [IndexPage],
+  declarations: [IndexPage, CreatePage],
   imports: [
     CommonModule,
     FormsModule,

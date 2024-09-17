@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>New Task</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="dismissModal()">Close</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <ion-grid>
+        <ion-row class="ion-justify-content-center">
+            <ion-col size-md="6" size-lg="4">
+                <ion-card-header>
+                    <ion-card-title class="ion-text-center">New Task</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-input fill="outline" placeholder="Task" required></ion-input>
+                    <br />
+                    <ion-input fill="outline" placeholder="Notes (Optional)"></ion-input>
+                    <br />
+                    <ion-label position="floating"></ion-label>
+                    <ion-input type="date" placeholder="Select Date" required fill="outline"></ion-input>
+                    <br />
+                    <ion-button expand="block" (click)="saveTask()">Save</ion-button>
+                </ion-card-content>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

@@ -9,12 +9,7 @@
 
           <ion-card-content>
             <ion-item>
-              <ion-label
-                label-placement="floating"
-                fill="outline"
-                position="floating"
-                >Email</ion-label
-              >
+              <ion-label label-placement="floating" fill="outline" position="floating">Email</ion-label>
               <ion-input type="email" required></ion-input>
             </ion-item>
 
@@ -23,15 +18,8 @@
               <ion-input type="password" required></ion-input>
             </ion-item>
 
-            <ion-button
-              [routerLink]="['/home']"
-              size="small"
-              expand="block"
-              color="primary"
-              shape="round"
-              class="ion-margin-top"
-              >Login</ion-button
-            >
+            <ion-button [routerLink]="['/home']" size="small" expand="block" color="primary" shape="round"
+              class="ion-margin-top">Login</ion-button>
             <br />
 
             <ion-row class="ion-justify-content-center">
@@ -39,11 +27,7 @@
                 <ion-text>
                   <p style="display: inline">Don't have an account?</p>
                   <ion-text color="primary">
-                    <a
-                      [routerLink]="['/auth/register']"
-                      style="text-decoration: none; margin-left: 5px"
-                      >Sign Up</a
-                    >
+                    <a [routerLink]="['/auth/register']" style="text-decoration: none; margin-left: 5px">Sign Up</a>
                   </ion-text>
                 </ion-text>
               </ion-col>

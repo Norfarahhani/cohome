@@ -20,28 +20,33 @@
 
           <ion-card-content>
 
-            <ion-input label="Name" label-placement="floating" fill="outline" placeholder="Enter text" required ></ion-input>
+            <ion-input label="Name" label-placement="floating" fill="outline" placeholder="Enter text"
+              required></ion-input>
             <br />
 
-            <ion-input label="Age" label-placement="floating" type="number" min="0" max="120" fill="outline" placeholder="Enter your age" ></ion-input>
+            <ion-input label="Age" label-placement="floating" type="number" min="0" max="120" fill="outline"
+              placeholder="Enter your age"></ion-input>
             <br />
 
-            <ion-input type="email" fill="outline" label="Email" labelPlacement="floating" helperText="Enter a valid email" errorText="Invalid email" ngModel email required ></ion-input>
+            <ion-input type="email" fill="outline" label="Email" labelPlacement="floating"
+              helperText="Enter a valid email" errorText="Invalid email" ngModel email required></ion-input>
             <br />
 
-            <ion-input label="Phone number" label-placement="floating" type="number" min="0" max="120" fill="outline" placeholder="Enter phone number" required ></ion-input>
-             <br />
-
-             <ion-input label="Password" label-placement="floating" fill="outline" placeholder="Enter password" required ></ion-input>
+            <ion-input label="Phone number" label-placement="floating" type="number" min="0" max="120" fill="outline"
+              placeholder="Enter phone number" required></ion-input>
             <br />
 
-            <ion-input label=" Confirm Password" label-placement="floating" fill="outline" placeholder="Enter password" required ></ion-input>
+            <ion-input label="Password" label-placement="floating" fill="outline" placeholder="Enter password"
+              required></ion-input>
             <br />
 
-            <ion-button [routerLink]="['/household/index']" size="small" expand="block" color="primary" shape="round" class="ion-margin-top"
-              >Sign up</ion-button
-            >
-            
+            <ion-input label=" Confirm Password" label-placement="floating" fill="outline" placeholder="Enter password"
+              required></ion-input>
+            <br />
+
+            <ion-button [routerLink]="['/household/index']" size="small" expand="block" color="primary" shape="round"
+              class="ion-margin-top">Sign up</ion-button>
+
           </ion-card-content>
         </ion-card>
       </ion-col>
