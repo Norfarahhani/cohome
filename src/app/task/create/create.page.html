@@ -1,30 +1,21 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-title>New Task</ion-title>
-        <ion-buttons slot="end">
-            <ion-button (click)="dismissModal()">Close</ion-button>
-        </ion-buttons>
-    </ion-toolbar>
-</ion-header>
+<ion-list>
+  <ion-item>
+    <ion-input label="Default input"></ion-input>
+  </ion-item>
 
-<ion-content class="ion-padding">
-    <ion-grid>
-        <ion-row class="ion-justify-content-center">
-            <ion-col size-md="6" size-lg="4">
-                <ion-card-header>
-                    <ion-card-title class="ion-text-center">New Task</ion-card-title>
-                </ion-card-header>
-                <ion-card-content>
-                    <ion-input fill="outline" placeholder="Task" required></ion-input>
-                    <br />
-                    <ion-input fill="outline" placeholder="Notes (Optional)"></ion-input>
-                    <br />
-                    <ion-label position="floating"></ion-label>
-                    <ion-input type="date" placeholder="Select Date" required fill="outline"></ion-input>
-                    <br />
-                    <ion-button expand="block" (click)="saveTask()">Save</ion-button>
-                </ion-card-content>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
-</ion-content>
+  <ion-item>
+    <ion-input label="Input with placeholder" placeholder="Enter company name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Input with value" value="121 S Pinckney St #300"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Readonly input" value="Madison" [readonly]="true"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Disabled input" value="53703" [disabled]="true"></ion-input>
+  </ion-item>
+</ion-list>
