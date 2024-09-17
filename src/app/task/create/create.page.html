@@ -1,21 +1,61 @@
-<ion-list>
+<ion-card>
   <ion-item>
-    <ion-input label="Default input"></ion-input>
+    <ion-input placeholder="Task name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Notes (Optional)"></ion-input>
+  </ion-item>
+</ion-card>
+
+<ion-card>
+  <ion-item>
+    <ion-input type="date" placeholder="YYYY-MM-DD"></ion-input>
+  </ion-item>
+</ion-card>
+
+<ion-card>
+  <ion-item>
+    <!-- Reminder Icon and Text -->
+    <ion-icon name="alarm-outline" slot="start" style="margin-right: 10px;"></ion-icon>
+    <ion-label>Reminder</ion-label>
+    <!-- Toggle Button -->
+    <ion-toggle slot="end" [(ngModel)]="repeatReminder" (ionChange)="toggleReminder($event)"></ion-toggle>
+  </ion-item>
+  <!-- Conditional Display of Time Picker -->
+  <ion-item *ngIf="repeatReminder">
+    <ion-label position="floating">Repeat Time</ion-label>
+    <ion-datetime 
+      displayFormat="HH:mm" 
+      [(ngModel)]="repeatTime"
+      pickerFormat="HH:mm">
+    </ion-datetime>
   </ion-item>
 
   <ion-item>
-    <ion-input label="Input with placeholder" placeholder="Enter company name"></ion-input>
+    <!-- Repeat Icon and Text -->
+    <ion-icon name="repeat-outline" slot="start" style="margin-right: 10px;"></ion-icon>
+    <ion-label>Repeat</ion-label>
+    <!-- Select Button for Repetition Options -->
+    <ion-select slot="end" [(ngModel)]="selectedRepeatOption" >
+      <ion-select-option value="daily">Daily</ion-select-option>
+      <ion-select-option value="weekly">Every Week</ion-select-option>
+      <ion-select-option value="biweekly">Every 2 Weeks</ion-select-option>
+    </ion-select>
   </ion-item>
+</ion-card>
 
+<ion-card>
   <ion-item>
-    <ion-input label="Input with value" value="121 S Pinckney St #300"></ion-input>
+    <!-- Person Icon and Text -->
+    <ion-icon name="person-outline" slot="start" style="margin-right: 10px;"></ion-icon>
+    <ion-label>Assign Task</ion-label>
+    
+    <!-- Select Button for Member Selection -->
+    <ion-select slot="end" [(ngModel)]="selectedMember" >
+      <ion-select-option value="member1">Member 1</ion-select-option>
+      <ion-select-option value="member2">Member 2</ion-select-option>
+      <ion-select-option value="member3">Member 3</ion-select-option>
+      <!-- Add more options as needed -->
+    </ion-select>
   </ion-item>
-
-  <ion-item>
-    <ion-input label="Readonly input" value="Madison" [readonly]="true"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-input label="Disabled input" value="53703" [disabled]="true"></ion-input>
-  </ion-item>
-</ion-list>
+</ion-card>

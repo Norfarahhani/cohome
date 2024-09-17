@@ -54,9 +54,12 @@
     <ng-template>
       <ion-header>
         <ion-toolbar>
-          <ion-title>Modal</ion-title>
+          <ion-buttons slot="start">
+            <ion-button (click)="modal.dismiss()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title class="centered-title">New Task</ion-title>
           <ion-buttons slot="end">
-            <ion-button (click)="modal.dismiss()">Close</ion-button>
+            <ion-button (click)="modal.dismiss()">Save</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
