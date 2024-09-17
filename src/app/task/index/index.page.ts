@@ -24,14 +24,6 @@ export class IndexPage implements OnInit {
 
   ];
 
-  // Method to open the modal
-  async openTaskModal() {
-    const modal = await this.modalCtrl.create({
-      component: TaskModalComponent // Specify the modal component
-    });
-    await modal.present();
-  }
-
   // This method gets triggered when the child emits the filtered items
   // onFilteredItemsChange(updatedFilteredItems: string[]) {
   //   this.filteredItems = updatedFilteredItems;
