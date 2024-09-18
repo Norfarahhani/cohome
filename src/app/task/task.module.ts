@@ -6,11 +6,12 @@ import { IonicModule } from '@ionic/angular';
 import { IndexPage } from './index/index.page';
 import { TaskRoutingModule } from './task-routing.module';
 import { CreatePage } from './create/create.page';
+import { ListPage } from './list/list.page';
 
 
 
 @NgModule({
-  declarations: [IndexPage, CreatePage],
+  declarations: [IndexPage, CreatePage, ListPage],
   imports: [
     CommonModule,
     FormsModule,

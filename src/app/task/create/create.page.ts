@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonModal } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-task-create',
@@ -13,10 +14,32 @@ export class CreatePage implements OnInit {
   selectedRepeatOption: string = ''; // Selected repeat option
   selectedMember: string=''; // assign task kepada siapa
 
-  constructor() { }
+  @ViewChild(IonModal) modal !: IonModal; // Access the modal via ViewChild
+
+
+  constructor() {}
+
+  // Method to open the modal
+  openModal() {
+    this.modal.present();
+  }
+
+  // Method to close the modal
+  closeModal() {
+    this.modal.dismiss();
+  }
 
   ngOnInit() {
   }
+
+  public alertButtons = ['Save'];
+  public alertInputs = [
+    {
+      type: 'task',
+      placeholder: 'Enter Task',
+    },
+
+  ];
 
   toggleReminder(event: any) {
     // Logic to handle toggle change
