@@ -1,0 +1,34 @@
+<ion-card>
+    <ion-item>
+        <ion-input type="number" min="0" max="120" placeholder="Amount"></ion-input>
+        <ion-icon name="cash-outline" slot="end" style="margin-left: 10px;"></ion-icon>
+    </ion-item>
+
+    <ion-item>
+        <!-- Dynamically change the label based on user selection -->
+        <ion-label>{{ selectedCategory ? selectedCategory : 'Category' }}</ion-label>
+
+        <!-- Select Button for Category Options -->
+        <ion-select slot="end" placeholder="Select a Category" interface="popover" [(ngModel)]="selectedCategory"
+            style="width: 0; opacity: 0;">
+            <ion-select-option value="Entertainment">Entertainment</ion-select-option>
+            <ion-select-option value="Food & Drinks">Food & Drinks</ion-select-option>
+            <ion-select-option value="Grocery's">Grocery's</ion-select-option>
+            <ion-select-option value="Transport">Transport</ion-select-option>
+            <ion-select-option value="Housing">Housing</ion-select-option>
+        </ion-select>
+        <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
+    </ion-item>
+</ion-card>
+
+<ion-card>
+    <ion-item>
+        <ion-icon name="clipboard-outline" slot="end" style="margin-left: 10px;"></ion-icon>
+        <ion-input placeholder="Notes..."></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-input type="date" placeholder="YYYY-MM-DD" ></ion-input>
+    </ion-item>
+
+</ion-card>

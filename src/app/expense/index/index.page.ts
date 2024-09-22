@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-expense-index',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexPage implements OnInit {
 
-  constructor() { }
+  selectedSegment: string = 'card1'; 
+
+  constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {
   }

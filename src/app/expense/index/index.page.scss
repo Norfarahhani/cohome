@@ -1,0 +1,34 @@
+.centered-title {
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .move-text {
+    position: relative;
+    top: 20px;   /* Moves the text down by 20px */
+    left: 10px;  /* Moves the text to the right by 10px */
+  }
+  
+  /* Or with margin */
+  .move-text {
+    margin-top: 20px;    /* Moves down */
+    margin-left: 10px;   /* Moves right */
+  }
+
+  .split-segment {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .split-segment ion-segment-button {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .segment-container {
+    display: flex;
+    justify-content: space-around;
+  }
