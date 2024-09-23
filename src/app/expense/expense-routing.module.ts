@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { IndexPage } from './index/index.page';
 import { AmountPage } from './amount/amount.page';
 import { PaidPage } from './paid/paid.page';
-import { AssignPage } from './assign/assign.page';
+import { UnpaidPage } from './unpaid/unpaid.page';
 
 const routes: Routes = [
   {
@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: AssignPage
+    component: UnpaidPage
   }
 ];
 

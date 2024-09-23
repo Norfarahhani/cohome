@@ -7,12 +7,12 @@ import { IonicModule } from '@ionic/angular';
 import { IndexPage } from './index/index.page';
 import { AmountPage } from './amount/amount.page';
 import { PaidPage } from './paid/paid.page';
-import { AssignPage } from './assign/assign.page';
+import { UnpaidPage } from './unpaid/unpaid.page';
 
 
 
 @NgModule({
-  declarations: [IndexPage, AmountPage, PaidPage, AssignPage],
+  declarations: [IndexPage, AmountPage, PaidPage, UnpaidPage],
   imports: [
     CommonModule,
     FormsModule,

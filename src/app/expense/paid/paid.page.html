@@ -1,11 +1,32 @@
-<ion-card>
-    <ion-item>
-        <ion-icon name="clipboard-outline" slot="end" style="margin-left: 10px;"></ion-icon>
-        <ion-input placeholder="Notes..."></ion-input>
-    </ion-item>
-
-    <ion-item>
-        <ion-input type="date" placeholder="YYYY-MM-DD" ></ion-input>
-    </ion-item>
-
-</ion-card>
+<ion-card-content>
+    <ion-list>
+      <ion-item-sliding>
+        <ion-item>
+          <!-- Icon for Category (Grocery) -->
+          <ion-icon name="cart-outline" slot="start" style="max-width: 85%; max-height: 85%; margin-right: 10px;"></ion-icon>
+          
+          <!-- Text content inside the item -->
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-text>
+                  <strong>Grocery's</strong>
+                </ion-text>
+                <ion-row class="ion-margin-bottom">
+                  <ion-text>RM5.00</ion-text>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+  
+        <!-- Sliding options (e.g., delete) -->
+        <ion-item-options side="end">
+          <ion-item-option color="danger">
+            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </ion-card-content>
+  

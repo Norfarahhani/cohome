@@ -1,4 +1,4 @@
-<ion-card>
+<ion-card class="ion-padding">
     <ion-item>
         <ion-input type="number" min="0" max="120" placeholder="Amount"></ion-input>
         <ion-icon name="cash-outline" slot="end" style="margin-left: 10px;"></ion-icon>
@@ -19,16 +19,94 @@
         </ion-select>
         <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
     </ion-item>
-</ion-card>
 
-<ion-card>
     <ion-item>
         <ion-icon name="clipboard-outline" slot="end" style="margin-left: 10px;"></ion-icon>
         <ion-input placeholder="Notes..."></ion-input>
     </ion-item>
 
     <ion-item>
-        <ion-input type="date" placeholder="YYYY-MM-DD" ></ion-input>
+        <ion-input type="date" placeholder="YYYY-MM-DD"></ion-input>
     </ion-item>
+</ion-card>
 
+
+
+<ion-card class="ion-padding">
+    <ion-col>
+        <ion-text color="dark">
+            <strong>Members</strong>
+        </ion-text>
+    </ion-col>
+
+    <ion-card-content>
+        <ion-list>
+            <ion-item-sliding>
+                <ion-item>
+                    <ion-grid>
+                        <ion-checkbox>
+                            <ion-row>
+                                <ion-col>
+                                    <ion-avatar>
+                                        <img style="max-width: 85%; max-height: 85%;"
+                                            alt="Silhouette of a person's head"
+                                            src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                                    </ion-avatar>
+                                </ion-col>
+                                <ion-col>
+                                    <ion-row>
+                                        <ion-text>
+                                            <strong>Hani</strong>
+                                        </ion-text>
+                                    </ion-row>
+                                    <ion-row class="ion-margin-bottom">
+                                        <ion-text> RM5.00 </ion-text>
+                                    </ion-row>
+                                </ion-col>
+                            </ion-row>
+                        </ion-checkbox>
+                    </ion-grid>
+                </ion-item>
+                <ion-item-options side="end">
+                    <ion-item-option color="danger">
+                        <ion-icon slot="icon-only" name="trash"></ion-icon>
+                    </ion-item-option>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+        <ion-list>
+            <ion-item-sliding>
+                <ion-item>
+                    <ion-grid>
+                        <ion-checkbox>
+                            <ion-row>
+                                <ion-col>
+                                    <ion-avatar>
+                                        <img style="max-width: 85%; max-height: 85%;"
+                                            alt="Silhouette of a person's head"
+                                            src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                                    </ion-avatar>
+                                </ion-col>
+                                <ion-col>
+                                    <ion-row>
+                                        <ion-text>
+                                            <strong>Hani</strong>
+                                        </ion-text>
+                                    </ion-row>
+                                    <ion-row class="ion-margin-bottom">
+                                        <ion-text> RM5.00 </ion-text>
+                                    </ion-row>
+                                </ion-col>
+                            </ion-row>
+                        </ion-checkbox>
+                    </ion-grid>
+                </ion-item>
+                <ion-item-options side="end">
+                    <ion-item-option color="danger">
+                        <ion-icon slot="icon-only" name="trash"></ion-icon>
+                    </ion-item-option>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+    </ion-card-content>
 </ion-card>

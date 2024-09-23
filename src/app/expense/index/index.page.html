@@ -1,5 +1,32 @@
 <app-header></app-header>
 
+<ion-content class="ion-padding">
+  <ion-header>
+    <ion-toolbar>
+
+  <div class="segment-container">
+    <ion-segment [(ngModel)]="selectedSegment" color="primary" class="split-segment">
+      <ion-segment-button value="card1">
+        <ion-label>Unpaid</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="card2">
+        <ion-label>Paid</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <ion-card-content *ngIf="selectedSegment === 'card1'"> 
+    <app-expense-unpaid></app-expense-unpaid>
+  </ion-card-content>
+
+  <ion-card-content *ngIf="selectedSegment === 'card2'"> 
+    <app-expense-paid></app-expense-paid>
+  </ion-card-content>
+
+</ion-toolbar>
+</ion-header>
+</ion-content>
+
 <!-- FAB Button -->
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">
   <ion-fab-button id="open-amount">
@@ -16,41 +43,25 @@
         </ion-buttons>
         <ion-title class="centered-title">Expense</ion-title>
         <ion-buttons slot="end">
-          <ion-button >Next</ion-button>
+          <ion-button >Save</ion-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
 
     <ion-content>
-      <!-- <app-expense-amount></app-expense-amount>  -->
       <div class="segment-container">
         <ion-segment [(ngModel)]="selectedSegment" color="primary" class="split-segment">
           <ion-segment-button value="card1">
             <ion-label>Amount</ion-label>
           </ion-segment-button>
-          <ion-segment-button value="card2">
-            <ion-label>Who paid?</ion-label>
-          </ion-segment-button>
-          <ion-segment-button value="card3">
-            <ion-label>For who?</ion-label>
-          </ion-segment-button>
         </ion-segment>
       </div>
 
       <!-- Display Card 1 -->
-      <ion-card shape="round" *ngIf="selectedSegment === 'card1'">
+      <ion-content shape="round" *ngIf="selectedSegment === 'card1'">
         <app-expense-amount></app-expense-amount>
-      </ion-card>
+      </ion-content>
 
-      <!-- Display Card 2 -->
-    <ion-card *ngIf="selectedSegment === 'card2'"> 
-      <app-expense-paid></app-expense-paid>
-    </ion-card>
-
-     <!-- Display Card 3 -->
-     <ion-card *ngIf="selectedSegment === 'card3'"> 
-      <app-expense-assign></app-expense-assign>
-    </ion-card>
 
     </ion-content>
   </ng-template>
