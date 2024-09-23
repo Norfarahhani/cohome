@@ -8,11 +8,12 @@ import { IndexPage } from './index/index.page';
 import { AmountPage } from './amount/amount.page';
 import { PaidPage } from './paid/paid.page';
 import { UnpaidPage } from './unpaid/unpaid.page';
+import { EditPage } from './edit/edit.page';
 
 
 
 @NgModule({
-  declarations: [IndexPage, AmountPage, PaidPage, UnpaidPage],
+  declarations: [IndexPage, AmountPage, PaidPage, UnpaidPage, EditPage],
   imports: [
     CommonModule,
     FormsModule,
