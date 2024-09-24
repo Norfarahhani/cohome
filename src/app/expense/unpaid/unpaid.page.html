@@ -1,9 +1,8 @@
-
 <ion-card-content>
     <ion-list>
         <ion-item-sliding>
             <ion-item>
-                <ion-icon name="cart-outline" slot="start" style="max-width: 85%; max-height: 85%;" ></ion-icon>
+                <ion-icon name="cart-outline" slot="start" style="max-width: 85%; max-height: 85%;"></ion-icon>
                 <ion-grid>
                     <ion-checkbox>
                         <ion-row>
@@ -23,8 +22,30 @@
             </ion-item>
             <ion-item-options side="end">
                 <ion-item-option color="success">
-                    <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+                    <ion-icon :routerLink="./edit" slot="icon-only" name="create-outline"></ion-icon>
                 </ion-item-option>
             </ion-item-options>
         </ion-item-sliding>
     </ion-list>
+
+
+    <!-- ion modal open edit page -->
+    <ion-modal #modal trigger="open-edit">
+        <ng-template>
+            <ion-header>
+                <ion-toolbar>
+                    <ion-buttons slot="start">
+                        <ion-button (click)="modal.dismiss()">Cancel</ion-button>
+                    </ion-buttons>
+                    <ion-title class="centered-title"> Edit Expense</ion-title>
+                    <ion-buttons slot="end">
+                        <ion-button>Save</ion-button>
+                    </ion-buttons>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content>
+                <app-expense-edit></app-expense-edit>
+            </ion-content>
+        </ng-template>
+    </ion-modal>
+
