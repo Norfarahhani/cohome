@@ -15,19 +15,18 @@
   </div>
 
   <!-- Display Card 1 -->
-  <ion-card shape="round" *ngIf="selectedSegment === 'card1'">
+  <ion-card *ngIf="selectedSegment === 'card1'">
     <ion-card-header>
       <ion-card-title>Create household</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-input class="ion-margin-bottom" label="Household name" label-placement="floating" fill="outline"
-        shape="round" placeholder="Enter household name" required></ion-input>
+        placeholder="Enter household name" required></ion-input>
 
-      <ion-input class="ion-margin-bottom" label="Address" label-placement="floating" fill="outline" shape="round"
+      <ion-input class="ion-margin-bottom" label="Address" label-placement="floating" fill="outline" 
         placeholder="Enter address" required></ion-input>
 
-      <ion-button [routerLink]="['/home']" size="small" expand="block" color="success" shape="round"
-        class="lowercase-button">Create</ion-button>
+      <ion-button [routerLink]="['/home']" size="small" expand="block" color="success" shape="round" class="lowercase-button">Create</ion-button>
     </ion-card-content>
   </ion-card>
 
@@ -38,7 +37,7 @@
     </ion-card-header>
     <ion-card-content>
 
-      <ion-input label="Household code" label-placement="floating" fill="outline" shape="round"
+      <ion-input label="Household code" label-placement="floating" fill="outline" 
         placeholder="Enter household code" required></ion-input>
 
       <ion-button [routerLink]="['/home']" size="small" expand="block" color="success" shape="round"
@@ -55,7 +54,7 @@
       </ion-col>
       <ion-col>
         <ion-icon id="present-alert" style="font-size: 24px" class="ion-float-right"
-          name="add-circle-outline"></ion-icon>
+          name="add-outline"></ion-icon>
         <ion-alert trigger="present-alert" header="Invite Member" [buttons]="alertButtons"
           [inputs]="alertInputs"></ion-alert>
       </ion-col>
