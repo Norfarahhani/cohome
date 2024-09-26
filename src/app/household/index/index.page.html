@@ -23,10 +23,11 @@
       <ion-input class="ion-margin-bottom" label="Household name" label-placement="floating" fill="outline"
         placeholder="Enter household name" required></ion-input>
 
-      <ion-input class="ion-margin-bottom" label="Address" label-placement="floating" fill="outline" 
+      <ion-input class="ion-margin-bottom" label="Address" label-placement="floating" fill="outline"
         placeholder="Enter address" required></ion-input>
 
-      <ion-button [routerLink]="['/home']" size="small" expand="block" color="success" shape="round" class="lowercase-button">Create</ion-button>
+      <ion-button [routerLink]="['/home']" size="small" expand="block" color="success" shape="round"
+        class="lowercase-button">Create</ion-button>
     </ion-card-content>
   </ion-card>
 
@@ -37,8 +38,8 @@
     </ion-card-header>
     <ion-card-content>
 
-      <ion-input label="Household code" label-placement="floating" fill="outline" 
-        placeholder="Enter household code" required></ion-input>
+      <ion-input label="Household code" label-placement="floating" fill="outline" placeholder="Enter household code"
+        required></ion-input>
 
       <ion-button [routerLink]="['/home']" size="small" expand="block" color="success" shape="round"
         class="ion-margin-top lowercase-button">Request</ion-button>
@@ -53,8 +54,7 @@
         </ion-text>
       </ion-col>
       <ion-col>
-        <ion-icon id="present-alert" style="font-size: 24px" class="ion-float-right"
-          name="add-outline"></ion-icon>
+        <ion-icon id="present-alert" style="font-size: 24px" class="ion-float-right" name="add-outline"></ion-icon>
         <ion-alert trigger="present-alert" header="Invite Member" [buttons]="alertButtons"
           [inputs]="alertInputs"></ion-alert>
       </ion-col>
