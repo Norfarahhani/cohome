@@ -33,17 +33,17 @@
     </ion-card>
 
     <ion-card>
-        <ion-card-content>
+        <ion-card-content id="open-house" button="true" [routerLink]="['/profile/house']">
             <ion-item>
-                <ion-icon name="push-outline" slot="start" style="margin-left: 10px;"></ion-icon>
-                <ion-text>Payment</ion-text>
+                <ion-icon name="home-outline" slot="start" style="margin-left: 10px;"></ion-icon>
+                <ion-text>Mini House</ion-text>
                 <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
             </ion-item>
         </ion-card-content>
         <ion-card-content>
             <ion-item>
-                <ion-icon name="home-outline" slot="start" style="margin-left: 10px;"></ion-icon>
-                <ion-text>Mini House</ion-text>
+                <ion-icon name="push-outline" slot="start" style="margin-left: 10px;"></ion-icon>
+                <ion-text>Payment</ion-text>
                 <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
             </ion-item>
         </ion-card-content>
@@ -59,28 +59,51 @@
         class="lowercase-button">logout</ion-button>
 </ion-content>
 
+
 <!-- Modal for details page -->
 <ion-modal #modal trigger="open-details">
     <ng-template>
-      <ion-header>
-        <ion-toolbar>
-          <ion-buttons slot="start">
-            <ion-button (click)="modal.dismiss()">Back</ion-button>
-          </ion-buttons>
-          <ion-title class="centered-title"> Profile</ion-title>
-          <ion-buttons slot="end">
-            <ion-button>Save</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-  
-      <!-- display details page -->
-      <ion-content>
-        <ion-content shape="round">
-          <app-expense-details></app-expense-details>
+        <ion-header>
+            <ion-toolbar>
+                <ion-buttons slot="start">
+                    <ion-button (click)="modal.dismiss()">Back</ion-button>
+                </ion-buttons>
+                <ion-title class="centered-title"> Profile</ion-title>
+                <ion-buttons slot="end">
+                    <ion-button>Save</ion-button>
+                </ion-buttons>
+            </ion-toolbar>
+        </ion-header>
+
+        <!-- display details page -->
+        <ion-content>
+            <ion-content shape="round">
+                <app-expense-details></app-expense-details>
+            </ion-content>
         </ion-content>
-      </ion-content>
     </ng-template>
-  </ion-modal>
-  
-  
+</ion-modal>
+
+<!-- Modal for house page -->
+<ion-modal #modal trigger="open-house">
+    <ng-template>
+        <ion-header>
+            <ion-toolbar>
+                <ion-buttons slot="start">
+                    <ion-button (click)="modal.dismiss()">Back</ion-button>
+                </ion-buttons>
+                <ion-title class="centered-title"> Mini House</ion-title>
+                <ion-buttons slot="end">
+                    <ion-button>Save</ion-button>
+                </ion-buttons>
+            </ion-toolbar>
+        </ion-header>
+
+        <!-- display details page -->
+        <ion-content>
+            <ion-content shape="round">
+                <app-expense-house></app-expense-house>
+            </ion-content>
+        </ion-content>
+    </ng-template>
+</ion-modal>

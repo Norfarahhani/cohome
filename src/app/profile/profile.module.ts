@@ -6,11 +6,12 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { IndexPage } from './index/index.page';
 import { DetailsPage } from './details/details.page';
+import { HousePage } from './house/house.page';
 
 
 
 @NgModule({
-  declarations: [IndexPage, DetailsPage],
+  declarations: [IndexPage, DetailsPage, HousePage],
   imports: [
     CommonModule,
     FormsModule,

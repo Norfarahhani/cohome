@@ -28,26 +28,25 @@
         </ion-item-sliding>
     </ion-list>
 
-<!-- ion modal open edit page -->
-<ion-modal #modal trigger="open-edit">
-    <ng-template>
-      <ion-header>
-        <ion-toolbar>
-          <ion-buttons slot="start">
-            <ion-button (click)="modal.dismiss()">Cancel</ion-button>
-          </ion-buttons>
-          <ion-title class="centered-title"> Details</ion-title>
-          <ion-buttons slot="end">
-            <ion-icon name="pencil-outline" style="margin-right: 15px;"></ion-icon>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-  
-  <ion-content>
-    <ion-content shape="round">
-      <app-expense-edit></app-expense-edit>
-    </ion-content>
-  </ion-content>
-  </ng-template>
-  </ion-modal>
-  
+    <!-- ion modal open edit page -->
+    <ion-modal #modal trigger="open-edit">
+        <ng-template>
+            <ion-header>
+                <ion-toolbar>
+                    <ion-buttons slot="start">
+                        <ion-button (click)="modal.dismiss()">Cancel</ion-button>
+                    </ion-buttons>
+                    <ion-title class="centered-title"> Details</ion-title>
+                    <ion-buttons slot="end">
+                        <ion-icon name="pencil-outline" style="margin-right: 15px;"></ion-icon>
+                    </ion-buttons>
+                </ion-toolbar>
+            </ion-header>
+
+            <ion-content>
+                <ion-content shape="round">
+                    <app-expense-edit></app-expense-edit>
+                </ion-content>
+            </ion-content>
+        </ng-template>
+    </ion-modal>
