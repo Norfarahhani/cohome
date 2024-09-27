@@ -1,11 +1,12 @@
-<app-header></app-header>
+<app-header>
+</app-header>
 
 <ion-content class="ion-padding">
     <ion-text>
         <h2>Account</h2>
     </ion-text>
 
-    <ion-card id="open-details" button="true" [routerLink]="['/profile/details']">
+    <ion-list [inset]="true" id="open-details" button="true">
         <ion-card-content>
             <ion-item>
                 <ion-row>
@@ -30,32 +31,27 @@
                 <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
             </ion-item>
         </ion-card-content>
-    </ion-card>
+    </ion-list>
 
-    <ion-card>
-        <ion-card-content id="open-house" button="true" [routerLink]="['/profile/house']">
-            <ion-item>
-                <ion-icon name="home-outline" slot="start" style="margin-left: 10px;"></ion-icon>
-                <ion-text>Mini House</ion-text>
-                <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
-            </ion-item>
-        </ion-card-content>
-        <ion-card-content>
-            <ion-item>
-                <ion-icon name="push-outline" slot="start" style="margin-left: 10px;"></ion-icon>
-                <ion-text>Payment</ion-text>
-                <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
-            </ion-item>
-        </ion-card-content>
-        <ion-card-content>
-            <ion-item>
-                <ion-icon name="settings-outline" slot="start" style="margin-left: 10px;"></ion-icon>
-                <ion-text>Settings</ion-text>
-                <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
-            </ion-item>
-        </ion-card-content>
-    </ion-card>
-    <ion-button [routerLink]="['/auth/login']" size="small" expand="block" color="dark" shape="round"
+
+    <ion-list [inset]="true">
+        <ion-item [button]="true" id="open-house">
+            <ion-icon color="danger" slot="start" name="heart-circle-outline" size="large"></ion-icon>
+            <ion-label>Home</ion-label>
+            <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
+        </ion-item>
+        <ion-item [button]="true" id="open-payment">
+            <ion-icon color="success" slot="start" name="scan-circle-outline" size="large"></ion-icon>
+            <ion-label>Payment</ion-label>
+            <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
+        </ion-item>
+        <ion-item [button]="true">
+            <ion-icon color="tertiary" slot="start" name="list-circle-outline" size="large"></ion-icon>
+            <ion-label>Setting</ion-label>
+            <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
+        </ion-item>
+    </ion-list>
+    <ion-button [routerLink]="['/auth/login']" size="small" expand="block" shape="round"
         class="lowercase-button">logout</ion-button>
 </ion-content>
 
@@ -66,19 +62,20 @@
         <ion-header>
             <ion-toolbar>
                 <ion-buttons slot="start">
-                    <ion-button (click)="modal.dismiss()">Back</ion-button>
+                    <ion-button (click)="modal.dismiss()">
+                        <ion-icon name="chevron-back-outline" slot="start" style="margin-left: 10px;"></ion-icon>
+                    </ion-button>
                 </ion-buttons>
                 <ion-title class="centered-title"> Profile</ion-title>
                 <ion-buttons slot="end">
-                    <ion-button>Save</ion-button>
+                    <ion-button class="save-button">Save</ion-button>
                 </ion-buttons>
             </ion-toolbar>
         </ion-header>
-
         <!-- display details page -->
         <ion-content>
             <ion-content shape="round">
-                <app-expense-details></app-expense-details>
+                <app-profile-details></app-profile-details>
             </ion-content>
         </ion-content>
     </ng-template>
@@ -90,7 +87,9 @@
         <ion-header>
             <ion-toolbar>
                 <ion-buttons slot="start">
-                    <ion-button (click)="modal.dismiss()">Back</ion-button>
+                    <ion-button (click)="modal.dismiss()">
+                        <ion-icon name="chevron-back-outline" slot="start" style="margin-left: 10px;"></ion-icon>
+                    </ion-button>
                 </ion-buttons>
                 <ion-title class="centered-title"> Mini House</ion-title>
                 <ion-buttons slot="end">
@@ -98,11 +97,35 @@
                 </ion-buttons>
             </ion-toolbar>
         </ion-header>
-
         <!-- display details page -->
         <ion-content>
             <ion-content shape="round">
-                <app-expense-house></app-expense-house>
+                <app-profile-house></app-profile-house>
+            </ion-content>
+        </ion-content>
+    </ng-template>
+</ion-modal>
+
+<!-- Modal for payment page -->
+<ion-modal #modal trigger="open-payment">
+    <ng-template>
+        <ion-header>
+            <ion-toolbar>
+                <ion-buttons slot="start">
+                    <ion-button (click)="modal.dismiss()">
+                        <ion-icon name="chevron-back-outline" slot="start" style="margin-left: 10px;"></ion-icon>
+                    </ion-button>
+                </ion-buttons>
+                <ion-title class="centered-title"> </ion-title>
+                <ion-buttons slot="end">
+                    <ion-button>Save</ion-button>
+                </ion-buttons>
+            </ion-toolbar>
+        </ion-header>
+        <!-- display details page -->
+        <ion-content>
+            <ion-content shape="round">
+                <app-profile-payment></app-profile-payment>
             </ion-content>
         </ion-content>
     </ng-template>

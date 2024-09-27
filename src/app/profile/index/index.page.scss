@@ -17,10 +17,51 @@
 //     margin-right: 10px;  /* Spacing */
 //   }
 
-.centered-title {
-    text-align: center;
-    font-weight: bold;
+// .centered-title {
+//     text-align: center;
+//     font-weight: bold;
+//     position: absolute;
+//     left: 50%;
+//     transform: translateX(-50%);
+//   }
+
+  ion-toolbar {
+    display: flex; /* Use flexbox for the toolbar */
+    justify-content: space-between; /* Space between title and buttons */
+    align-items: center; /* Center vertically */
+  }
+  
+  .centered-title {
+    flex: 1; /* Take full space */
+    text-align: center; /* Center the text */
+  }
+  
+  .save-button {
+    text-transform: none !important; 
+  }
+
+  ion-label strong {
+    display: block;
+    max-width: calc(100% - 60px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  unread-indicator {
+    background: var(--ion-color-primary);
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    inset-inline-start: 12px;
+    top: 12px;
+  }
+
+  .metadata-end-wrapper {
+    position: absolute;
+    top: 10px;
+    inset-inline-end: 10px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
   }

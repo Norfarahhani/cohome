@@ -1,41 +1,37 @@
-
-  <ion-card>
-    <ion-item>
+<ion-list [inset]="true">
+  <ion-item>
     <ion-input placeholder="Task name"></ion-input>
     <ion-button slot="end" fill="clear" (click)="openModal()">
       <ion-icon name="storefront-outline"></ion-icon>
     </ion-button>
   </ion-item>
-    <!-- Modal for Task Selection -->
-    <ion-modal #modal>
-      <ng-template>
-        <ion-header>
-          <ion-toolbar>
-            <ion-buttons slot="start">
-              <ion-button (click)="closeModal()">Cancel</ion-button>
-            </ion-buttons>
-            <ion-title class="centered-title">Select Task</ion-title>
-          </ion-toolbar>
-        </ion-header>
-        <!-- Task List Component to Display Tasks -->
-        <ion-content>
-          <app-task-list></app-task-list>
-        </ion-content>
-      </ng-template>
-    </ion-modal>
+  <!-- Modal for Task Selection -->
+  <ion-modal #modal>
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="closeModal()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title class="centered-title">Select Task</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <!-- Task List Component to Display Tasks -->
+      <ion-content>
+        <app-task-list></app-task-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 
-    <ion-item>
-      <ion-input placeholder="Notes (Optional)"></ion-input>
-    </ion-item>
-</ion-card>
+  <ion-item>
+    <ion-textarea placeholder="Write your notes..." label="Notes" labelPlacement="floating" rows="3"></ion-textarea>
+  </ion-item>
+</ion-list>
 
-<ion-card>
+<ion-list [inset]="true">
   <ion-item>
     <ion-input type="date" placeholder="YYYY-MM-DD"></ion-input>
   </ion-item>
-</ion-card>
-
-<ion-card>
   <ion-item>
     <!-- Reminder Icon and Text -->
     <ion-icon name="alarm-outline" slot="start" style="margin-right: 10px;"></ion-icon>
@@ -49,9 +45,6 @@
     <ion-datetime displayFormat="HH:mm" [(ngModel)]="repeatTime" pickerFormat="HH:mm">
     </ion-datetime>
   </ion-item>
-</ion-card>
-
-<ion-card>
   <ion-item>
     <!-- Repeat Icon and Text -->
     <ion-icon name="repeat-outline" slot="start" style="margin-right: 10px;"></ion-icon>
@@ -63,9 +56,6 @@
       <ion-select-option value="biweekly">Every 2 Weeks</ion-select-option>
     </ion-select>
   </ion-item>
-</ion-card>
-
-<ion-card>
   <ion-item>
     <!-- Person Icon and Text -->
     <ion-icon name="person-outline" slot="start" style="margin-right: 10px;"></ion-icon>
@@ -78,4 +68,4 @@
       <!-- Add more options as needed -->
     </ion-select>
   </ion-item>
-</ion-card>
+</ion-list>

@@ -1,11 +1,28 @@
 <ion-content class="ion-padding">
-    <ion-card>
-        <ion-card-content>
-            <ion-item>
-                <ion-input placeholder="Name" value="Hani azmi"></ion-input>
-              </ion-item>            
-        </ion-card-content>
-    </ion-card>
+
+    <!-- Profile Photo Section -->
+    <ion-list>
+        <ion-item lines="none" class="profile-photo-item">
+            <div class="profile-photo-container">
+                <ion-avatar class="profile-avatar">
+                    <img src="https://ionicframework.com/docs/img/demos/avatar.svg" alt="Silhouette of a person's head">
+                </ion-avatar>
+                <ion-button fill="clear" class="change-photo-button">
+                    Set New Photo
+                </ion-button>
+            </div>
+        </ion-item>
+    </ion-list>
+
+
+    <!-- Name Input Section -->
+    <ion-list>
+        <ion-item>
+            <ion-input placeholder="Name" value="Hani Azmi"></ion-input>
+        </ion-item>
+    </ion-list>
+
+    <!-- Delete Account Button -->
     <ion-button [routerLink]="['/auth/login']" size="small" expand="block" color="danger" shape="round"
         class="lowercase-button">Delete account</ion-button>
 </ion-content>

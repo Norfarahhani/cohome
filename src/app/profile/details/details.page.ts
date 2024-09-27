@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonModal } from '@ionic/angular';
 
 @Component({
-    selector: 'app-expense-details',
+    selector: 'app-profile-details',
     templateUrl: './details.page.html',
     styleUrls: ['./details.page.scss'],
 })

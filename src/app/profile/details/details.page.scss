@@ -1,0 +1,25 @@
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .profile-photo-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-photo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .change-photo-button {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: var(--ion-color-primary);
+    text-align: center;
+    padding: 0;
+    text-transform: none !important;
+  }
+  
