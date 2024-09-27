@@ -1,42 +1,4 @@
-// ion-card {
-//     --background: #94d89d !important;
-//     --color: #131212 !important;
-// }
-
-// ion-card-content {
-//     --ion-text-color: #0f0f0fef; // Optional if you want the text inside to have the same color
-// }
-
-// ion-item {
-//     --ion-background-color: transparent; // To maintain transparency of the item if needed
-//     --ion-text-color: #0a0a0a; // Set text color for ion-item elements
-// }
-
-// .custom-icon {
-//     font-size: 24px;  /* Adjust the size */
-//     margin-right: 10px;  /* Spacing */
-//   }
-
-// .centered-title {
-//     text-align: center;
-//     font-weight: bold;
-//     position: absolute;
-//     left: 50%;
-//     transform: translateX(-50%);
-//   }
-
-  ion-toolbar {
-    display: flex; /* Use flexbox for the toolbar */
-    justify-content: space-between; /* Space between title and buttons */
-    align-items: center; /* Center vertically */
-  }
-  
-  .centered-title {
-    flex: 1; /* Take full space */
-    text-align: center; /* Center the text */
-  }
-  
-  .save-button {
+ .save-button {
     text-transform: none !important; 
   }
 
@@ -65,3 +27,40 @@
     display: flex;
     align-items: center;
   }
+
+  .rounded-list {
+    border-radius: 15px; /* Adjust the radius as needed */
+    overflow: hidden; /* Ensures items inside follow the rounding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
+    margin: 10px; /* Optional: adds space around the list */
+  }
+
+  .profile-header {
+    display: flex;
+    justify-content: space-between; /* Pushes the notification icon to the right */
+    align-items: center; /* Aligns the items vertically in the center */
+    padding: 0 16px; /* Optional: adds some padding on the sides */
+  }
+
+  .profile-header ion-text {
+    margin-top: 50px; /* Adjust this value to move the text down */
+    font-size: 24px; /* Adjust the font size as needed */
+  font-weight: bold; /* Makes the text bold */
+  color: #000; /* Optional: set the text color */
+  }
+  
+  .notification-icon {
+    font-size: 24px; /* Adjust this value to your desired icon size */
+    width: 35px;
+    height: 35px;
+    margin-top: 1%;
+  }
+
+  .profile-header h2 {
+    font-size: 30px; /* Adjust this value for your desired font size */
+    font-weight: bold; /* Makes the text bold */
+    color: #333; /* Change the color to match your design */
+    margin: 0; /* Ensures there's no extra space around the text */
+    padding: 0; /* Ensures there's no extra space inside the text block */
+  }
+  

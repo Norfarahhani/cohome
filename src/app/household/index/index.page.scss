@@ -25,3 +25,12 @@
     display: flex;
     justify-content: space-around;
   }
+
+  .rounded-list {
+    border-radius: 15px; /* Adjust the radius as needed */
+    overflow: hidden; /* Ensures items inside follow the rounding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
+    margin: 10px; /* Optional: adds space around the list */
+  }
+
+  

@@ -1,9 +1,8 @@
-<app-header></app-header>
-<app-search></app-search>
-
 <ion-content class="ion-padding">
 
-  <div class="segment-container">
+  <app-search></app-search>
+
+  <div class="segment-container" class="rounded-list">
     <ion-segment [(ngModel)]="selectedSegment" color="primary" class="split-segment">
       <ion-segment-button value="card1">
         <ion-label>Create</ion-label>
@@ -15,37 +14,31 @@
   </div>
 
   <!-- Display Card 1 -->
-  <ion-card *ngIf="selectedSegment === 'card1'">
-    <ion-card-header>
-      <ion-card-title>Create household</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-input class="ion-margin-bottom" label="Household name" label-placement="floating" fill="outline"
-        placeholder="Enter household name" required></ion-input>
+  <ion-list class="rounded-list" *ngIf="selectedSegment === 'card1'">
 
-      <ion-input class="ion-margin-bottom" label="Address" label-placement="floating" fill="outline"
-        placeholder="Enter address" required></ion-input>
-
-      <ion-button [routerLink]="['/home']" size="small" expand="block" color="success" shape="round"
-        class="lowercase-button">Create</ion-button>
-    </ion-card-content>
-  </ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-input label="Household name" labelPlacement="stacked" placeholder="Enter text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Household address" labelPlacement="stacked" placeholder="Enter text"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button [routerLink]="['/home']" size="small" expand="block" color="success" shape="round"
+      class="lowercase-button">Create</ion-button>
+  </ion-list>
 
   <!-- Display Card 2 -->
-  <ion-card *ngIf="selectedSegment === 'card2'">
-    <ion-card-header>
-      <ion-card-title>Join household</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
+  <ion-list class="rounded-list" *ngIf="selectedSegment === 'card2'">
+    <ion-list>
+      <ion-item>
+        <ion-input label="Household code" labelPlacement="stacked" placeholder="Enter code"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button [routerLink]="['/home']" size="small" expand="block" color="success" shape="round"
+      class="ion-margin-top lowercase-button">Request</ion-button>
+  </ion-list>
 
-      <ion-input label="Household code" label-placement="floating" fill="outline" placeholder="Enter household code"
-        required></ion-input>
-
-      <ion-button [routerLink]="['/home']" size="small" expand="block" color="success" shape="round"
-        class="ion-margin-top lowercase-button">Request</ion-button>
-
-    </ion-card-content>
-  </ion-card>
   <ion-grid>
     <ion-row>
       <ion-col>
@@ -61,7 +54,7 @@
     </ion-row>
   </ion-grid>
 
-  <ion-list [inset]="true">
+  <ion-list [inset]="true" class="rounded-list">
     <ion-item-sliding>
       <ion-item>
         <ion-grid>
@@ -89,7 +82,8 @@
       </ion-item>
       <ion-item-options side="end">
         <ion-item-option color="danger">
-          <ion-icon slot="icon-only" name="trash"></ion-icon>
+          <ion-icon slot="end" name="trash-outline"></ion-icon>
+          Delete
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>

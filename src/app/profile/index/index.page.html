@@ -1,12 +1,17 @@
-<app-header>
-</app-header>
-
 <ion-content class="ion-padding">
-    <ion-text>
-        <h2>Account</h2>
-    </ion-text>
+    <div class="profile-header">
+        <ion-text>
+            <h2>Profile</h2>
+        </ion-text>
+        <ion-buttons>
+            <ion-button>
+                <ion-icon class="notification-icon" name="notifications-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </div>
 
-    <ion-list [inset]="true" id="open-details" button="true">
+
+    <ion-list [inset]="true" id="open-details" button="true" class="rounded-list">
         <ion-card-content>
             <ion-item>
                 <ion-row>
@@ -34,7 +39,7 @@
     </ion-list>
 
 
-    <ion-list [inset]="true">
+    <ion-list [inset]="true" class="rounded-list">
         <ion-item [button]="true" id="open-house">
             <ion-icon color="danger" slot="start" name="heart-circle-outline" size="large"></ion-icon>
             <ion-label>Home</ion-label>
@@ -82,12 +87,12 @@
 </ion-modal>
 
 <!-- Modal for house page -->
-<ion-modal #modal trigger="open-house">
+<ion-modal #houseModal trigger="open-house">
     <ng-template>
         <ion-header>
             <ion-toolbar>
                 <ion-buttons slot="start">
-                    <ion-button (click)="modal.dismiss()">
+                    <ion-button (click)="houseModal.dismiss()">
                         <ion-icon name="chevron-back-outline" slot="start" style="margin-left: 10px;"></ion-icon>
                     </ion-button>
                 </ion-buttons>
@@ -107,12 +112,12 @@
 </ion-modal>
 
 <!-- Modal for payment page -->
-<ion-modal #modal trigger="open-payment">
+<ion-modal #paymentModal trigger="open-payment">
     <ng-template>
         <ion-header>
             <ion-toolbar>
                 <ion-buttons slot="start">
-                    <ion-button (click)="modal.dismiss()">
+                    <ion-button (click)="paymentModal.dismiss()">
                         <ion-icon name="chevron-back-outline" slot="start" style="margin-left: 10px;"></ion-icon>
                     </ion-button>
                 </ion-buttons>

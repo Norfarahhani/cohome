@@ -1,12 +1,4 @@
-.centered-title {
-    text-align: center;
-    font-weight: bold;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .move-text {
+.move-text {
     position: relative;
     top: 20px;   /* Moves the text down by 20px */
     left: 10px;  /* Moves the text to the right by 10px */
@@ -31,4 +23,19 @@
   .segment-container {
     display: flex;
     justify-content: space-around;
+  }
+  .profile-header h2 {
+    margin: 15; /* Removes any default margin from the h2 */
+  }
+
+  .options-icon {
+    font-size: 24px; /* Adjust this value to your desired icon size */
+    width: 28px;
+    height: 28px;
+  }
+  .expense-header {
+    display: flex;
+    justify-content: space-between; /* Pushes the notification icon to the right */
+    align-items: center; /* Aligns the items vertically in the center */
+    padding: 0 16px; /* Optional: adds some padding on the sides */
   }
