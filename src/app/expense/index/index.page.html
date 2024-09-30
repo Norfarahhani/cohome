@@ -1,20 +1,20 @@
-
-<ion-content class="ion-padding">
-  <div class="expense-header">
-    <ion-text>
-        <h3>Expense</h3>
-    </ion-text>
-    <ion-buttons>
+<ion-content>
+  <ion-label class="ion-padding ">
+    <div class="profile-header">
+      <ion-text>
+        <h2>Expense</h2>
+      </ion-text>
+      <ion-buttons>
         <ion-button>
-            <ion-icon class="options-icon" name="options-outline"></ion-icon>
+          <ion-icon name="information-circle-outline"></ion-icon>
         </ion-button>
-    </ion-buttons>
-</div>
-
+      </ion-buttons>
+    </div>
+  </ion-label>
 
   <div class="segment-container">
     <ion-segment [(ngModel)]="selectedSegment" color="primary" class="split-segment">
-      <ion-segment-button value="card1">
+      <ion-segment-button  value="card1">
         <ion-label>Unpaid</ion-label>
       </ion-segment-button>
       <ion-segment-button value="card2">
@@ -37,12 +37,12 @@
   </ion-fab-button>
 </ion-fab>
 
-<ion-modal #modal trigger="open-amount">
+<ion-modal #amountModal trigger="open-amount">
   <ng-template>
     <ion-header>
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-button (click)="modal.dismiss()">Cancel</ion-button>
+          <ion-button (click)="amountModal.dismiss()">Cancel</ion-button>
         </ion-buttons>
         <ion-title class="centered-title"> New Expense</ion-title>
         <ion-buttons slot="end">

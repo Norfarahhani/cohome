@@ -1,41 +1,54 @@
 .move-text {
-    position: relative;
-    top: 20px;   /* Moves the text down by 20px */
-    left: 10px;  /* Moves the text to the right by 10px */
-  }
-  
-  /* Or with margin */
-  .move-text {
-    margin-top: 20px;    /* Moves down */
-    margin-left: 10px;   /* Moves right */
-  }
+  position: relative;
+  top: 20px;
+  left: 10px;
+}
 
-  .split-segment {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .split-segment ion-segment-button {
-    flex: 1;
-    text-align: center;
-  }
-  
-  .segment-container {
-    display: flex;
-    justify-content: space-around;
-  }
-  .profile-header h2 {
-    margin: 15; /* Removes any default margin from the h2 */
-  }
+.move-text {
+  margin-top: 20px;
+  margin-left: 10px;
+}
 
-  .options-icon {
-    font-size: 24px; /* Adjust this value to your desired icon size */
-    width: 28px;
-    height: 28px;
-  }
-  .expense-header {
-    display: flex;
-    justify-content: space-between; /* Pushes the notification icon to the right */
-    align-items: center; /* Aligns the items vertically in the center */
-    padding: 0 16px; /* Optional: adds some padding on the sides */
-  }
+.split-segment {
+  display: flex;
+  justify-content: space-between;
+}
+
+.split-segment ion-segment-button {
+  flex: 1;
+  text-align: center;
+}
+
+.segment-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.profile-header ion-text {
+  margin-top: 20px;
+}
+
+.profile-header h2 {
+  font-size: 35px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.profile-header ion-icon {
+  font-size: 25px;
+  margin-top: -10px;
+}
+
+.profile-header ion-buttons {
+  align-self: flex-start;
+}

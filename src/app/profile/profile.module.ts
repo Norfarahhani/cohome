@@ -8,11 +8,12 @@ import { IndexPage } from './index/index.page';
 import { DetailsPage } from './details/details.page';
 import { HousePage } from './house/house.page';
 import { PaymentPage } from './payment/payment.page';
+import { NotificationPage } from './notification/notification.page';
 
 
 
 @NgModule({
-  declarations: [IndexPage, DetailsPage, HousePage, PaymentPage],
+  declarations: [IndexPage, DetailsPage, HousePage, PaymentPage, NotificationPage],
   imports: [
     CommonModule,
     FormsModule,

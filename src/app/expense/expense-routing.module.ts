@@ -24,7 +24,7 @@ const routes: Routes = [
     component: UnpaidPage
   },
   {
-    path: 'edit',
+    path: 'expense/edit',
     component: EditPage
   }
 ];

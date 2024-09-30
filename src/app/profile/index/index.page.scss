@@ -1,66 +1,63 @@
  .save-button {
-    text-transform: none !important; 
-  }
+   text-transform: none !important;
+ }
 
-  ion-label strong {
-    display: block;
-    max-width: calc(100% - 60px);
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+ ion-label strong {
+   display: block;
+   max-width: calc(100% - 60px);
+   overflow: hidden;
+   text-overflow: ellipsis;
+ }
 
-  unread-indicator {
-    background: var(--ion-color-primary);
-    width: 10px;
-    height: 10px;
-    border-radius: 100%;
-    position: absolute;
-    inset-inline-start: 12px;
-    top: 12px;
-  }
+ unread-indicator {
+   background: var(--ion-color-primary);
+   width: 10px;
+   height: 10px;
+   border-radius: 100%;
+   position: absolute;
+   inset-inline-start: 12px;
+   top: 12px;
+ }
 
-  .metadata-end-wrapper {
-    position: absolute;
-    top: 10px;
-    inset-inline-end: 10px;
-    font-size: 0.8rem;
-    display: flex;
-    align-items: center;
-  }
+ .metadata-end-wrapper {
+   position: absolute;
+   top: 10px;
+   inset-inline-end: 10px;
+   font-size: 0.8rem;
+   display: flex;
+   align-items: center;
+ }
 
-  .rounded-list {
-    border-radius: 15px; /* Adjust the radius as needed */
-    overflow: hidden; /* Ensures items inside follow the rounding */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
-    margin: 10px; /* Optional: adds space around the list */
-  }
+ .rounded-list {
+   border-radius: 15px;
+   overflow: hidden;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   margin: 10px;
+ }
 
-  .profile-header {
-    display: flex;
-    justify-content: space-between; /* Pushes the notification icon to the right */
-    align-items: center; /* Aligns the items vertically in the center */
-    padding: 0 16px; /* Optional: adds some padding on the sides */
-  }
+ .profile-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0 16px;
+ }
 
-  .profile-header ion-text {
-    margin-top: 50px; /* Adjust this value to move the text down */
-    font-size: 24px; /* Adjust the font size as needed */
-  font-weight: bold; /* Makes the text bold */
-  color: #000; /* Optional: set the text color */
-  }
-  
-  .notification-icon {
-    font-size: 24px; /* Adjust this value to your desired icon size */
-    width: 35px;
-    height: 35px;
-    margin-top: 1%;
-  }
+ .profile-header ion-text {
+   margin-top: 50px;
+   font-size: 24px;
+   font-weight: bold;
+   color: #000;
+ }
 
-  .profile-header h2 {
-    font-size: 30px; /* Adjust this value for your desired font size */
-    font-weight: bold; /* Makes the text bold */
-    color: #333; /* Change the color to match your design */
-    margin: 0; /* Ensures there's no extra space around the text */
-    padding: 0; /* Ensures there's no extra space inside the text block */
-  }
-  
+ .notification-icon {
+   font-size: 24px;
+   width: 38px;
+   height: 38px;
+   margin-top: 1%;
+ }
+
+ .profile-header h2 {
+   font-size: 35px;
+   font-weight: bold;
+   margin: 0;
+ }

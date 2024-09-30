@@ -1,0 +1,49 @@
+<ion-content class="ion-padding">
+    <ion-toolbar>
+        <ion-buttons>
+            <ion-button>
+                <ion-icon name="chevron-back-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <div>
+            <ion-text>
+                <h2>Notifications</h2>
+            </ion-text>
+        </div>
+    </ion-toolbar>
+
+    <ion-list>
+        <ion-list>
+            <ion-item [button]="true" detail="false">
+                <div class="unread-indicator-wrapper" slot="start">
+                    <div class="unread-indicator"></div>
+                </div>
+                <ion-label>
+                    <strong>Rick Astley</strong>
+                    <ion-text>CoHome code</ion-text><br />
+                    <ion-note color="medium" class="ion-text-wrap">
+                        Has requested to join your...
+                    </ion-note>
+                </ion-label>
+                <div class="metadata-end-wrapper" slot="end">
+                    <ion-note color="medium">06:11</ion-note>
+                    <ion-icon color="medium" name="chevron-forward"></ion-icon>
+                </div>
+            </ion-item>
+
+            <ion-item [button]="true" detail="false">
+                <div class="unread-indicator-wrapper" slot="start"></div>
+                <ion-label>
+                    <strong>Emily Eric</strong>
+                    <ion-text>Added a task</ion-text><br />
+                    <ion-note color="medium" class="ion-text-wrap"> Has requested to join your...</ion-note>
+                </ion-label>
+                <div class="metadata-end-wrapper" slot="end">
+                    <ion-note color="medium">yesterday</ion-note>
+                    <ion-icon color="medium" name="chevron-forward"></ion-icon>
+                </div>
+            </ion-item>
+
+        </ion-list>
+    </ion-list>
+</ion-content>
