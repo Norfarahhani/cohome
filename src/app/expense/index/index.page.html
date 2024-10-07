@@ -1,6 +1,6 @@
 <ion-content>
   <ion-label class="ion-padding ">
-    <div class="profile-header">
+    <div class="expense-header">
       <ion-text>
         <h2>Expense</h2>
       </ion-text>
@@ -12,7 +12,7 @@
     </div>
   </ion-label>
 
-  <div class="segment-container">
+  <div class="rounded-list" class="segment-container">
     <ion-segment [(ngModel)]="selectedSegment" color="primary" class="split-segment">
       <ion-segment-button  value="card1">
         <ion-label>Unpaid</ion-label>
@@ -22,6 +22,7 @@
       </ion-segment-button>
     </ion-segment>
   </div>
+  
   <ion-list [inset]="true" *ngIf="selectedSegment === 'card1'">
     <app-expense-unpaid></app-expense-unpaid>
   </ion-list>

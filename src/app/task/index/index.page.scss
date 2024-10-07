@@ -4,3 +4,24 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
     margin: 10px; /* Optional: adds space around the list */
   }
+
+  .task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .task-header ion-text {
+    margin-top: 20px;
+  }
+  
+  .task-header h2 {
+    font-size: 35px;
+    font-weight: bold;
+    margin: 0;
+  }
+  

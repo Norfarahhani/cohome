@@ -1,3 +1,10 @@
-<ion-card-content>
-    
-</ion-card-content>
+<ion-content class="ion-padding">
+    <ion-list>
+        <ion-item>
+            <ion-input placeholder="House name" value="Mini Home"></ion-input>
+        </ion-item>
+    </ion-list>
+
+    <ion-button [routerLink]="['/auth/login']" size="small" expand="block" color="danger" shape="round"
+        class="lowercase-button">Delete house</ion-button>
+</ion-content>

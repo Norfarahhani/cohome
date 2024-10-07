@@ -1,15 +1,16 @@
-<ion-content class="ion-padding">
-    <ion-list class="profile-header">
-        <ion-text>
-            <h2>Profile</h2>
-        </ion-text>
-        <ion-buttons>
-            <ion-button>
-                <ion-icon routerLink="['/profile/notification']" class="notification-icon" name="notifications-outline"></ion-icon>
-            </ion-button>
-        </ion-buttons>
-    </ion-list>
-
+<ion-content>
+    <ion-label class="ion-padding ">
+        <div class="profile-header">
+            <ion-text>
+                <h2>Profile</h2>
+            </ion-text>
+            <ion-buttons>
+                <ion-button>
+                    <ion-icon name="notifications-outline" class="notification-icon"></ion-icon>
+                </ion-button>
+            </ion-buttons>
+        </div>
+    </ion-label>
 
     <ion-list [inset]="true" id="open-details" button="true" class="rounded-list">
         <ion-card-content>
@@ -26,7 +27,7 @@
                 <ion-col>
                     <ion-row>
                         <ion-text>
-                            <strong>Hani Azmi</strong>
+                            <strong>Hani azmi</strong>
                         </ion-text>
                     </ion-row>
                     <ion-row class="ion-margin-bottom">
@@ -50,14 +51,12 @@
             <ion-label>Payment</ion-label>
             <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
         </ion-item>
-        <ion-item [button]="true">
+        <ion-item [button]="true" id="open-setting">
             <ion-icon color="tertiary" slot="start" name="list-circle-outline" size="large"></ion-icon>
             <ion-label>Setting</ion-label>
             <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
         </ion-item>
     </ion-list>
-    <ion-button [routerLink]="['/auth/login']" size="small" expand="block" shape="round"
-        class="lowercase-button">logout</ion-button>
 </ion-content>
 
 
@@ -71,7 +70,7 @@
                         <ion-icon name="chevron-back-outline" slot="start" style="margin-left: 10px;"></ion-icon>
                     </ion-button>
                 </ion-buttons>
-                <ion-title class="centered-title"> Profile</ion-title>
+                <!-- <ion-title class="centered-title"> Profile</ion-title> -->
                 <ion-buttons slot="end">
                     <ion-button class="save-button">Save</ion-button>
                 </ion-buttons>
@@ -96,7 +95,7 @@
                         <ion-icon name="chevron-back-outline" slot="start" style="margin-left: 10px;"></ion-icon>
                     </ion-button>
                 </ion-buttons>
-                <ion-title class="centered-title"> Mini House</ion-title>
+                <!-- <ion-title class="centered-title"> Mini House</ion-title> -->
                 <ion-buttons slot="end">
                     <ion-button>Save</ion-button>
                 </ion-buttons>
@@ -131,6 +130,31 @@
         <ion-content>
             <ion-content shape="round">
                 <app-profile-payment></app-profile-payment>
+            </ion-content>
+        </ion-content>
+    </ng-template>
+</ion-modal>
+
+<!-- Modal for setting page -->
+<ion-modal #settingModal trigger="open-setting">
+    <ng-template>
+        <ion-header>
+            <ion-toolbar>
+                <ion-buttons slot="start">
+                    <ion-button (click)="settingModal.dismiss()">
+                        <ion-icon name="chevron-back-outline" slot="start" style="margin-left: 10px;"></ion-icon>
+                    </ion-button>
+                </ion-buttons>
+                <ion-title class="centered-title"> </ion-title>
+                <ion-buttons slot="end">
+                    <ion-button>Save</ion-button>
+                </ion-buttons>
+            </ion-toolbar>
+        </ion-header>
+        <!-- display details page -->
+        <ion-content>
+            <ion-content shape="round">
+                <app-profile-setting></app-profile-setting>
             </ion-content>
         </ion-content>
     </ng-template>

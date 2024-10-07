@@ -1,0 +1,18 @@
+.qr-button {
+    font-size: 16px;
+    text-align: center;
+    text-transform: none;
+  }
+
+  .qr-image {
+    height: 250px;
+    margin-bottom: 10px;
+  }
+
+  .qr-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }

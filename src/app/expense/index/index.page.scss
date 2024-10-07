@@ -19,12 +19,7 @@
   text-align: center;
 }
 
-.segment-container {
-  display: flex;
-  justify-content: space-around;
-}
-
-.profile-header {
+.expense-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,21 +29,33 @@
   align-items: flex-start;
 }
 
-.profile-header ion-text {
+.expense-header ion-text {
   margin-top: 20px;
 }
 
-.profile-header h2 {
+.expense-header h2 {
   font-size: 35px;
   font-weight: bold;
   margin: 0;
 }
 
-.profile-header ion-icon {
+.expense-header ion-icon {
   font-size: 25px;
   margin-top: -10px;
 }
 
-.profile-header ion-buttons {
+.expense-header ion-buttons {
   align-self: flex-start;
+}
+
+.rounded-list {
+  border-radius: 15px; 
+  overflow: hidden; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  margin: 10px; 
+}
+
+.segment-container {
+  display: flex;
+  justify-content: space-around;
 }

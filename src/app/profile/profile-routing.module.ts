@@ -5,6 +5,7 @@ import { DetailsPage } from './details/details.page';
 import { HousePage } from './house/house.page';
 import { PaymentPage } from './payment/payment.page';
 import { NotificationPage } from './notification/notification.page';
+import { SettingPage } from './setting/setting.page';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'notification',
     component: NotificationPage
+  },
+  {
+    path: 'setting',
+    component: SettingPage
   },
 ];
 
