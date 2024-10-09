@@ -1,16 +1,14 @@
 <ion-content class="ion-padding">
-    <ion-toolbar>
-        <ion-buttons>
-            <ion-button>
-                <ion-icon name="chevron-back-outline"></ion-icon>
-            </ion-button>
-        </ion-buttons>
-        <div>
+    <ion-buttons [routerLink]="['/home/profile']">
+        <ion-icon name="chevron-back-outline" slot="end" style="margin-left: 10px;"></ion-icon>
+    </ion-buttons>
+    <ion-label class="ion-padding ">
+        <div class="notification-header">
             <ion-text>
                 <h2>Notifications</h2>
             </ion-text>
         </div>
-    </ion-toolbar>
+    </ion-label>
 
     <ion-list>
         <ion-list>
@@ -35,7 +33,7 @@
                 <div class="unread-indicator-wrapper" slot="start"></div>
                 <ion-label>
                     <strong>Emily Eric</strong>
-                    <ion-text>Added a task</ion-text><br />
+                    <ion-text>Welcome!</ion-text><br />
                     <ion-note color="medium" class="ion-text-wrap"> Has requested to join your...</ion-note>
                 </ion-label>
                 <div class="metadata-end-wrapper" slot="end">

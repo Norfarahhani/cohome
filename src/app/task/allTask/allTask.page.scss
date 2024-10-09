@@ -1,0 +1,26 @@
+.rounded-list {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+
+.allTask-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.allTask-header ion-text {
+    margin-top: 20px;
+}
+
+.allTask-header h2 {
+    font-size: 35px;
+    font-weight: bold;
+    margin: 0;
+}

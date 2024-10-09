@@ -33,4 +33,24 @@
     margin: 10px; /* Optional: adds space around the list */
   }
 
+  .household-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .household-header ion-text {
+    margin-top: 20px;
+  }
+  
+  .household-header h2 {
+    font-size: 35px;
+    font-weight: bold;
+    margin: 0;
+  }
+
   

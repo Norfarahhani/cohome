@@ -37,4 +37,24 @@
     font-weight: bold; /* Make the text bold */
     margin: 15px 15; /* Add space above and below the text */
   }
+
+  .notification-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .notification-header ion-text {
+    margin-top: 20px;
+  }
+  
+  .notification-header h2 {
+    font-size: 35px;
+    font-weight: bold;
+    margin: 0;
+  }
   

@@ -7,11 +7,12 @@ import { IndexPage } from './index/index.page';
 import { TaskRoutingModule } from './task-routing.module';
 import { CreatePage } from './create/create.page';
 import { ListPage } from './list/list.page';
+import { AllTaskPage } from './allTask/allTask.page';
 
 
 
 @NgModule({
-  declarations: [IndexPage, CreatePage, ListPage],
+  declarations: [IndexPage, CreatePage, ListPage, AllTaskPage],
   imports: [
     CommonModule,
     FormsModule,

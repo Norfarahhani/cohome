@@ -5,7 +5,7 @@
                 <h2>Profile</h2>
             </ion-text>
             <ion-buttons>
-                <ion-button>
+                <ion-button [routerLink]="['/profile/notification']">
                     <ion-icon name="notifications-outline" class="notification-icon"></ion-icon>
                 </ion-button>
             </ion-buttons>
@@ -42,17 +42,17 @@
 
     <ion-list [inset]="true" class="rounded-list">
         <ion-item [button]="true" id="open-house">
-            <ion-icon color="danger" slot="start" name="heart-circle-outline" size="large"></ion-icon>
+            <ion-icon slot="start" name="home" size="large"></ion-icon>
             <ion-label>Home</ion-label>
             <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
         </ion-item>
         <ion-item [button]="true" id="open-payment">
-            <ion-icon color="success" slot="start" name="scan-circle-outline" size="large"></ion-icon>
+            <ion-icon slot="start" name="scan" size="large"></ion-icon>
             <ion-label>Payment</ion-label>
             <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
         </ion-item>
         <ion-item [button]="true" id="open-setting">
-            <ion-icon color="tertiary" slot="start" name="list-circle-outline" size="large"></ion-icon>
+            <ion-icon slot="start" name="settings" size="large"></ion-icon>
             <ion-label>Setting</ion-label>
             <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
         </ion-item>

@@ -7,39 +7,21 @@
     </div>
   </ion-label>
 
+  <!-- search button -->
   <app-search></app-search>
 
   <ion-list [inset]="true" class="rounded-list">
-    <ion-item-sliding>
-      <ion-item>
-        <ion-checkbox slot="end"></ion-checkbox>
-        <ion-icon name="flower-outline" slot="start" style="max-width: 85%; max-height: 85%;"></ion-icon>
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <ion-row>
-                <ion-text>
-                  <strong>Cleaning bedroom</strong>
-                </ion-text>
-              </ion-row>
-              <ion-row class="ion-margin-bottom">
-                <ion-text> Today </ion-text>
-              </ion-row>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
-      <ion-item-options>
-        <ion-item-option color="medium">
-          <ion-icon slot="end" name="create-outline"></ion-icon>
-          Edit
-        </ion-item-option>
-        <ion-item-option color="danger">
-          <ion-icon slot="end" name="trash-outline"></ion-icon>
-          Delete
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
+    <ion-item [button]="true" [routerLink]="['/task/allTask']">
+      <ion-label>All Tasks</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <ion-list [inset]="true" class="rounded-list">
+    <ion-item [button]="true">
+      <ion-label>History</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
+    </ion-item>
   </ion-list>
 
 

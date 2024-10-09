@@ -6,12 +6,13 @@
       </ion-text>
       <ion-buttons>
         <ion-button>
-          <ion-icon name="information-circle-outline"></ion-icon>
+          <ion-icon name="bar-chart-outline"></ion-icon>
         </ion-button>
       </ion-buttons>
     </div>
   </ion-label>
 
+  <!-- unpaid & paid segments -->
   <div class="rounded-list" class="segment-container">
     <ion-segment [(ngModel)]="selectedSegment" color="primary" class="split-segment">
       <ion-segment-button  value="card1">
@@ -23,10 +24,11 @@
     </ion-segment>
   </div>
   
-  <ion-list [inset]="true" *ngIf="selectedSegment === 'card1'">
+  <!-- call unpaid and paid pages -->
+  <ion-list [inset]="true" class="rounded-list" *ngIf="selectedSegment === 'card1'">
     <app-expense-unpaid></app-expense-unpaid>
   </ion-list>
-  <ion-list [inset]="true" *ngIf="selectedSegment === 'card2'">
+  <ion-list [inset]="true"  class="rounded-list" *ngIf="selectedSegment === 'card2'">
     <app-expense-paid></app-expense-paid>
   </ion-list>
 </ion-content>
