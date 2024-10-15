@@ -5,9 +5,6 @@
       <ion-segment-button value="card1">
         <ion-label>Create</ion-label>
       </ion-segment-button>
-      <ion-segment-button value="card2">
-        <ion-label>Join</ion-label>
-      </ion-segment-button>
     </ion-segment>
   </div>
 
@@ -24,15 +21,13 @@
       class="lowercase-button">Create</ion-button>
   </ion-list>
 
-  <ion-list class="rounded-list" *ngIf="selectedSegment === 'card2'">
-    <ion-list>
-      <ion-item>
-        <ion-input label="Household Code" labelPlacement="stacked" placeholder="Enter code"></ion-input>
-      </ion-item>
-    </ion-list>
-    <ion-button [routerLink]="['/home']" size="small" expand="block" color="success" shape="round"
-      class="ion-margin-top lowercase-button">Request</ion-button>
-  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon id="present-alert" name="add"></ion-icon>
+      <ion-alert trigger="present-alert" header="Invite Member" [buttons]="alertButtons"
+        [inputs]="alertInputs"></ion-alert>
+    </ion-fab-button>
+  </ion-fab>
 
   <!-- household name -->
   <ion-grid>
@@ -43,11 +38,6 @@
             <h2>Mini House</h2>
           </ion-text>
         </div>
-      </ion-col>
-      <ion-col>
-        <ion-icon id="present-alert" style="font-size: 24px" class="ion-float-right" name="add-outline"></ion-icon>
-        <ion-alert trigger="present-alert" header="Invite Member" [buttons]="alertButtons"
-          [inputs]="alertInputs"></ion-alert>
       </ion-col>
     </ion-row>
   </ion-grid>
