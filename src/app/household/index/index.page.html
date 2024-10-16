@@ -1,20 +1,12 @@
 <ion-content class="ion-padding">
 
-  <div class="segment-container" class="rounded-list">
-    <ion-segment [(ngModel)]="selectedSegment" color="primary" class="split-segment">
-      <ion-segment-button value="card1">
-        <ion-label>Create</ion-label>
-      </ion-segment-button>
-    </ion-segment>
-  </div>
-
-  <ion-list class="rounded-list" *ngIf="selectedSegment === 'card1'">
+  <ion-list class="rounded-list">
     <ion-list>
       <ion-item>
-        <ion-input label="Household Name" labelPlacement="stacked" placeholder="Enter name"></ion-input>
+        <ion-input label="Household Name" labelPlacement="floating" placeholder="Enter name"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input label="Household Address" labelPlacement="stacked" placeholder="Enter address"></ion-input>
+        <ion-input label="Household Address" labelPlacement="floating" placeholder="Enter address"></ion-input>
       </ion-item>
     </ion-list>
     <ion-button [routerLink]="['/home']" size="small" expand="block" color="success" shape="round"

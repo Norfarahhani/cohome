@@ -1,71 +1,69 @@
-<ion-list [inset]="true">
-  <ion-item>
-    <ion-input placeholder="Task name"></ion-input>
-    <ion-button slot="end" fill="clear" (click)="openModal()">
-      <ion-icon name="storefront-outline"></ion-icon>
-    </ion-button>
-  </ion-item>
-  <!-- Modal for Task Selection -->
-  <ion-modal #modal>
-    <ng-template>
-      <ion-header>
-        <ion-toolbar>
-          <ion-buttons slot="start">
-            <ion-button (click)="closeModal()">Cancel</ion-button>
-          </ion-buttons>
-          <ion-title class="centered-title">Select Task</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <!-- Task List Component to Display Tasks -->
-      <ion-content>
-        <app-task-list></app-task-list>
-      </ion-content>
-    </ng-template>
-  </ion-modal>
+<ion-content class="ion-padding">
+  <ion-buttons [routerLink]="['/task/day']">
+    <ion-icon name="chevron-back-outline" slot="start" style="margin-left: 10px;"></ion-icon>
+    <ion-icon name="checkmark-done-outline" slot="end" style="margin-left: 300px;"></ion-icon>
+  </ion-buttons>
 
-  <ion-item>
-    <ion-textarea placeholder="Write your notes..." label="Notes" labelPlacement="floating" rows="3"></ion-textarea>
-  </ion-item>
-</ion-list>
+  <ion-list [inset]="true" class="rounded-list">
+    <ion-item>
+      <ion-select label="Task" label-placement="floating">
+        <ion-select-option value="apple">Mop floor</ion-select-option>
+        <ion-select-option value="banana">Wash sink</ion-select-option>
+        <ion-select-option value="orange">Clean windows</ion-select-option>
+        <ion-select-option value="orange">Empty trash</ion-select-option>
+        <ion-select-option value="orange">Others</ion-select-option>
+      </ion-select>
+    </ion-item>
 
-<ion-list [inset]="true">
-  <ion-item>
-    <ion-input type="date" placeholder="YYYY-MM-DD"></ion-input>
-  </ion-item>
-  <ion-item>
-    <!-- Reminder Icon and Text -->
-    <ion-icon name="alarm-outline" slot="start" style="margin-right: 10px;"></ion-icon>
-    <ion-label>Reminder</ion-label>
-    <!-- Toggle Button -->
-    <ion-toggle slot="end" [(ngModel)]="repeatReminder" (ionChange)="toggleReminder($event)"></ion-toggle>
-  </ion-item>
-  <!-- Conditional Display of Time Picker -->
-  <ion-item *ngIf="repeatReminder">
-    <ion-label position="floating">Repeat Time</ion-label>
-    <ion-datetime displayFormat="HH:mm" [(ngModel)]="repeatTime" pickerFormat="HH:mm">
-    </ion-datetime>
-  </ion-item>
-  <ion-item>
-    <!-- Repeat Icon and Text -->
-    <ion-icon name="repeat-outline" slot="start" style="margin-right: 10px;"></ion-icon>
-    <ion-label>Repeat</ion-label>
-    <!-- Select Button for Repetition Options -->
-    <ion-select slot="end" [(ngModel)]="selectedRepeatOption">
-      <ion-select-option value="daily">Daily</ion-select-option>
-      <ion-select-option value="weekly">Every Week</ion-select-option>
-      <ion-select-option value="biweekly">Every 2 Weeks</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
-    <!-- Person Icon and Text -->
-    <ion-icon name="person-outline" slot="start" style="margin-right: 10px;"></ion-icon>
-    <ion-label>Assign Task</ion-label>
-    <!-- Select Button for Member Selection -->
-    <ion-select slot="end" [(ngModel)]="selectedMember">
-      <ion-select-option value="member1">Member 1</ion-select-option>
-      <ion-select-option value="member2">Member 2</ion-select-option>
-      <ion-select-option value="member3">Member 3</ion-select-option>
-      <!-- Add more options as needed -->
-    </ion-select>
-  </ion-item>
-</ion-list>
+    <ion-item>
+      <ion-textarea placeholder="Write your notes..." label="Notes" labelPlacement="floating" rows="3"></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <ion-list [inset]="true" class="rounded-list">
+    <ion-item>
+      <ion-input type="date" placeholder="YYYY-MM-DD"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list [inset]="true" class="rounded-list">
+    <ion-item>
+      <ion-icon name="alarm-outline" slot="start" style="margin-right: 10px;"></ion-icon>
+      <ion-label>Reminder</ion-label>
+      <ion-toggle slot="end" [(ngModel)]="repeatReminder" (ionChange)="toggleReminder($event)"></ion-toggle>
+    </ion-item>
+  </ion-list>
+
+  <!-- <ion-list [inset]="true" class="rounded-list">
+    <ion-item *ngIf="repeatReminder">
+      <ion-label position="floating">Repeat Time</ion-label>
+      <ion-datetime displayFormat="HH:mm" [(ngModel)]="repeatTime" pickerFormat="HH:mm">
+      </ion-datetime>
+    </ion-item>
+  </ion-list> -->
+
+  <ion-list [inset]="true" class="rounded-list">
+    <ion-item>
+      <ion-icon name="repeat-outline" slot="start" style="margin-right: 10px;"></ion-icon>
+      <ion-label>Repeat</ion-label>
+      <ion-select slot="end" [(ngModel)]="selectedRepeatOption">
+        <ion-select-option value="daily">Daily</ion-select-option>
+        <ion-select-option value="weekly">Every Week</ion-select-option>
+        <ion-select-option value="biweekly">Every 2 Weeks</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-list [inset]="true" class="rounded-list">
+    <ion-item>
+      <ion-icon name="person-outline" slot="start" style="margin-right: 10px;"></ion-icon>
+      <ion-label>Assign Task</ion-label>
+      <ion-select slot="end" [(ngModel)]="selectedMember" [multiple]="true">
+        <ion-select-option value="member1">Hani</ion-select-option>
+        <ion-select-option value="member2">Emily</ion-select-option>
+        <ion-select-option value="member3">Taeyang</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
