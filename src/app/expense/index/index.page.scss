@@ -1,8 +1,3 @@
-.move-text {
-  position: relative;
-  top: 20px;
-  left: 10px;
-}
 
 .move-text {
   margin-top: 20px;
@@ -54,10 +49,10 @@
 }
 
 .rounded-list {
-  border-radius: 15px; /* Adjust the radius as needed */
-  overflow: hidden; /* Ensures items inside follow the rounding */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
-  margin: 10px; /* Optional: adds space around the list */
+  border-radius: 15px; 
+  overflow: hidden; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  margin: 10px;
 }
 
 .centered-title {
@@ -67,3 +62,10 @@
   left: 50%;
   transform: translateX(-50%);
 }
+
+.transparent-toolbar {
+  --background: transparent; 
+  --ion-background-color: transparent; 
+  --border-width: 0px; 
+}
+

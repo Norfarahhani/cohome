@@ -4,10 +4,8 @@
       <ion-text>
         <h2>Expense</h2>
       </ion-text>
-      <ion-buttons>
-        <ion-button>
+      <ion-buttons class="icon-move">
           <ion-icon name="bar-chart-outline"></ion-icon>
-        </ion-button>
       </ion-buttons>
     </div>
   </ion-label>
@@ -43,7 +41,7 @@
 <ion-modal #amountModal trigger="open-amount">
   <ng-template>
     <ion-header>
-      <ion-toolbar>
+      <ion-toolbar class="transparent-toolbar">
         <ion-buttons slot="start">
           <ion-button (click)="amountModal.dismiss()">Cancel</ion-button>
         </ion-buttons>

@@ -6,6 +6,7 @@ import { HousePage } from './house/house.page';
 import { PaymentPage } from './payment/payment.page';
 import { NotificationPage } from './notification/notification.page';
 import { SettingPage } from './setting/setting.page';
+import { JoinPage } from './join/join.page';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'setting',
     component: SettingPage
+  },
+  {
+    path: 'join',
+    component: JoinPage
   },
 ];
 

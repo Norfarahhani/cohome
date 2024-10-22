@@ -1,8 +1,13 @@
 <ion-content class="ion-padding">
     <ion-buttons [routerLink]="['/home/task']">
-        <ion-icon name="chevron-back-outline" slot="end" style="margin-left: 10px;"></ion-icon>
+        <ion-button>
+            <ion-icon name="chevron-back-outline" slot="start" style="margin-left: 10px;"></ion-icon>
+        </ion-button>
+        <ion-button [routerLink]="['/task/create']">
+            <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 290px;"></ion-icon>
+        </ion-button>
     </ion-buttons>
-    <ion-label class="ion-padding ">
+    <ion-label>
         <div class="allTask-header">
             <ion-text>
                 <h2>Today</h2>
@@ -10,49 +15,50 @@
         </div>
     </ion-label>
 
-<!-- List hari -->
+    <!-- List hari -->
     <ion-list [inset]="true" class="rounded-list">
-        <ion-item [button]="true" [routerLink]="['/task/create']">
+        <ion-item [button]="true">
+            <ion-checkbox slot="end"></ion-checkbox>
             <ion-label>Sunday</ion-label>
-            <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
         </ion-item>
     </ion-list>
+
     <ion-list [inset]="true" class="rounded-list">
-        <ion-item [button]="true" [routerLink]="['/task/create']">
+        <ion-item [button]="true">
+            <ion-checkbox slot="end"></ion-checkbox>
             <ion-label>Monday</ion-label>
-            <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
+
         </ion-item>
     </ion-list>
     <ion-list [inset]="true" class="rounded-list">
-        <ion-item [button]="true" [routerLink]="['/task/create']">
+        <ion-item [button]="true">
+            <ion-checkbox slot="end"></ion-checkbox>
             <ion-label>Tuesday</ion-label>
-            <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
         </ion-item>
     </ion-list>
     <ion-list [inset]="true" class="rounded-list">
-        <ion-item [button]="true" [routerLink]="['/task/create']">
+        <ion-item [button]="true">
+            <ion-checkbox slot="end"></ion-checkbox>
             <ion-label>Wednesday</ion-label>
-            <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
         </ion-item>
     </ion-list>
     <ion-list [inset]="true" class="rounded-list">
-        <ion-item [button]="true" [routerLink]="['/task/create']">
+        <ion-item [button]="true">
+            <ion-checkbox slot="end"></ion-checkbox>
             <ion-label>Thursday</ion-label>
-            <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
         </ion-item>
     </ion-list>
     <ion-list [inset]="true" class="rounded-list">
-        <ion-item [button]="true" [routerLink]="['/task/create']">
+        <ion-item [button]="true">
+            <ion-checkbox slot="end"></ion-checkbox>
             <ion-label>Friday</ion-label>
-            <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
         </ion-item>
     </ion-list>
     <ion-list [inset]="true" class="rounded-list">
-        <ion-item [button]="true" [routerLink]="['/task/create']">
+        <ion-item [button]="true">
+            <ion-checkbox slot="end"></ion-checkbox>
             <ion-label>Saturday</ion-label>
-            <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
         </ion-item>
     </ion-list>
 
 </ion-content>
-
