@@ -9,6 +9,9 @@
             <ion-input type="password" placeholder="New password"></ion-input>
         </ion-item>
     </ion-list>
-    <ion-button [routerLink]="['/auth/login']" size="small" expand="block" shape="round"
-        class="lowercase-button">logout</ion-button>
+
+    <!-- Logout Button -->
+    <ion-button (click)="logout()" size="small" expand="block" shape="round" class="lowercase-button">
+        Logout
+    </ion-button>
 </ion-content>

@@ -1,4 +1,7 @@
 import { Component, OnInit,} from '@angular/core';
+import { Auth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-profile-setting',
@@ -7,9 +10,13 @@ import { Component, OnInit,} from '@angular/core';
 })
 export class SettingPage implements OnInit {
 
-  constructor() { }
-
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  async logout() {
+    await this.authService.logoutUser();
+    this.router.navigate(['/auth/login']);
   }
 }
