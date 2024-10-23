@@ -5,9 +5,9 @@
         <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
       </ion-button>
     </ion-buttons>
+    <ion-title>Register</ion-title>
   </ion-toolbar>
 </ion-header>
-
 
 <ion-content class="ion-padding">
   <ion-grid>
@@ -19,34 +19,27 @@
           </ion-card-header>
 
           <ion-card-content>
+            <form (ngSubmit)="register()">
+              <ion-input [(ngModel)]="name" name="name" label="Name" label-placement="floating" fill="outline" placeholder="Enter your name" required></ion-input>
+              <br />
 
-            <ion-input label="Name" label-placement="floating" fill="outline" placeholder="Enter text"
-              required></ion-input>
-            <br />
+              <ion-input [(ngModel)]="age" name="age" label="Age" label-placement="floating" type="number" min="0" max="120" fill="outline" placeholder="Enter your age" required></ion-input>
+              <br />
 
-            <ion-input label="Age" label-placement="floating" type="number" min="0" max="120" fill="outline"
-              placeholder="Enter your age"></ion-input>
-            <br />
+              <ion-input [(ngModel)]="email" name="email" label="Email" label-placement="floating" fill="outline" placeholder="Enter your email" required type="email"></ion-input>
+              <br />
 
-            <ion-input type="email" fill="outline" label="Email" labelPlacement="floating"
-              helperText="Enter a valid email" errorText="Invalid email" ngModel email required></ion-input>
-            <br />
+              <ion-input [(ngModel)]="phone" name="phone" label="Phone number" label-placement="floating" type="number" fill="outline" placeholder="Enter phone number" required></ion-input>
+              <br />
 
-            <ion-input label="Phone number" label-placement="floating" type="number" min="0" max="120" fill="outline"
-              placeholder="Enter phone number" required></ion-input>
-            <br />
+              <ion-input [(ngModel)]="password" name="password" label="Password" label-placement="floating" fill="outline" placeholder="Enter password" required type="password"></ion-input>
+              <br />
 
-            <ion-input label="Password" label-placement="floating" fill="outline" placeholder="Enter password"
-              required></ion-input>
-            <br />
+              <ion-input [(ngModel)]="confirmPassword" name="confirmPassword" label="Confirm Password" label-placement="floating" fill="outline" placeholder="Confirm your password" required type="password"></ion-input>
+              <br />
 
-            <ion-input label=" Confirm Password" label-placement="floating" fill="outline" placeholder="Enter password"
-              required></ion-input>
-            <br />
-
-            <ion-button [routerLink]="['/household/index']" size="small" expand="block" color="primary" shape="round"
-              class="ion-margin-top">Sign up</ion-button>
-
+              <ion-button type="submit" size="small" expand="block" color="primary" shape="round" class="ion-margin-top">Sign Up</ion-button>
+            </form>
           </ion-card-content>
         </ion-card>
       </ion-col>
