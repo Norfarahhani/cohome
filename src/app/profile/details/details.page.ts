@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonModal } from '@ionic/angular';
+import { Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
     selector: 'app-profile-details',
@@ -8,20 +9,13 @@ import { IonModal } from '@ionic/angular';
 })
 export class DetailsPage implements OnInit {
 
-    constructor() { }
-
-    @ViewChild(IonModal) modal !: IonModal; // Access the modal via ViewChild
+    constructor(private router: Router) { }
 
     ngOnInit() {
     }
 
-    // Method to open the modal
-    openModal() {
-        this.modal.present();
-    }
-
-    // Method to close the modal
-    closeModal() {
-        this.modal.dismiss();
-    }
+    async cancelCreate() {
+        this.router.navigate(['/home/profile']);
+      }
+   
 }

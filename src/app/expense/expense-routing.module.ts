@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IndexPage } from './index/index.page';
-import { AmountPage } from './amount/amount.page';
+import {CreatePage } from './create/create.page';
 import { PaidPage } from './paid/paid.page';
 import { UnpaidPage } from './unpaid/unpaid.page';
 import { EditPage } from './edit/edit.page';
@@ -12,8 +12,8 @@ const routes: Routes = [
     component: IndexPage
   },
   {
-    path: '',
-    component: AmountPage
+    path: 'create',
+    component: CreatePage
   },
   {
     path: '',
@@ -24,7 +24,7 @@ const routes: Routes = [
     component: UnpaidPage
   },
   {
-    path: 'expense/edit',
+    path: 'edit',
     component: EditPage
   }
 ];

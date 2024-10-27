@@ -5,7 +5,7 @@ import { ComponentsModule } from '../components/components.module';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { IndexPage } from './index/index.page';
-import { AmountPage } from './amount/amount.page';
+import { CreatePage } from './create/create.page';
 import { PaidPage } from './paid/paid.page';
 import { UnpaidPage } from './unpaid/unpaid.page';
 import { EditPage } from './edit/edit.page';
@@ -13,7 +13,7 @@ import { EditPage } from './edit/edit.page';
 
 
 @NgModule({
-  declarations: [IndexPage, AmountPage, PaidPage, UnpaidPage, EditPage],
+  declarations: [IndexPage, CreatePage, PaidPage, UnpaidPage, EditPage],
   imports: [
     CommonModule,
     FormsModule,

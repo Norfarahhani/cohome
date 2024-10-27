@@ -8,15 +8,6 @@
     top: 12px;
   }
 
-  .unread-indicator {
-    background: var(--ion-color-primary);
-    width: 10px;
-    height: 10px;
-    border-radius: 100%;
-    position: absolute;
-    inset-inline-start: 12px;
-    top: 12px;
-  }
 
   ion-label strong {
     display: block;
@@ -56,5 +47,12 @@
     font-size: 35px;
     font-weight: bold;
     margin: 0;
+  }
+
+  .rounded-list {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
   }
   

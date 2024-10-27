@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-profile-notification',
@@ -7,8 +8,12 @@ import { Component, OnInit} from '@angular/core';
 })
 export class NotificationPage implements OnInit {
 
-    constructor() { }
+    constructor(private router: Router) { }
 
     ngOnInit() {
     }
+
+    async cancelCreate() {
+        this.router.navigate(['/home/profile']);
+      }
 }

@@ -12,9 +12,9 @@
         </div>
     </ion-label>
 
-    <ion-list [inset]="true" id="open-details" button="true" class="rounded-list">
+    <ion-list [inset]="true" button="true" class="rounded-list">
         <ion-card-content>
-            <ion-item>
+            <ion-item [routerLink]="['/profile/details']">
                 <ion-row>
                     <ion-col>
                         <ion-avatar>
@@ -23,7 +23,6 @@
                         </ion-avatar>
                     </ion-col>
                 </ion-row>
-
                 <ion-col>
                     <ion-row>
                         <ion-text>
@@ -41,17 +40,17 @@
 
 
     <ion-list [inset]="true" class="rounded-list">
-        <ion-item [button]="true" id="open-house">
+        <ion-item [button]="true" [routerLink]="['/profile/house']">
             <ion-icon slot="start" name="home" size="large"></ion-icon>
             <ion-label>Home</ion-label>
             <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
         </ion-item>
-        <ion-item [button]="true" id="open-payment">
+        <ion-item [button]="true" [routerLink]="['/profile/payment']">
             <ion-icon slot="start" name="scan" size="large"></ion-icon>
             <ion-label>Payment</ion-label>
             <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
         </ion-item>
-        <ion-item [button]="true" id="open-setting">
+        <ion-item [button]="true" [routerLink]="['/profile/setting']">
             <ion-icon slot="start" name="settings" size="large"></ion-icon>
             <ion-label>Setting</ion-label>
             <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
@@ -62,105 +61,5 @@
             <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
         </ion-item>
     </ion-list>
+    
 </ion-content>
-
-
-<!-- Modal for details page -->
-<ion-modal #modal trigger="open-details">
-    <ng-template>
-        <ion-header>
-            <ion-toolbar>
-                <ion-buttons slot="start">
-                    <ion-button (click)="modal.dismiss()">
-                        <ion-icon name="chevron-back-outline" slot="start" style="margin-left: 10px;"></ion-icon>
-                    </ion-button>
-                </ion-buttons>
-                <!-- <ion-title class="centered-title"> Profile</ion-title> -->
-                <ion-buttons slot="end">
-                    <ion-button class="save-button">Save</ion-button>
-                </ion-buttons>
-            </ion-toolbar>
-        </ion-header>
-        <!-- display details page -->
-        <ion-content>
-            <ion-content shape="round">
-                <app-profile-details></app-profile-details>
-            </ion-content>
-        </ion-content>
-    </ng-template>
-</ion-modal>
-
-<!-- Modal for house page -->
-<ion-modal #houseModal trigger="open-house">
-    <ng-template>
-        <ion-header>
-            <ion-toolbar>
-                <ion-buttons slot="start">
-                    <ion-button (click)="houseModal.dismiss()">
-                        <ion-icon name="chevron-back-outline" slot="start" style="margin-left: 10px;"></ion-icon>
-                    </ion-button>
-                </ion-buttons>
-                <!-- <ion-title class="centered-title"> Mini House</ion-title> -->
-                <ion-buttons slot="end">
-                    <ion-button>Save</ion-button>
-                </ion-buttons>
-            </ion-toolbar>
-        </ion-header>
-        <!-- display details page -->
-        <ion-content>
-            <ion-content shape="round">
-                <app-profile-house></app-profile-house>
-            </ion-content>
-        </ion-content>
-    </ng-template>
-</ion-modal>
-
-<!-- Modal for payment page -->
-<ion-modal #paymentModal trigger="open-payment">
-    <ng-template>
-        <ion-header>
-            <ion-toolbar>
-                <ion-buttons slot="start">
-                    <ion-button (click)="paymentModal.dismiss()">
-                        <ion-icon name="chevron-back-outline" slot="start" style="margin-left: 10px;"></ion-icon>
-                    </ion-button>
-                </ion-buttons>
-                <ion-title class="centered-title"> </ion-title>
-                <ion-buttons slot="end">
-                    <ion-button>Save</ion-button>
-                </ion-buttons>
-            </ion-toolbar>
-        </ion-header>
-        <!-- display details page -->
-        <ion-content>
-            <ion-content shape="round">
-                <app-profile-payment></app-profile-payment>
-            </ion-content>
-        </ion-content>
-    </ng-template>
-</ion-modal>
-
-<!-- Modal for setting page -->
-<ion-modal #settingModal trigger="open-setting">
-    <ng-template>
-        <ion-header>
-            <ion-toolbar>
-                <ion-buttons slot="start">
-                    <ion-button (click)="settingModal.dismiss()">
-                        <ion-icon name="chevron-back-outline" slot="start" style="margin-left: 10px;"></ion-icon>
-                    </ion-button>
-                </ion-buttons>
-                <ion-title class="centered-title"> </ion-title>
-                <ion-buttons slot="end">
-                    <ion-button>Save</ion-button>
-                </ion-buttons>
-            </ion-toolbar>
-        </ion-header>
-        <!-- display details page -->
-        <ion-content>
-            <ion-content shape="round">
-                <app-profile-setting></app-profile-setting>
-            </ion-content>
-        </ion-content>
-    </ng-template>
-</ion-modal>

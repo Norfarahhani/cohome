@@ -11,7 +11,6 @@
   </ion-label>
 
   <!-- unpaid & paid segments -->
-  <div class="rounded-list" class="segment-container">
     <ion-segment [(ngModel)]="selectedSegment" color="primary" class="split-segment">
       <ion-segment-button value="card1">
         <ion-label>Unpaid</ion-label>
@@ -31,32 +30,9 @@
   </ion-list>
 </ion-content>
 
-<!-- FAB Button -->
-<ion-fab vertical="bottom" horizontal="end" slot="fixed">
-  <ion-fab-button id="open-amount">
+ <!-- FAB Button -->
+ <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button [routerLink]="['/expense/create']">
     <ion-icon name="add"></ion-icon>
   </ion-fab-button>
 </ion-fab>
-
-<ion-modal #amountModal trigger="open-amount">
-  <ng-template>
-    <ion-header>
-      <ion-toolbar class="transparent-toolbar">
-        <ion-buttons slot="start">
-          <ion-button (click)="amountModal.dismiss()">Cancel</ion-button>
-        </ion-buttons>
-        <ion-title class="centered-title"> New Expense</ion-title>
-        <ion-buttons slot="end">
-          <ion-button>Save</ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
-
-    <!-- display amount page -->
-    <ion-content>
-      <ion-content shape="round">
-        <app-expense-amount></app-expense-amount>
-      </ion-content>
-    </ion-content>
-  </ng-template>
-</ion-modal>

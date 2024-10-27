@@ -1,21 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { ExpenseService } from '../expense.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-expense-amount',
-  templateUrl: './amount.page.html',
-  styleUrls: ['./amount.page.scss'],
+  selector: 'app-expense-create',
+  templateUrl: './create.page.html',
+  styleUrls: ['./create.page.scss'],
 })
-export class AmountPage implements OnInit {
+export class CreatePage implements OnInit {
 
   name: string ='';
   selected_category: string = '';
   notes: string = '';
   selected_date: string ='';  
 
-  constructor(private expenseService: ExpenseService) { }
+  constructor(private expenseService: ExpenseService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  async cancelCreate() {
+    this.router.navigate(['/home/expense']);
   }
 
   async create() {

@@ -15,6 +15,10 @@ export class SettingPage implements OnInit {
   ngOnInit() {
   }
 
+  async cancelCreate() {
+    this.router.navigate(['/home/profile']);
+  }
+
   async logout() {
     await this.authService.logoutUser();
     this.router.navigate(['/auth/login']);

@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonModal } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -15,20 +14,9 @@ export class CreatePage implements OnInit {
   selectedRepeatOption: string = ''; // Selected repeat option
   selectedMember: string=''; // assign task kepada siapa
 
-  @ViewChild(IonModal) modal !: IonModal; // Access the modal via ViewChild
 
 
   constructor(private router: Router) {}
-
-  // Method to open the modal
-  openModal() {
-    this.modal.present();
-  }
-
-  // Method to close the modal
-  closeModal() {
-    this.modal.dismiss();
-  }
 
   ngOnInit() {
   }

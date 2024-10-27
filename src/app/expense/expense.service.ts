@@ -17,7 +17,7 @@ export class ExpenseService {
       const auth = getAuth(); // Get the Firebase Auth instance
       const user: any = auth.currentUser; // Get the current user
       const leader_id = user.uid;
-      const expensedRef = collection(this.firestore, 'expense');
+      const expensedRef = collection(this.firestore, 'expenses');
 
       await addDoc(expensedRef, {
         leader_id: leader_id,
