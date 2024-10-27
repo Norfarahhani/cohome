@@ -7,9 +7,18 @@
     </div>
   </ion-label>
 
+  <ion-accordion-group expand="inset" [value]="today">
+    <ion-accordion *ngFor="let day of days;" value="{{ day }}">
+      <ion-item slot="header" color="light">
+        <ion-label>{{ ucfirst(day) }}</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">First Content</div>
+    </ion-accordion>
+  </ion-accordion-group>
+
   <!-- FAB Button -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button [routerLink]="['/task/day']">
+    <ion-fab-button [routerLink]="['/task/create']">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

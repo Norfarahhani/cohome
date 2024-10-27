@@ -8,8 +8,22 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./index.page.scss'],
 })
 export class IndexPage implements OnInit {
-  // items: string[] = ['Apple', 'Banana', 'Orange', 'Pineapple', 'Strawberry'];
-  // filteredItems: string[] = this.items;
+  days: string[] = [
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday',
+    'sunday'
+  ];
+  current: number = (
+    new Date().getDay() == 0 //condition
+    ? 6 //if true = 6
+    : new Date().getDay() - 1 //if false = -1
+  );
+
+  today: string = this.days[this.current];
 
   constructor(private modalCtrl: ModalController) { }
 
@@ -21,11 +35,11 @@ export class IndexPage implements OnInit {
       type: 'task',
       placeholder: 'Enter Task',
     },
-
   ];
 
-  // This method gets triggered when the child emits the filtered items
-  // onFilteredItemsChange(updatedFilteredItems: string[]) {
-  //   this.filteredItems = updatedFilteredItems;
-  // }
+  ucfirst(str: string): string {
+    if (!str) return str; // Handle empty string or null/undefined case
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
 }

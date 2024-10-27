@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonModal } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class CreatePage implements OnInit {
   @ViewChild(IonModal) modal !: IonModal; // Access the modal via ViewChild
 
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   // Method to open the modal
   openModal() {
@@ -30,6 +31,10 @@ export class CreatePage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  async cancelCreate() {
+    this.router.navigate(['/home/task']);
   }
 
   public alertButtons = ['Save'];

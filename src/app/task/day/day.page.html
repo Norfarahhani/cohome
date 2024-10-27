@@ -1,16 +1,17 @@
 <ion-content class="ion-padding">
-    <ion-buttons [routerLink]="['/home/task']">
+    <ion-buttons (click)="cancelTask()">
         <ion-button>
             <ion-icon name="chevron-back-outline" slot="start" style="margin-left: 10px;"></ion-icon>
         </ion-button>
-        <ion-button [routerLink]="['/task/create']">
+        <ion-button (click)="createTask()">
             <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 290px;"></ion-icon>
         </ion-button>
     </ion-buttons>
+    
     <ion-label>
         <div class="allTask-header">
             <ion-text>
-                <h2>Today</h2>
+                <h2>Days</h2>
             </ion-text>
         </div>
     </ion-label>

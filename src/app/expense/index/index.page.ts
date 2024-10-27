@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { ExpenseService } from '../expense.service';
 
 @Component({
   selector: 'app-expense-index',
@@ -14,4 +15,5 @@ export class IndexPage implements OnInit {
 
   ngOnInit() {
   }
+ 
 }

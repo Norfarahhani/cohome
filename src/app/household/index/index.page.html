@@ -1,15 +1,14 @@
 <ion-content class="ion-padding">
-
-  <ion-list class="rounded-list">
+  <ion-list class="rounded-list" *ngIf="hasHousehold == false">
     <ion-list>
       <ion-item>
-        <ion-input label="Household Name" labelPlacement="floating" placeholder="Enter name"></ion-input>
+        <ion-input [(ngModel)]="household_name" label="Household Name" labelPlacement="floating" placeholder="Enter name"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input label="Household Address" labelPlacement="floating" placeholder="Enter address"></ion-input>
+        <ion-input [(ngModel)]="household_address" label="Household Address" labelPlacement="floating" placeholder="Enter address"></ion-input>
       </ion-item>
     </ion-list>
-    <ion-button [routerLink]="['/home']" size="small" expand="block" color="success" shape="round"
+    <ion-button (click)="create()" size="small" expand="block" color="success" shape="round"
       class="lowercase-button">Create</ion-button>
   </ion-list>
 

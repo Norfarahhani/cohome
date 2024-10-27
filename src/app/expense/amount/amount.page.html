@@ -1,14 +1,14 @@
 <ion-list [inset]="true">
     <ion-item>
-        <ion-input type="number" min="0" max="120" placeholder="Amount"></ion-input>
+        <ion-input [(ngModel)]="name" type="number" min="0" max="120" placeholder="Amount"></ion-input>
         <ion-icon name="cash-outline" slot="end" style="margin-left: 10px;"></ion-icon>
     </ion-item>
     <ion-item>
         <!-- Dynamically change the label based on user selection -->
-        <ion-label>{{ selectedCategory ? selectedCategory : 'Category' }}</ion-label>
+        <ion-label>{{ selected_category ? selected_category : 'Category' }}</ion-label>
 
         <!-- Select Button for Category Options -->
-        <ion-select slot="end" placeholder="Select a Category" interface="popover" [(ngModel)]="selectedCategory"
+        <ion-select [(ngModel)]="selected_category"slot="end" placeholder="Select a Category" interface="popover" 
             style="width: 0; opacity: 0;">
             <ion-select-option value="Entertainment">Entertainment</ion-select-option>
             <ion-select-option value="Food & Drinks">Food & Drinks</ion-select-option>
@@ -19,10 +19,10 @@
         <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
     </ion-item>
     <ion-item>
-        <ion-textarea placeholder="Write your notes..." label="Notes" labelPlacement="floating" rows="3"></ion-textarea>
+        <ion-textarea [(ngModel)]="notes" placeholder="Write your notes..." label="Notes" labelPlacement="floating" rows="3"></ion-textarea>
     </ion-item>
     <ion-item>
-        <ion-input type="date" placeholder="YYYY-MM-DD"></ion-input>
+        <ion-input [(ngModel)]="selected_date" type="date" placeholder="YYYY-MM-DD"></ion-input>
     </ion-item>
 </ion-list>
 

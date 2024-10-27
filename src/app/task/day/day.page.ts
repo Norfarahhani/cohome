@@ -1,4 +1,5 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-task-day',
@@ -7,8 +8,16 @@ import { Component, OnInit} from '@angular/core';
 })
 export class DayPage implements OnInit {
 
-    constructor() { }
+    constructor(private router: Router) { }
 
     ngOnInit() {
+    }
+
+    async createTask() {
+        this.router.navigate(['/task/create']);
+    }
+
+    async cancelTask() {
+        this.router.navigate(['/home/task']);
     }
 }

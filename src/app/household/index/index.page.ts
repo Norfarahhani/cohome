@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HouseholdService } from '../household.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-household-index',
@@ -8,10 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class IndexPage implements OnInit {
 
   selectedSegment: string = 'card1'; 
+  household_name: string='';
+  household_address: string='';
 
-  constructor() { }
-
+  constructor(private householdService: HouseholdService, private alertController: AlertController) { }
+  hasHousehold: boolean = false;
   ngOnInit() {
+    this.householdCheck();
   }
   public alertButtons = ['Invite'];
   public alertInputs = [
@@ -20,5 +25,28 @@ export class IndexPage implements OnInit {
       placeholder: 'Enter Email',
     },
   ];
+
+  async create() {
+    const register = await this.householdService.registerHousehold(this.household_name, this.household_address);
+    if (register == true) {
+      this.presentAlert("Info", "Household successfully created!");
+    } else {
+      this.presentAlert("Error", "An error occured...");
+    }
+    // this.router.navigate(['/auth/login']);
+  }
+
+  async presentAlert(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header,
+      message,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
+
+  async householdCheck() {
+    this.hasHousehold = await this.householdService.checkHousehold();
+  }
 }
 
