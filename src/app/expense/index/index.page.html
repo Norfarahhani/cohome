@@ -11,7 +11,7 @@
   </ion-label>
 
   <!-- unpaid & paid segments -->
-    <ion-segment [(ngModel)]="selectedSegment" color="primary" class="split-segment">
+    <ion-segment [(ngModel)]="selectedSegment" color="primary" class="split-segment ion-padding-horizontal">
       <ion-segment-button value="card1">
         <ion-label>Unpaid</ion-label>
       </ion-segment-button>
@@ -19,7 +19,7 @@
         <ion-label>Paid</ion-label>
       </ion-segment-button>
     </ion-segment>
-  </div>
+
 
   <!-- call unpaid and paid pages -->
   <ion-list [inset]="true" class="rounded-list" *ngIf="selectedSegment === 'card1'">

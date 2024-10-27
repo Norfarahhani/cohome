@@ -12,19 +12,27 @@ export class ExpenseService {
   ) { }
 
   // Register a new user and add to Firestore
-  async createExpense(name: string, selected_category: string, notes: string, selected_date: string) {
+  async createExpense(amount: number, selected_category: string, notes: string, date: string, members: string[]) {
     try {
       const auth = getAuth(); // Get the Firebase Auth instance
       const user: any = auth.currentUser; // Get the current user
-      const leader_id = user.uid;
-      const expensedRef = collection(this.firestore, 'expenses');
+      const expenseRef = collection(this.firestore, 'expenses');
 
-      await addDoc(expensedRef, {
-        leader_id: leader_id,
-        name: name,
+      const expenseDoc = await addDoc(expenseRef, {
+        amount: amount,
         selected_category: selected_category,
         notes: notes,
-        selected_date: selected_date,
+        date: date,
+      });
+
+      const expenseMembersRef= collection(this.firestore, 'expense_members');
+      members.forEach(async(member) => {
+        await addDoc(expenseMembersRef, {
+          expense_id: expenseDoc.id,
+          member_id: member,
+          status: "unpaid",
+        });
+  
       });
 
       return true;

@@ -9,10 +9,11 @@ import { Router } from '@angular/router';
 })
 export class CreatePage implements OnInit {
 
-  name: string ='';
+  amount: number = 0;
   selected_category: string = '';
+  date: string = '';
   notes: string = '';
-  selected_date: string ='';  
+  members: string[] = [];
 
   constructor(private expenseService: ExpenseService, private router: Router) { }
 
@@ -24,11 +25,8 @@ export class CreatePage implements OnInit {
   }
 
   async create() {
-    const register = await this.expenseService.createExpense(this.name, this.selected_category, this.notes, this.selected_date);
-
+    const register = await this.expenseService.createExpense(this.amount, this.selected_category, this.notes, this.date, this.members);
+    this.router.navigate(['/home/expense']);
   }
-  // onDateChange() {
-  //   // Handle any additional logic when the date changes
-  //   console.log('Selected date:', this.selectedDate);
-  // }
+
 }
