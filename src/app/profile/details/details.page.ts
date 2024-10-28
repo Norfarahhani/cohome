@@ -32,4 +32,16 @@ export class DetailsPage implements OnInit {
         this.email = data.email;
     }
 
+    async updateUserDetails() {
+        const user: any = {
+            name: this.name,
+            age: this.age,
+            phone: this.phone
+        };
+
+        await this.profileService.updateUserDetails(user);
+
+        this.router.navigate(['/home/profile']);
+    }
+
 }
