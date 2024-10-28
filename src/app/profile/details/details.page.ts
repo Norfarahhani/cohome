@@ -1,5 +1,6 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProfileService } from '../profile.service';
 
 
 @Component({
@@ -8,14 +9,27 @@ import { Router } from '@angular/router';
     styleUrls: ['./details.page.scss'],
 })
 export class DetailsPage implements OnInit {
+    name: string = '';
+    age: number = 0;
+    email: string = '';
+    phone: string = '';
 
-    constructor(private router: Router) { }
+    constructor(private router: Router, private profileService: ProfileService) { }
 
     ngOnInit() {
+        this.getUserDetails();
     }
 
     async cancelCreate() {
         this.router.navigate(['/home/profile']);
-      }
-   
+    }
+
+    async getUserDetails() {
+        const data: any = await this.profileService.getUserDetails();
+        this.name = data.name;
+        this.age = data.age;
+        this.phone = data.phone;
+        this.email = data.email;
+    }
+
 }

@@ -33,12 +33,25 @@
     <!-- Name Input Section -->
     <ion-list [inset]="true" class="rounded-list">
         <ion-item>
-            <ion-input placeholder="Name" value="Hani azmi"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-input type="email" label="haniazmi@gmail.com" [disabled]="true"></ion-input>
+            <ion-input [(ngModel)]="name" placeholder="Name"></ion-input>
         </ion-item>
     </ion-list>
+    <ion-list [inset]="true" class="rounded-list">
+        <ion-item>
+            <ion-input [(ngModel)]="age" placeholder="Age" ></ion-input>
+        </ion-item>
+    </ion-list>
+    <ion-list [inset]="true" class="rounded-list">
+        <ion-item>
+            <ion-input [(ngModel)]="phone" placeholder="Phone number" ></ion-input>
+        </ion-item>
+    </ion-list>
+    <ion-list [inset]="true" class="rounded-list">
+        <ion-item>
+            <ion-input [(ngModel)]="email" type="email" [disabled]="true"></ion-input>
+        </ion-item>
+    </ion-list>
+
 
     <!-- Delete Account Button -->
     <ion-button [routerLink]="['/auth/login']" size="small" expand="block" color="danger" shape="round"
