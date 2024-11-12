@@ -8,7 +8,7 @@
         </ion-buttons>
       </ion-col>
       <ion-col>
-        <ion-buttons class="ion-float-right">
+        <ion-buttons class="ion-float-right" (click)="create()">
           <ion-icon style="font-size: 20px;" name="checkmark-done-outline"></ion-icon>
         </ion-buttons>
       </ion-col>
@@ -18,7 +18,7 @@
 
   <ion-list [inset]="true" class="rounded-list">
     <ion-item>
-      <ion-select label="Task" label-placement="floating">
+      <ion-select  [(ngModel)]="tasks" label="Task" label-placement="floating">
         <ion-select-option value="apple">Mop floor</ion-select-option>
         <ion-select-option value="banana">Wash sink</ion-select-option>
         <ion-select-option value="orange">Clean windows</ion-select-option>
@@ -28,13 +28,13 @@
     </ion-item>
 
     <ion-item>
-      <ion-textarea placeholder="Write your notes..." label="Notes" labelPlacement="floating" rows="3"></ion-textarea>
+      <ion-textarea [(ngModel)]="notes" placeholder="Write your notes..." label="Notes" labelPlacement="floating" rows="3"></ion-textarea>
     </ion-item>
   </ion-list>
 
   <ion-list [inset]="true" class="rounded-list">
     <ion-item>
-      <ion-input type="date" placeholder="YYYY-MM-DD"></ion-input>
+      <ion-input [(ngModel)]="date" type="date" placeholder="YYYY-MM-DD"></ion-input>
     </ion-item>
   </ion-list>
 
@@ -42,7 +42,7 @@
     <ion-item>
       <ion-icon name="alarm-outline" slot="start" style="margin-right: 10px;"></ion-icon>
       <ion-label>Reminder</ion-label>
-      <ion-toggle slot="end" [(ngModel)]="repeatReminder" (ionChange)="toggleReminder($event)"></ion-toggle>
+      <ion-toggle slot="end" [(ngModel)]="reminder" (ionChange)="toggleReminder($event)"></ion-toggle>
     </ion-item>
   </ion-list>
 
@@ -62,7 +62,7 @@
     <ion-item>
       <ion-icon name="person-outline" slot="start" style="margin-right: 10px;"></ion-icon>
       <ion-label>Assign Task</ion-label>
-      <ion-select slot="end" [(ngModel)]="selectedMember" [multiple]="true">
+      <ion-select slot="end" [(ngModel)]="members" [multiple]="true">
         <ion-select-option value="member1">Hani</ion-select-option>
         <ion-select-option value="member2">Emily</ion-select-option>
         <ion-select-option value="member3">Taeyang</ion-select-option>
@@ -74,7 +74,7 @@
     <ion-item>
       <ion-icon name="sunny-outline" slot="start" style="margin-right: 10px;"></ion-icon>
       <ion-label>Day</ion-label>
-      <ion-select slot="end" [multiple]="true">
+      <ion-select slot="end" [(ngModel)]="days" [multiple]="true">
         <ion-select-option value="day1">Monday</ion-select-option>
         <ion-select-option value="day2">Tuesday</ion-select-option>
         <ion-select-option value="day3">Wednesday</ion-select-option>

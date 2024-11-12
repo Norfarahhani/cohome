@@ -1,2 +1,12 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+
+:root {
+    --ion-color-green: #4CAF50;
+    --ion-color-green-contrast: #ffffff;
+  }
+
+  .custom-input {
+    --color: black;  /* Changes the text color to black */
+  }
+

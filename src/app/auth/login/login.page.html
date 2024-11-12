@@ -1,41 +1,80 @@
-<ion-content class="ion-padding">
-  <ion-grid>
-    <ion-row class="ion-justify-content-center">
-      <ion-col size-md="6" size-lg="4">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title class="ion-text-center">Sign In</ion-card-title>
-          </ion-card-header>
+<ion-header>
+  <div class="login-header ion-padding">
+    <img class="logo-img" src="assets/icon/LOGO.png">
+  </div>
+</ion-header>
 
-          <ion-card-content>
-            <form (ngSubmit)="onLogin()" #loginForm="ngForm">
-              <ion-item>
-                <ion-label label-placement="floating" fill="outline" position="floating">Email</ion-label>
-                <ion-input type="email" [(ngModel)]="email" name="email" required></ion-input>
-              </ion-item>
+<ion-content class="login-content">
+  <ion-row class="ion-justify-content-center">
+    <ion-col size-md="6" size-lg="4">
 
-              <ion-item>
-                <ion-label position="floating">Password</ion-label>
-                <ion-input type="password" [(ngModel)]="password" name="password" required></ion-input>
-              </ion-item>
+      <ion-card class="login-card">
+        <ion-card-header>
+          <h1 class="big-heading">Login</h1>
+          <p class="sub-heading">Where Co-Living Feels Like Home</p>
+        </ion-card-header>
 
-              <ion-button type="submit" size="small" expand="block" color="primary" shape="round" class="ion-margin-top">Login</ion-button>
-            </form>
-            <br />
+        <ion-card-content>
+          <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+
+            <ion-col>
+
+              <ion-row size="6" >
+                <ion-item class="input-item" lines="none">
+                  <ion-icon name="mail-outline" slot="start" class="input-icon"></ion-icon>
+                  <ion-input class="custom-input" placeholder="Email" type="email" [(ngModel)]="email" name="email"
+                    required></ion-input>
+                </ion-item>
+              </ion-row>
+
+              <ion-row size="6" >
+                <ion-item class="input-item" lines="none">
+                  <ion-icon name="lock-closed-outline" slot="start" class="input-icon"></ion-icon>
+                  <ion-input placeholder="Password" type="password" [(ngModel)]="password" name="password"
+                    required></ion-input>
+                </ion-item>
+              </ion-row>
+
+            </ion-col>
+
+            <ion-button type="submit" expand="block" color="green" shape="round" class="login-button">
+              Login
+            </ion-button>
 
             <ion-row class="ion-justify-content-center">
               <ion-col size="auto" class="ion-text-center">
                 <ion-text>
-                  <p style="display: inline">Don't have an account?</p>
-                  <ion-text color="primary">
-                    <a [routerLink]="['/auth/register']" style="text-decoration: none; margin-left: 5px">Sign Up</a>
-                  </ion-text>
+                  <p>Don't have an account? <a [routerLink]="['/auth/register']" class="signup-link">Sign Up</a></p>
                 </ion-text>
               </ion-col>
             </ion-row>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+
+            <!-- Social Login Options -->
+            <div class="social-login">
+              <p>Or login with</p>
+              <ion-row class="ion-justify-content-center">
+                <ion-col size="auto">
+                  <ion-button fill="clear" size="small">
+                    <ion-icon name="logo-google"></ion-icon>
+                  </ion-button>
+                </ion-col>
+                <ion-col size="auto">
+                  <ion-button fill="clear" size="small">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                  </ion-button>
+                </ion-col>
+                <ion-col size="auto">
+                  <ion-button fill="clear" size="small">
+                    <ion-icon name="logo-twitter"></ion-icon>
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </div>
+
+          </form>
+        </ion-card-content>
+      </ion-card>
+
+    </ion-col>
+  </ion-row>
 </ion-content>

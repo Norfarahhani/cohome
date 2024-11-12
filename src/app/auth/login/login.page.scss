@@ -1,3 +1,111 @@
-:root {
-    --pink-color: pink;
-  }
+.login-header{
+  background-color: var(--theme-color);
+  position:relative;
+  background-color:#53923d;
+  border-radius: 0em;
+}
+
+.login-header:after {
+  content:'';
+  position: absolute;
+  bottom: 0;
+  left: 15%;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-top-color:#53923d;
+  border-bottom: 0;
+  margin-left: -15px;
+  margin-bottom: -15px;
+}
+
+.logo-img{
+  display: block;
+  width: 170px;
+  margin: 0 auto;
+  text-align:center;
+}
+
+
+.login-content {
+  --background: linear-gradient(135deg, #e3e8f0, #f8f9fc);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+}
+
+.login-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1), -5px -5px 15px rgba(255, 255, 255, 0.7);
+}
+
+.big-heading {
+  font-size: 1.8em;
+  color: #53923d;
+  margin-bottom: 5px;
+}
+
+.sub-heading {
+
+  color: #7a7e83;
+  font-size: 0.9em;
+  margin-bottom: 20px;
+}
+
+.input-item {
+  background-color: #ffffff; /* Set background to white */
+  border-radius: 15px;
+  padding: 10px;
+  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.1), inset -4px -4px 8px rgba(255, 255, 255, 0.7);
+  margin-bottom: 10px !important;  
+}
+
+.input-item ion-input {
+  color: #000000; /* Set text color to black for readability */
+}
+
+.input-icon {
+  color: #000000;
+}
+
+.login-button {
+  margin-top: 20px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  background-color: #53923d; /* Change to your desired color */
+  color: #ffde59; /* Text color */
+}
+
+.signup-link {
+  color: #4e54c8;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.social-login {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.social-login p {
+  color: #6c757d;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+
+ion-button[fill="clear"] {
+  --background: transparent;
+  color: #53923d;
+}
+
+ion-icon {
+  font-size: 1.5em;
+}
+
+ion-row {
+  margin-bottom: 10px !important;  
+}

@@ -12,7 +12,7 @@ export class AuthService {
   ) {}
 
   // Register a new user and add to Firestore
-  async registerUser(email: string, password: string, userData: { name: string; age: number; phone: string; }) {
+  async registerUser(email: string, password: string, userData: { name: string; age: string; phone: string; }) {
     try {
       // Register user in Firebase Authentication
       const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);

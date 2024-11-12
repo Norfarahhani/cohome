@@ -12,7 +12,44 @@
       <ion-item class="rounded-list" slot="header" color="light">
         <ion-label>{{ ucfirst(day) }}</ion-label>
       </ion-item>
-      <div class="ion-padding" slot="content">First Content</div>
+
+      <div class="ion-padding" slot="content">
+        <ion-list [inset]="true" class="rounded-list">
+          <ion-item-sliding>
+            <ion-item>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+
+                    <ion-row>
+                      <ion-item>
+                        <ion-text>
+                          <strong> Mop floor</strong>
+                        </ion-text>
+                      </ion-item>
+                    </ion-row>
+
+                    <ion-row>
+                      <ion-item>
+                        <ion-text> Lantai dapur </ion-text>
+                      </ion-item>
+                    </ion-row>
+
+                    <ion-row>
+                      <ion-item>
+                        <ion-icon name="person-outline" slot="start"></ion-icon>
+                        <ion-text>Hani, Emily</ion-text>
+                      </ion-item>
+                    </ion-row>
+
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+          </ion-item-sliding>
+        </ion-list>
+      </div>
+
     </ion-accordion>
   </ion-accordion-group>
 
@@ -22,4 +59,3 @@
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-

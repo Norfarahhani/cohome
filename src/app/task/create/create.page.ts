@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TaskService } from '../task.service';
 
 
 @Component({
@@ -9,14 +10,15 @@ import { Router } from '@angular/router';
 })
 export class CreatePage implements OnInit {
 
-  repeatReminder: boolean = false; // Toggle state
-  repeatTime: string = ''; // Initialize with an empty string
-  selectedRepeatOption: string = ''; // Selected repeat option
-  selectedMember: string=''; // assign task kepada siapa
+  tasks: string ="";
+  notes: string = "";
+  date: string = "";
+  reminder: boolean = false;
+  selectedRepeatOption: string = "";
+  members: string[] = [];
+  days: string = "";
 
-
-
-  constructor(private router: Router) {}
+  constructor(private taskService: TaskService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -36,8 +38,14 @@ export class CreatePage implements OnInit {
 
   toggleReminder(event: any) {
     // Logic to handle toggle change
-    console.log('Repeat Reminder:', this.repeatReminder);
+    console.log('Repeat Reminder:', this.reminder);
   }
+
+  async create() {
+    const register = await this.taskService.createTask(this.tasks, this.notes, this.date, this.reminder, this.selectedRepeatOption, this.members, this.days);
+    this.router.navigate(['/home/task']);
+  }
+
 }
 
 

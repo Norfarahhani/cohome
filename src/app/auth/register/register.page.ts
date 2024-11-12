@@ -12,7 +12,7 @@ import { AuthService } from '../auth.service';
 })
 export class RegisterPage implements OnInit {
   name: string = '';
-  age: number = 0;
+  age: string = '';
   email: string = '';
   phone: string = '';
   password: string = '';
