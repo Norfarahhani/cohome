@@ -39,18 +39,13 @@ export class HouseholdService {
   }
 
   async checkHousehold() {
-    const householdMembersCollection = collection(this.firestore, 'household_members'); // Specify your collection
+    const householdMembersCollection = collection(this.firestore, 'household_members');
     const householdMembersQuery = query(householdMembersCollection, where('member_id', '==', getAuth().currentUser?.uid));
     const querySnapshot = await getDocs(householdMembersQuery);
 
-    // Check if documents exist and populate userData
     const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    
-    if (data.length > 0) {
-      return true;
-    }
 
-    return false;
+    return data;
   }
 
 }

@@ -1,5 +1,7 @@
-export interface Household {
-    household_address: string;
-    household_name: string;
-    leader_id: string;
+export class HouseholdModel {
+  constructor(
+    public household_address: string = '',
+    public household_name: string = '',
+    public leader_id: string = ''
+  ) { }
 }

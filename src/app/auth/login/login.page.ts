@@ -13,7 +13,7 @@ export class LoginPage implements OnInit {
   email: string = '';
   password: string = '';
 
-  constructor(private authService: AuthService, private router: Router, private alertController: AlertController) {}
+  constructor(private authService: AuthService, private router: Router, private alertController: AlertController) { }
 
   ngOnInit() {
   }

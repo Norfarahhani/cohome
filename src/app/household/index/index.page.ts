@@ -9,15 +9,18 @@ import { AlertController } from '@ionic/angular';
 })
 export class IndexPage implements OnInit {
 
-  selectedSegment: string = 'card1'; 
-  household_name: string='';
-  household_address: string='';
+  selectedSegment: string = 'card1';
+  household_name: string = '';
+  household_address: string = '';
+  hasHousehold: boolean = false;
+
 
   constructor(private householdService: HouseholdService, private alertController: AlertController) { }
-  hasHousehold: boolean = false;
+
   ngOnInit() {
     this.householdCheck();
   }
+
   public alertButtons = ['Invite'];
   public alertInputs = [
     {
@@ -46,7 +49,9 @@ export class IndexPage implements OnInit {
   }
 
   async householdCheck() {
-    this.hasHousehold = await this.householdService.checkHousehold();
+    const household = await this.householdService.checkHousehold();
+    if (household.length > 0) this.hasHousehold = true;
+    // if (this.hasHousehold)
   }
 }
 

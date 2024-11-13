@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, addDoc} from '@angular/fire/firestore';
-import { Auth, getAuth} from '@angular/fire/auth';
+import { Firestore, collection, addDoc } from '@angular/fire/firestore';
+import { Auth, getAuth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -27,14 +27,14 @@ export class TaskService {
         days: days,
       });
 
-      const taskMembersRef= collection(this.firestore, 'task_members');
-      members.forEach(async(member) => {
+      const taskMembersRef = collection(this.firestore, 'task_members');
+      members.forEach(async (member) => {
         await addDoc(taskMembersRef, {
           task_id: taskDoc.id,
           member_id: member,
           status: "unpaid",
         });
-  
+
       });
 
       return true;
@@ -44,6 +44,6 @@ export class TaskService {
     }
   }
 
-  
+
 
 }

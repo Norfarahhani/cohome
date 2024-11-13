@@ -4,6 +4,7 @@ import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AuthService } from '../auth.service';
+import { UserModel } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-register',
@@ -11,14 +12,13 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-  name: string = '';
-  age: string = '';
   email: string = '';
-  phone: string = '';
   password: string = '';
   confirmPassword: string = '';
+  user: UserModel = new UserModel();
 
-  constructor(private authService: AuthService, private router: Router, private alertController: AlertController) {}
+  constructor(private authService: AuthService, private router: Router, private alertController: AlertController) { }
+
   ngOnInit() {
   }
 
@@ -30,11 +30,11 @@ export class RegisterPage implements OnInit {
     }
 
     try {
-      await this.authService.registerUser(this.email, this.password, { name: this.name, age: this.age, phone: this.phone });
-      
+      await this.authService.registerUser(this.email, this.password, this.user);
+
       this.router.navigate(['/home']); // Navigate to another page after successful registration
-    } catch (error) {
-      await this.presentAlert('Error', "An error occured.");
+    } catch (error: any) {
+      await this.presentAlert('Error', error.message);
     }
   }
 
