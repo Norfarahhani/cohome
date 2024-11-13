@@ -7,7 +7,7 @@
                 </ion-buttons>
             </ion-col>
             <ion-col>
-                <ion-buttons class="ion-float-right">
+                <ion-buttons class="ion-float-right" (click)="joinHousehold()">
                     <ion-icon style="font-size: 20px;" name="arrow-forward-circle-outline"></ion-icon>
                 </ion-buttons>
             </ion-col>
@@ -16,7 +16,7 @@
 
     <ion-list [inset]="true" class="rounded-list">
         <ion-item>
-            <ion-input placeholder="Enter code" ></ion-input>
+            <ion-input [(ngModel)]="code" placeholder="Enter code" ></ion-input>
         </ion-item>
     </ion-list>
 

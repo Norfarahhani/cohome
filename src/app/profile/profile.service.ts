@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, addDoc, doc, getFirestore, getDoc, updateDoc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, doc, getFirestore, getDoc, updateDoc, docData } from '@angular/fire/firestore';
 import { Auth, getAuth } from '@angular/fire/auth';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,21 +12,18 @@ export class ProfileService {
     private auth: Auth
   ) { }
 
-  async getUserDetails() {
+  getUserDetails(): Observable<any | null> {
     const user = getAuth().currentUser;
 
     if (user) {
       const userId = user.uid; // Get authenticated user ID
       const userDocRef = doc(getFirestore(), "users", userId); // Reference to Firestore document
-      const userDoc = await getDoc(userDocRef); // Fetch document
 
-      if (userDoc.exists()) {
-        return userDoc.data();
-      } else {
-        return null;
-      }
+      // Return an observable that emits the document data in real-time
+      return docData(userDocRef);
     } else {
-      return null;
+      // Return an observable that emits null if no user is authenticated
+      return of(null);
     }
   }
 

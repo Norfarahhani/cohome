@@ -1,65 +1,89 @@
 <ion-content>
-    <ion-label class="ion-padding ">
-        <div class="profile-header">
+  <ion-label class="ion-padding">
+    <div class="profile-header">
+      <ion-text>
+        <h2>Profile</h2>
+      </ion-text>
+      <ion-buttons>
+        <ion-button [routerLink]="['/profile/notification']">
+          <ion-icon
+            name="notifications-outline"
+            class="notification-icon"
+          ></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+  </ion-label>
+
+  <ion-list [inset]="true" button="true" class="rounded-list">
+    <ion-card-content>
+      <ion-item [routerLink]="['/profile/details']">
+        <ion-row>
+          <ion-col>
+            <ion-avatar>
+              <img
+                style="max-width: 85%; max-height: 85%"
+                alt="Silhouette of a person's head"
+                src="https://ionicframework.com/docs/img/demos/avatar.svg"
+              />
+            </ion-avatar>
+          </ion-col>
+        </ion-row>
+        <ion-col>
+          <ion-row>
             <ion-text>
-                <h2>Profile</h2>
+              <strong>{{ name }}</strong>
             </ion-text>
-            <ion-buttons>
-                <ion-button [routerLink]="['/profile/notification']">
-                    <ion-icon name="notifications-outline" class="notification-icon"></ion-icon>
-                </ion-button>
-            </ion-buttons>
-        </div>
-    </ion-label>
+          </ion-row>
+          <ion-row class="ion-margin-bottom">
+            <a>{{ email }}</a>
+          </ion-row>
+        </ion-col>
+        <ion-icon
+          name="chevron-forward-outline"
+          slot="end"
+          style="margin-left: 10px"
+        ></ion-icon>
+      </ion-item>
+    </ion-card-content>
+  </ion-list>
 
-    <ion-list [inset]="true" button="true" class="rounded-list">
-        <ion-card-content>
-            <ion-item [routerLink]="['/profile/details']">
-                <ion-row>
-                    <ion-col>
-                        <ion-avatar>
-                            <img style="max-width: 85%; max-height: 85%;" alt="Silhouette of a person's head"
-                                src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-                        </ion-avatar>
-                    </ion-col>
-                </ion-row>
-                <ion-col>
-                    <ion-row>
-                        <ion-text>
-                            <strong>{{ name }}</strong>
-                        </ion-text>
-                    </ion-row>
-                    <ion-row class="ion-margin-bottom">
-                        <a>{{ email }}</a>
-                    </ion-row>
-                </ion-col>
-                <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
-            </ion-item>
-        </ion-card-content>
-    </ion-list>
-
-
-    <ion-list [inset]="true" class="rounded-list">
-        <ion-item [button]="true" [routerLink]="['/profile/house']">
-            <ion-icon slot="start" name="home" size="large"></ion-icon>
-            <ion-label>Home</ion-label>
-            <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
-        </ion-item>
-        <ion-item [button]="true" [routerLink]="['/profile/payment']">
-            <ion-icon slot="start" name="scan" size="large"></ion-icon>
-            <ion-label>Payment</ion-label>
-            <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
-        </ion-item>
-        <ion-item [button]="true" [routerLink]="['/profile/setting']">
-            <ion-icon slot="start" name="settings" size="large"></ion-icon>
-            <ion-label>Setting</ion-label>
-            <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
-        </ion-item>
-        <ion-item [button]="true" [routerLink]="['/profile/join']">
-            <ion-icon slot="start" name="log-in-outline" size="large"></ion-icon>
-            <ion-label>Join</ion-label>
-            <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px;"></ion-icon>
-        </ion-item>
-    </ion-list>
-    
+  <ion-list [inset]="true" class="rounded-list">
+    <ion-item [button]="true" [routerLink]="['/profile/house']" *ngIf="hasHousehold">
+      <ion-icon slot="start" name="home" size="large"></ion-icon>
+      <ion-label>Home</ion-label>
+      <ion-icon
+        name="chevron-forward-outline"
+        slot="end"
+        style="margin-left: 10px"
+      ></ion-icon>
+    </ion-item>
+    <ion-item [button]="true" [routerLink]="['/profile/payment']">
+      <ion-icon slot="start" name="scan" size="large"></ion-icon>
+      <ion-label>Payment</ion-label>
+      <ion-icon
+        name="chevron-forward-outline"
+        slot="end"
+        style="margin-left: 10px"
+      ></ion-icon>
+    </ion-item>
+    <ion-item [button]="true" [routerLink]="['/profile/setting']">
+      <ion-icon slot="start" name="settings" size="large"></ion-icon>
+      <ion-label>Setting</ion-label>
+      <ion-icon
+        name="chevron-forward-outline"
+        slot="end"
+        style="margin-left: 10px"
+      ></ion-icon>
+    </ion-item>
+    <ion-item [button]="true" [routerLink]="['/profile/join']" *ngIf="!hasHousehold">
+      <ion-icon slot="start" name="log-in-outline" size="large"></ion-icon>
+      <ion-label>Join</ion-label>
+      <ion-icon
+        name="chevron-forward-outline"
+        slot="end"
+        style="margin-left: 10px"
+      ></ion-icon>
+    </ion-item>
+  </ion-list>
 </ion-content>

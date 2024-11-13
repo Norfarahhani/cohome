@@ -1,27 +1,44 @@
 <ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-buttons (click)="cancelCreate()">
+          <ion-icon
+            style="font-size: 20px"
+            name="chevron-back-outline"
+          ></ion-icon>
+        </ion-buttons>
+      </ion-col>
+      <ion-col>
+        <ion-buttons class="ion-float-right">
+          <ion-icon
+            style="font-size: 20px"
+            name="checkmark-done-outline"
+          ></ion-icon>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-    <ion-grid>
-        <ion-row>
-            <ion-col>
-                <ion-buttons (click)="cancelCreate()">
-                    <ion-icon style="font-size: 20px;" name="chevron-back-outline"></ion-icon>
-                </ion-buttons>
-            </ion-col>
-            <ion-col>
-                <ion-buttons class="ion-float-right">
-                    <ion-icon style="font-size: 20px;" name="checkmark-done-outline"></ion-icon>
-                </ion-buttons>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+  <ion-list [inset]="true" class="rounded-list">
+    <ion-item>
+      <ion-input placeholder="House name" [value]="householdModel.household_name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="House address" [value]="householdModel.household_address"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-text>{{ householdModel.code }}</ion-text>
+    </ion-item>
+  </ion-list>
 
-    <ion-list [inset]="true" class="rounded-list">
-        <ion-item>
-            <ion-input placeholder="House name" value="Mini Home"></ion-input>
-        </ion-item>
-    </ion-list>
-
-    <ion-button [routerLink]="['/auth/login']" size="small" expand="block" color="danger" shape="round"
-        class="lowercase-button">Delete house</ion-button>
-
+  <ion-button
+    [routerLink]="['/auth/login']"
+    size="small"
+    expand="block"
+    color="danger"
+    shape="round"
+    class="lowercase-button"
+    >Delete house</ion-button
+  >
 </ion-content>

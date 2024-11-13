@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, addDoc, collectionData} from '@angular/fire/firestore';
-import { Auth, getAuth} from '@angular/fire/auth';
+import { Firestore, collection, addDoc, collectionData } from '@angular/fire/firestore';
+import { Auth, getAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -38,7 +38,5 @@ export class TaskService {
     const collectionRef = collection(this.firestore, 'tasks'); // Replace with your collection name
     return collectionData(collectionRef, { idField: 'id' });
   }
-
-
 
 }

@@ -9,16 +9,32 @@ import { ProfileService } from '../profile.service';
 export class IndexPage implements OnInit {
   name: string = '';
   email: string = '';
+  hasHousehold: boolean = false;
 
   constructor(private profileService: ProfileService) { }
 
   ngOnInit() {
     this.getUserDetails();
+    this.householdCheck();
   }
 
-  async getUserDetails() {
-    const data: any = await this.profileService.getUserDetails();
-    this.name = data.name;
-    this.email = data.email;
+  getUserDetails() {
+    this.profileService.getUserDetails().subscribe({
+      next: (data: any) => {
+        if (data) {
+          this.name = data.name;
+          this.email = data.email;
+        }
+      },
+      error: (error) => {
+        console.error('Error fetching user details:', error);
+      }
+    });
   }
+
+  async householdCheck() {
+    const check = localStorage.getItem('hasHousehold');
+    this.hasHousehold = (check == 'true') ? true : false;
+  }
+
 }

@@ -6,11 +6,11 @@
       <ion-icon name="home-outline"></ion-icon>
     </ion-tab-button>
 
-    <ion-tab-button tab="task">
+    <ion-tab-button tab="task" *ngIf="hasHousehold">
       <ion-icon name="folder-open-outline"></ion-icon>
     </ion-tab-button>
 
-    <ion-tab-button tab="expense">
+    <ion-tab-button tab="expense" *ngIf="hasHousehold">
       <ion-icon name="bar-chart-outline"></ion-icon>
     </ion-tab-button>
 
@@ -18,5 +18,5 @@
       <ion-icon name="person-circle-outline"></ion-icon>
     </ion-tab-button>
   </ion-tab-bar>
-  
+
 </ion-tabs>

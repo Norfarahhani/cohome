@@ -4,12 +4,18 @@
     <ion-row>
       <ion-col>
         <ion-buttons (click)="cancelCreate()">
-          <ion-icon style="font-size: 20px;" name="chevron-back-outline"></ion-icon>
+          <ion-icon
+            style="font-size: 20px"
+            name="chevron-back-outline"
+          ></ion-icon>
         </ion-buttons>
       </ion-col>
       <ion-col>
         <ion-buttons class="ion-float-right" (click)="create()">
-          <ion-icon style="font-size: 20px;" name="checkmark-done-outline"></ion-icon>
+          <ion-icon
+            style="font-size: 20px"
+            name="checkmark-done-outline"
+          ></ion-icon>
         </ion-buttons>
       </ion-col>
     </ion-row>
@@ -18,7 +24,7 @@
 
   <ion-list [inset]="true" class="rounded-list">
     <ion-item>
-      <ion-select  [(ngModel)]="tasks" label="Task" label-placement="floating">
+      <ion-select [(ngModel)]="tasks" label="Task" label-placement="floating">
         <ion-select-option value="0">Mop floor</ion-select-option>
         <ion-select-option value="1">Wash sink</ion-select-option>
         <ion-select-option value="2">Clean windows</ion-select-option>
@@ -28,21 +34,39 @@
     </ion-item>
 
     <ion-item>
-      <ion-textarea [(ngModel)]="notes" placeholder="Write your notes..." label="Notes" labelPlacement="floating" rows="3"></ion-textarea>
+      <ion-textarea
+        [(ngModel)]="notes"
+        placeholder="Write your notes..."
+        label="Notes"
+        labelPlacement="floating"
+        rows="3"
+      ></ion-textarea>
     </ion-item>
   </ion-list>
 
   <ion-list [inset]="true" class="rounded-list">
     <ion-item>
-      <ion-icon name="alarm-outline" slot="start" style="margin-right: 10px;"></ion-icon>
+      <ion-icon
+        name="alarm-outline"
+        slot="start"
+        style="margin-right: 10px"
+      ></ion-icon>
       <ion-label>Reminder</ion-label>
-      <ion-toggle slot="end" [(ngModel)]="reminder" (ionChange)="toggleReminder($event)"></ion-toggle>
+      <ion-toggle
+        slot="end"
+        [(ngModel)]="reminder"
+        (ionChange)="toggleReminder($event)"
+      ></ion-toggle>
     </ion-item>
   </ion-list>
 
   <ion-list [inset]="true" class="rounded-list">
     <ion-item>
-      <ion-icon name="repeat-outline" slot="start" style="margin-right: 10px;"></ion-icon>
+      <ion-icon
+        name="repeat-outline"
+        slot="start"
+        style="margin-right: 10px"
+      ></ion-icon>
       <ion-label>Repeat</ion-label>
       <ion-select slot="end" [(ngModel)]="selectedRepeatOption">
         <ion-select-option value="daily">Daily</ion-select-option>
@@ -54,19 +78,29 @@
 
   <ion-list [inset]="true" class="rounded-list">
     <ion-item>
-      <ion-icon name="person-outline" slot="start" style="margin-right: 10px;"></ion-icon>
+      <ion-icon
+        name="person-outline"
+        slot="start"
+        style="margin-right: 10px"
+      ></ion-icon>
       <ion-label>Assign Task</ion-label>
       <ion-select slot="end" [(ngModel)]="members" [multiple]="true">
-        <ion-select-option value="member1">Hani</ion-select-option>
-        <ion-select-option value="member2">Emily</ion-select-option>
-        <ion-select-option value="member3">Taeyang</ion-select-option>
+        <ion-select-option
+          *ngFor="let householdMemberModel of householdMemberModels"
+          [value]="householdMemberModel.userDetails.uid"
+          >{{ householdMemberModel.userDetails.name }}</ion-select-option
+        >
       </ion-select>
     </ion-item>
   </ion-list>
 
   <ion-list [inset]="true" class="rounded-list">
     <ion-item>
-      <ion-icon name="sunny-outline" slot="start" style="margin-right: 10px;"></ion-icon>
+      <ion-icon
+        name="sunny-outline"
+        slot="start"
+        style="margin-right: 10px"
+      ></ion-icon>
       <ion-label>Day</ion-label>
       <ion-select slot="end" [(ngModel)]="days" [multiple]="true">
         <ion-select-option value="0">Monday</ion-select-option>
@@ -79,5 +113,4 @@
       </ion-select>
     </ion-item>
   </ion-list>
-
 </ion-content>

@@ -29,7 +29,7 @@
     >
   </ion-list>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="hasHousehold">
     <ion-fab-button>
       <ion-icon id="present-alert" name="add"></ion-icon>
       <ion-alert
@@ -48,7 +48,7 @@
         <ion-col>
           <div class="household-header">
             <ion-text>
-              <h2>Mini House</h2>
+              <h2>{{ householdModel.household_name }}</h2>
             </ion-text>
           </div>
         </ion-col>
@@ -56,7 +56,7 @@
     </ion-grid>
 
     <!-- household list of members -->
-    <ion-list [inset]="true" class="rounded-list">
+    <ion-list [inset]="true" class="rounded-list" *ngFor="let householdMemberModel of householdMemberModels">
       <ion-item-sliding>
         <ion-item>
           <ion-grid>
@@ -75,92 +75,12 @@
               <ion-col>
                 <ion-row>
                   <ion-text>
-                    <strong>Hani</strong>
+                    <strong>{{ householdMemberModel.userDetails.name }}</strong>
                   </ion-text>
                 </ion-row>
                 <ion-row class="ion-margin-bottom">
-                  <a href="mailto:haniazmi&#64;gmail.com"
-                    >haniazmi&#64;gmail.com</a
-                  >
-                </ion-row>
-              </ion-col>
-            </ion-item>
-          </ion-grid>
-        </ion-item>
-        <ion-item-options side="end">
-          <ion-item-option color="danger">
-            <ion-icon slot="end" name="trash-outline"></ion-icon>
-            Delete
-          </ion-item-option>
-        </ion-item-options>
-      </ion-item-sliding>
-    </ion-list>
-
-    <ion-list [inset]="true" class="rounded-list">
-      <ion-item-sliding>
-        <ion-item>
-          <ion-grid>
-            <ion-item>
-              <ion-row>
-                <ion-col>
-                  <ion-avatar>
-                    <img
-                      style="max-width: 85%; max-height: 85%"
-                      alt="Silhouette of a person's head"
-                      src="https://ionicframework.com/docs/img/demos/avatar.svg"
-                    />
-                  </ion-avatar>
-                </ion-col>
-              </ion-row>
-              <ion-col>
-                <ion-row>
-                  <ion-text>
-                    <strong>Emily</strong>
-                  </ion-text>
-                </ion-row>
-                <ion-row class="ion-margin-bottom">
-                  <a href="mailto:haniazmi&#64;gmail.com"
-                    >hjemily12&#64;gmail.com</a
-                  >
-                </ion-row>
-              </ion-col>
-            </ion-item>
-          </ion-grid>
-        </ion-item>
-        <ion-item-options side="end">
-          <ion-item-option color="danger">
-            <ion-icon slot="end" name="trash-outline"></ion-icon>
-            Delete
-          </ion-item-option>
-        </ion-item-options>
-      </ion-item-sliding>
-    </ion-list>
-
-    <ion-list [inset]="true" class="rounded-list">
-      <ion-item-sliding>
-        <ion-item>
-          <ion-grid>
-            <ion-item>
-              <ion-row>
-                <ion-col>
-                  <ion-avatar>
-                    <img
-                      style="max-width: 85%; max-height: 85%"
-                      alt="Silhouette of a person's head"
-                      src="https://ionicframework.com/docs/img/demos/avatar.svg"
-                    />
-                  </ion-avatar>
-                </ion-col>
-              </ion-row>
-              <ion-col>
-                <ion-row>
-                  <ion-text>
-                    <strong>Taeyang</strong>
-                  </ion-text>
-                </ion-row>
-                <ion-row class="ion-margin-bottom">
-                  <a href="mailto:haniazmi&#64;gmail.com"
-                    >taeyang4u&#64;gmail.com</a
+                  <a
+                    >{{ householdMemberModel.userDetails.email }}</a
                   >
                 </ion-row>
               </ion-col>

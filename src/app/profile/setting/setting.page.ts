@@ -21,6 +21,6 @@ export class SettingPage implements OnInit {
 
   async logout() {
     await this.authService.logoutUser();
-    this.router.navigate(['/auth/login']);
+    window.location.reload();
   }
 }

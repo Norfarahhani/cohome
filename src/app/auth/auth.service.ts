@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Firestore, collection, addDoc, doc, setDoc } from '@angular/fire/firestore';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { UserModel } from '../models/user.model';
+import { HouseholdService } from '../household/household.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ import { UserModel } from '../models/user.model';
 export class AuthService {
   constructor(
     private firestore: Firestore,
-    private auth: Auth
+    private auth: Auth,
+    private householdService: HouseholdService
   ) { }
 
   async registerUser(email: string, password: string, userModel?: UserModel) {
@@ -23,7 +25,8 @@ export class AuthService {
         name: userModel?.name,
         age: userModel?.age,
         phone: userModel?.phone,
-        email: email
+        email: email,
+        uid: uid
       });
 
       return userCredential.user;
@@ -35,6 +38,15 @@ export class AuthService {
   async loginUser(email: string, password: string) {
     try {
       const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
+      const household = await this.householdService.checkHousehold();
+
+      if (household.length > 0) {
+        localStorage.setItem('household', JSON.stringify(household[0]));
+        localStorage.setItem('hasHousehold', 'true');
+      } else {
+        localStorage.setItem('hasHousehold', 'false');
+      }
+
       return userCredential.user;
     } catch (error) {
       throw error;
@@ -44,6 +56,7 @@ export class AuthService {
   async logoutUser() {
     try {
       await signOut(this.auth);
+      localStorage.clear();
     } catch (error) {
       throw error;
     }
