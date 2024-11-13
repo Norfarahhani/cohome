@@ -12,7 +12,6 @@ export class CreatePage implements OnInit {
 
   tasks: string ="";
   notes: string = "";
-  date: string = "";
   reminder: boolean = false;
   selectedRepeatOption: string = "";
   members: string[] = [];
@@ -42,7 +41,7 @@ export class CreatePage implements OnInit {
   }
 
   async create() {
-    const register = await this.taskService.createTask(this.tasks, this.notes, this.date, this.reminder, this.selectedRepeatOption, this.members, this.days);
+    const register = await this.taskService.createTask(this.tasks, this.notes, this.reminder, this.selectedRepeatOption, this.members, this.days);
     this.router.navigate(['/home/task']);
   }
 

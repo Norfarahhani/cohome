@@ -19,22 +19,16 @@
   <ion-list [inset]="true" class="rounded-list">
     <ion-item>
       <ion-select  [(ngModel)]="tasks" label="Task" label-placement="floating">
-        <ion-select-option value="apple">Mop floor</ion-select-option>
-        <ion-select-option value="banana">Wash sink</ion-select-option>
-        <ion-select-option value="orange">Clean windows</ion-select-option>
-        <ion-select-option value="orange">Empty trash</ion-select-option>
-        <ion-select-option value="orange">Others</ion-select-option>
+        <ion-select-option value="0">Mop floor</ion-select-option>
+        <ion-select-option value="1">Wash sink</ion-select-option>
+        <ion-select-option value="2">Clean windows</ion-select-option>
+        <ion-select-option value="3">Empty trash</ion-select-option>
+        <ion-select-option value="4">Others</ion-select-option>
       </ion-select>
     </ion-item>
 
     <ion-item>
       <ion-textarea [(ngModel)]="notes" placeholder="Write your notes..." label="Notes" labelPlacement="floating" rows="3"></ion-textarea>
-    </ion-item>
-  </ion-list>
-
-  <ion-list [inset]="true" class="rounded-list">
-    <ion-item>
-      <ion-input [(ngModel)]="date" type="date" placeholder="YYYY-MM-DD"></ion-input>
     </ion-item>
   </ion-list>
 
@@ -75,13 +69,13 @@
       <ion-icon name="sunny-outline" slot="start" style="margin-right: 10px;"></ion-icon>
       <ion-label>Day</ion-label>
       <ion-select slot="end" [(ngModel)]="days" [multiple]="true">
-        <ion-select-option value="day1">Monday</ion-select-option>
-        <ion-select-option value="day2">Tuesday</ion-select-option>
-        <ion-select-option value="day3">Wednesday</ion-select-option>
-        <ion-select-option value="day4">Thursday</ion-select-option>
-        <ion-select-option value="day5">Friday</ion-select-option>
-        <ion-select-option value="day6">Saturday</ion-select-option>
-        <ion-select-option value="day7">Sunday</ion-select-option>
+        <ion-select-option value="0">Monday</ion-select-option>
+        <ion-select-option value="1">Tuesday</ion-select-option>
+        <ion-select-option value="2">Wednesday</ion-select-option>
+        <ion-select-option value="3">Thursday</ion-select-option>
+        <ion-select-option value="4">Friday</ion-select-option>
+        <ion-select-option value="5">Saturday</ion-select-option>
+        <ion-select-option value="6">Sunday</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-list>

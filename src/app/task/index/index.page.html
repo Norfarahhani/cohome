@@ -8,50 +8,52 @@
   </ion-label>
 
   <ion-accordion-group expand="inset" [value]="today">
-    <ion-accordion *ngFor="let day of days;" value="{{ day }}">
+    <ion-accordion *ngFor="let day of days; index as key" [value]="day">
       <ion-item class="rounded-list" slot="header" color="light">
         <ion-label>{{ ucfirst(day) }}</ion-label>
       </ion-item>
-
       <div class="ion-padding" slot="content">
-        <ion-list [inset]="true" class="rounded-list">
-          <ion-item-sliding>
-            <ion-item>
-              <ion-grid>
-                <ion-row>
-                  <ion-col>
-
-                    <ion-row>
-                      <ion-item>
-                        <ion-text>
-                          <strong> Mop floor</strong>
-                        </ion-text>
-                      </ion-item>
-                    </ion-row>
-
-                    <ion-row>
-                      <ion-item>
-                        <ion-text> Lantai dapur </ion-text>
-                      </ion-item>
-                    </ion-row>
-
-                    <ion-row>
-                      <ion-item>
-                        <ion-icon name="person-outline" slot="start"></ion-icon>
-                        <ion-text>Hani, Emily</ion-text>
-                      </ion-item>
-                    </ion-row>
-
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-item>
-          </ion-item-sliding>
+        <!-- Tasks for the given day -->
+        <ion-list *ngFor="let groupedByDay of groupedByDays[key]" [inset]="true" class="rounded-list">
+          <ion-item>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-row>
+                    <ion-item>
+                      <ion-text><strong>{{ getTaskName(groupedByDay.tasks) }}</strong></ion-text>
+                    </ion-item>
+                  </ion-row>
+                  <ion-row>
+                    <ion-item>
+                      <ion-text>{{ groupedByDay.notes }}</ion-text>
+                    </ion-item>
+                  </ion-row>
+                  <ion-row>
+                    <ion-item>
+                      <ion-icon name="person-outline" slot="start"></ion-icon>
+                      <ion-text>Hani, Emily</ion-text>
+                    </ion-item>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
         </ion-list>
+        <!-- Message when there are no tasks -->
+        <ion-item *ngIf="!groupedByDays[key] || groupedByDays[key].length === 0">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-text>No task for today.</ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
       </div>
-
     </ion-accordion>
   </ion-accordion-group>
+  
 
   <!-- FAB Button -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
