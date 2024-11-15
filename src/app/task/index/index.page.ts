@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { TaskService } from '../task.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -35,19 +36,10 @@ export class IndexPage implements OnInit {
 
   today: string = this.days[this.current];
 
-  constructor(private modalCtrl: ModalController, private taskService: TaskService) { }
+  constructor(private modalCtrl: ModalController, private taskService: TaskService, private router: Router) { }
 
   ngOnInit() {
-    this.taskService.getAllDocuments().subscribe((data) => {
-      data.forEach(task => {
-        task.days.forEach((day: string | number) => {
-          if (!this.groupedByDays[day]) {
-            this.groupedByDays[day] = [];
-          }
-          this.groupedByDays[day].push(task);
-        });
-      });
-    });
+    this.getTasks();
   }
   public alertButtons = ['Save'];
   public alertInputs = [
@@ -64,6 +56,23 @@ export class IndexPage implements OnInit {
 
   getTaskName(index: number) {
     return this.tasks[index];
+  }
+
+  getTasks() {
+    this.taskService.getAllDocuments().subscribe((data) => {
+      data.forEach(task => {
+        task.days.forEach((day: string | number) => {
+          if (!this.groupedByDays[day]) {
+            this.groupedByDays[day] = [];
+          }
+          this.groupedByDays[day].push(task);
+        });
+      });
+    });
+  }
+
+  navigateToEditTask(id: string) {
+    this.router.navigate(['/task/view', id]);
   }
 
 }

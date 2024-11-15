@@ -17,7 +17,7 @@
       <div class="ion-padding" slot="content">
         <!-- Tasks for the given day -->
         <ion-list *ngFor="let groupedByDay of groupedByDays[key]" [inset]="true" class="rounded-list">
-          <ion-item>
+          <ion-item (click)="navigateToEditTask(groupedByDay.id)">
             <ion-grid>
               <ion-row>
                 <ion-col>
