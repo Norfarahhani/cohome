@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, addDoc, collectionData, doc, getFirestore, docData, query, where, deleteDoc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, collectionData, doc, getFirestore, docData, query, where, deleteDoc,updateDoc } from '@angular/fire/firestore';
 import { Auth, getAuth } from '@angular/fire/auth';
 import { Observable, of } from 'rxjs';
 import { TaskModel } from '../models/task.model';
+import { TaskRoutingModule } from './task-routing.module';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,8 @@ import { TaskModel } from '../models/task.model';
 export class TaskService {
   constructor(
     private firestore: Firestore,
-    private auth: Auth
+    private auth: Auth,
+   
   ) { }
 
   async createTask(taskModel: TaskModel) {
@@ -51,6 +54,28 @@ export class TaskService {
   async deleteTask(id: string) {
     const taskDocRef = doc(this.firestore, 'tasks', id);
     await deleteDoc(taskDocRef);
+  }
+
+  async updateTaskDetails(id: string, taskModel: TaskModel) {
+    const user = getAuth().currentUser;
+
+    if (user) {
+      const userId = user.uid; // Get authenticated user ID
+      const taskDocRef = doc(getFirestore(), "tasks", id); // Reference to the specific task document by its ID
+  
+      try {
+        // Updating the task document with the provided data
+        await updateDoc(taskDocRef, taskModel as Record<string, any>); 
+        console.log("Task updated successfully");
+        return true;
+      } catch (error) {
+        console.error("Error updating task document:", error);
+      }
+    } else {
+      console.error("User not authenticated");
+    }
+  
+    return false;
   }
 
 }

@@ -58,6 +58,20 @@ export class ViewPage implements OnInit {
     this.router.navigate(['/home/task']);
   }
 
+  async updateTaskDetails() {
+    if (!this.taskId) {
+      console.error('Task model is not defined.');
+      return;
+    }
+  
+    try {
+      await this.taskService.updateTaskDetails(this.taskId, this.taskModel);
+      console.log('Task updated successfully');
+      this.router.navigate(['/home/task']);
+    } catch (error) {
+      console.error('Error updating task details:', error);
+    }
+  }
+
 
 }
-
