@@ -17,11 +17,13 @@ export class IndexPage implements OnInit {
   hasHousehold: boolean = false;
   householdModel: HouseholdModel = new HouseholdModel();
   householdMemberModels: HouseholdMemberModel[] = [];
+  isLeader: boolean = false;
 
   constructor(private householdService: HouseholdService, private alertController: AlertController) { }
 
   ngOnInit() {
     this.householdCheck();
+    this.leaderCheck();
 
     if (this.hasHousehold) {
       this.getHousehold();
@@ -59,6 +61,11 @@ export class IndexPage implements OnInit {
   householdCheck() {
     const check = localStorage.getItem('hasHousehold');
     this.hasHousehold = (check == 'true') ? true : false;
+  }
+
+  leaderCheck() {
+    const check = localStorage.getItem('isLeader');
+    this.isLeader = (check == 'true') ? true : false;
   }
 
   getHousehold() {

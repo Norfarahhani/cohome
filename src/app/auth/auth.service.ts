@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collection, addDoc, doc, setDoc } from '@angular/fire/firestore';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { UserModel } from '../models/user.model';
 import { HouseholdService } from '../household/household.service';
 
@@ -43,6 +43,21 @@ export class AuthService {
       if (household.length > 0) {
         localStorage.setItem('household', JSON.stringify(household[0]));
         localStorage.setItem('hasHousehold', 'true');
+
+        this.householdService.getHousehold().subscribe({
+          next: (data: any) => {
+            if (data) {
+              if (data.leader_id == getAuth().currentUser?.uid) {
+                localStorage.setItem('isLeader', 'true');
+              } else {
+                localStorage.setItem('isLeader', 'false');
+              }
+            }
+          },
+          error: (error) => {
+            console.error('Error fetching household details:', error);
+          }
+        });
       } else {
         localStorage.setItem('hasHousehold', 'false');
       }

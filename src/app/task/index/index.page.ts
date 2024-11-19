@@ -28,18 +28,20 @@ export class IndexPage implements OnInit {
   ]
   current: number = (
     new Date().getDay() == 0 //condition
-    ? 6 //if true = 6
-    : new Date().getDay() - 1 //if false = -1
+      ? 6 //if true = 6
+      : new Date().getDay() - 1 //if false = -1
   );
 
   groupedByDays: { [key: string]: any[] } = {};
 
   today: string = this.days[this.current];
+  isLeader: boolean = false;
 
   constructor(private modalCtrl: ModalController, private taskService: TaskService, private router: Router) { }
 
   ngOnInit() {
     this.getTasks();
+    this.leaderCheck();
   }
   public alertButtons = ['Save'];
   public alertInputs = [
@@ -73,7 +75,13 @@ export class IndexPage implements OnInit {
   }
 
   navigateToEditTask(id: string) {
+    if (!this.isLeader) return;
     this.router.navigate(['/task/view', id]);
+  }
+
+  leaderCheck() {
+    const check = localStorage.getItem('isLeader');
+    this.isLeader = (check == 'true') ? true : false;
   }
 
 }

@@ -29,7 +29,7 @@
     >
   </ion-list>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="hasHousehold">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="hasHousehold && isLeader">
     <ion-fab-button class="fab-button">
       <ion-icon id="present-alert" name="add"></ion-icon>
       <ion-alert

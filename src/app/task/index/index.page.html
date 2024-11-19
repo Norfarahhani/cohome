@@ -59,7 +59,7 @@
 
 
   <!-- FAB Button -->
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="isLeader">
     <ion-fab-button class="fab-button" [routerLink]="['/task/create']">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
