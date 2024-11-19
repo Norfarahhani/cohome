@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TaskService } from '../task.service';
 import { HouseholdService } from 'src/app/household/household.service';
 import { HouseholdMemberModel } from 'src/app/models/household-member.model';
+import { TaskModel } from 'src/app/models/task.model';
 
 
 @Component({
@@ -11,30 +12,19 @@ import { HouseholdMemberModel } from 'src/app/models/household-member.model';
   styleUrls: ['./view.page.scss'],
 })
 export class ViewPage implements OnInit {
-  tasks: string = '';
-  notes: string = '';
-  reminder: boolean = false;
-  selectedRepeatOption: string = "";
-  members: string[] = [];
+  taskId: string = this.route.snapshot.paramMap.get('id') ?? '';
+  taskModel: TaskModel = new TaskModel();
   householdMemberModels: HouseholdMemberModel[] = [];
-  days: string = "";
 
-
-  constructor(private router: Router, private taskService: TaskService, private householdService: HouseholdService) { }
+  constructor(private router: Router, private taskService: TaskService, private householdService: HouseholdService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getTaskDetails();
     this.getHouseholdMembers();
-
+    this.getTaskDetails();
   }
 
   async cancelCreate() {
     this.router.navigate(['/home/task']);
-  }
-
-  toggleReminder(event: any) {
-    // Logic to handle toggle change
-    console.log('Repeat Reminder:', this.reminder);
   }
 
   getHouseholdMembers() {
@@ -51,20 +41,21 @@ export class ViewPage implements OnInit {
   }
 
   getTaskDetails() {
-    this.taskService.getTaskDetails().subscribe({
+    this.taskService.getTaskDetails(this.taskId).subscribe({
       next: (data: any) => {
         if (data) {
-          this.tasks = data.tasks;
-          this.notes = data.notes;
-          this.reminder = data.reminder;
-          this.selectedRepeatOption = data.selectedRepeatOption;
-          
+          this.taskModel = data;
         }
       },
       error: (error) => {
-        console.error('Error fetching user details:', error);
+        console.error('Error fetching household details:', error);
       }
     });
+  }
+
+  deleteTask() {
+    this.taskService.deleteTask(this.taskId);
+    this.router.navigate(['/home/task']);
   }
 
 

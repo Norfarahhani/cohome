@@ -7,3 +7,10 @@ ion-note {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 10px;
 }
+
+ion-select .select-placeholder,
+ion-select .select-text {
+  white-space: nowrap;   /* Prevent text from wrapping to the next line */
+  overflow: hidden;      /* Hide any overflowing text */
+  text-overflow: ellipsis; /* Add ellipsis (...) when text overflows */
+}

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TaskService } from '../task.service';
 import { HouseholdService } from 'src/app/household/household.service';
 import { HouseholdMemberModel } from 'src/app/models/household-member.model';
+import { TaskModel } from 'src/app/models/task.model';
 
 
 @Component({
@@ -11,13 +12,7 @@ import { HouseholdMemberModel } from 'src/app/models/household-member.model';
   styleUrls: ['./create.page.scss'],
 })
 export class CreatePage implements OnInit {
-
-  tasks: string = "";
-  notes: string = "";
-  reminder: boolean = false;
-  selectedRepeatOption: string = "";
-  members: string[] = [];
-  days: string = "";
+  taskModel: TaskModel = new TaskModel();
   householdMemberModels: HouseholdMemberModel[] = [];
 
   constructor(private taskService: TaskService, private router: Router, private householdService: HouseholdService) { }
@@ -39,13 +34,9 @@ export class CreatePage implements OnInit {
 
   ];
 
-  toggleReminder(event: any) {
-    // Logic to handle toggle change
-    console.log('Repeat Reminder:', this.reminder);
-  }
-
   async create() {
-    const register = await this.taskService.createTask(this.tasks, this.notes, this.reminder, this.selectedRepeatOption, this.members, this.days);
+    this.taskModel.household_id = JSON.parse(localStorage.getItem('household') ?? '').household_id;
+    const register = await this.taskService.createTask(this.taskModel);
     this.router.navigate(['/home/task']);
   }
 

@@ -59,7 +59,7 @@ export class IndexPage implements OnInit {
   }
 
   getTasks() {
-    this.taskService.getAllDocuments().subscribe((data) => {
+    this.taskService.getAllTasks().subscribe((data) => {
       data.forEach(task => {
         task.days.forEach((day: string | number) => {
           if (!this.groupedByDays[day]) {

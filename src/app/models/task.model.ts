@@ -1,6 +1,6 @@
 export class TaskModel {
   constructor(
-    public date: string = '',
+    public household_id: string = '',
     public days: string[] = [],
     public members: string[] = [],
     public notes: string = '',
