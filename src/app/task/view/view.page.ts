@@ -16,7 +16,12 @@ export class ViewPage implements OnInit {
   taskModel: TaskModel = new TaskModel();
   householdMemberModels: HouseholdMemberModel[] = [];
 
-  constructor(private router: Router, private taskService: TaskService, private householdService: HouseholdService, private route: ActivatedRoute) { }
+  constructor(
+    private router: Router, 
+    private taskService: TaskService, 
+    private householdService: HouseholdService, 
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
     this.getHouseholdMembers();

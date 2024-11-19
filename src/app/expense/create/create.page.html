@@ -59,10 +59,10 @@
         <ion-select-option value="Food & Drinks"
           >Food & Drinks</ion-select-option
         >
-        <ion-select-option value="Grocery's">Grocery's</ion-select-option>
+        <ion-select-option value="Groceries">Groceries</ion-select-option>
         <ion-select-option value="Transport">Transport</ion-select-option>
         <ion-select-option value="Housing">Housing</ion-select-option>
-        <ion-select-option value="Housing">Others</ion-select-option>
+        <ion-select-option value="Others">Others</ion-select-option>
       </ion-select>
       <ion-icon
         name="chevron-forward-outline"
@@ -103,9 +103,8 @@
       ></ion-icon>
       <ion-label>Assign Expense</ion-label>
       <ion-select [(ngModel)]="expense.members" slot="end" [multiple]="true">
-        <ion-select-option value="member1">Hani</ion-select-option>
-        <ion-select-option value="member2">Emily</ion-select-option>
-        <ion-select-option value="member3">Taeyang</ion-select-option>
+        <ion-select-option *ngFor="let householdMemberModel of householdMemberModels"
+          [value]="householdMemberModel.userDetails.uid">{{ householdMemberModel.userDetails.name }}</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-list>

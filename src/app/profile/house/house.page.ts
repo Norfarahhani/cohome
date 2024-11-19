@@ -21,16 +21,7 @@ export class HousePage implements OnInit {
     this.router.navigate(['/home/profile']);
   }
 
-  getHousehold() {
-    this.householdService.getHousehold().subscribe({
-      next: (data: any) => {
-        if (data) {
-          this.householdModel = data;
-        }
-      },
-      error: (error) => {
-        console.error('Error fetching household details:', error);
-      }
-    });
+  async getHousehold() {
+    this.householdModel = await this.householdService.getHousehold();
   }
 }

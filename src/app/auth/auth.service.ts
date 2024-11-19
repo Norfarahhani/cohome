@@ -44,20 +44,12 @@ export class AuthService {
         localStorage.setItem('household', JSON.stringify(household[0]));
         localStorage.setItem('hasHousehold', 'true');
 
-        this.householdService.getHousehold().subscribe({
-          next: (data: any) => {
-            if (data) {
-              if (data.leader_id == getAuth().currentUser?.uid) {
-                localStorage.setItem('isLeader', 'true');
-              } else {
-                localStorage.setItem('isLeader', 'false');
-              }
-            }
-          },
-          error: (error) => {
-            console.error('Error fetching household details:', error);
-          }
-        });
+        const householdData = await this.householdService.getHousehold();
+        if (householdData.leader_id == getAuth().currentUser?.uid) {
+          localStorage.setItem('isLeader', 'true');
+        } else {
+          localStorage.setItem('isLeader', 'false');
+        }
       } else {
         localStorage.setItem('hasHousehold', 'false');
       }

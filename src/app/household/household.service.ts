@@ -70,11 +70,21 @@ export class HouseholdService {
     return { 'success': false };
   }
 
-  getHousehold() {
+  async getHousehold(): Promise<any> {
     const household_id = JSON.parse(localStorage.getItem('household') ?? '').household_id;
     const householdDocRef = doc(getFirestore(), "households", household_id);
-
-    return docData(householdDocRef);
+  
+    try {
+      const householdSnapshot = await getDoc(householdDocRef); // Fetch the document snapshot
+      if (householdSnapshot.exists()) {
+        return householdSnapshot.data(); // Return the document data
+      } else {
+        throw new Error("Household not found");
+      }
+    } catch (error) {
+      console.error("Error fetching household:", error);
+      throw error; // Rethrow the error so it can be handled by the caller
+    }
   }
 
   getHouseholdMembers() {

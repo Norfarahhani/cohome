@@ -24,7 +24,7 @@ const routes: Routes = [
     component: UnpaidPage
   },
   {
-    path: 'edit',
+    path: 'edit/:id',
     component: EditPage
   }
 ];

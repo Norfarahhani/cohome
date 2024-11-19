@@ -1,29 +1,45 @@
-<ion-item-sliding>
+<ion-item-sliding *ngFor="let expenseModel of expenseModels">
     <ion-item>
-        <ion-checkbox slot="end"></ion-checkbox>
-        <ion-icon name="fast-food-outline" slot="start" style="max-width: 85%; max-height: 85%;"></ion-icon>
+        <ion-checkbox slot="end" disabled [(ngModel)]="paid"></ion-checkbox>
+        <ion-icon *ngIf="expenseModel.selected_category == 'Entertainment'" name="game-controller-outline" slot="start" style="max-width: 85%; max-height: 85%;"></ion-icon>
+        <ion-icon *ngIf="expenseModel.selected_category == 'Food & Drinks'" name="fast-food-outline" slot="start" style="max-width: 85%; max-height: 85%;"></ion-icon>
+        <ion-icon *ngIf="expenseModel.selected_category == 'Groceries'" name="basket-outline" slot="start" style="max-width: 85%; max-height: 85%;"></ion-icon>
+        <ion-icon *ngIf="expenseModel.selected_category == 'Transport'" name="car-outline" slot="start" style="max-width: 85%; max-height: 85%;"></ion-icon>
+        <ion-icon *ngIf="expenseModel.selected_category == 'Housing'" name="home-outline" slot="start" style="max-width: 85%; max-height: 85%;"></ion-icon>
+        <ion-icon *ngIf="expenseModel.selected_category == 'Others'" name="help-circle-outline" slot="start" style="max-width: 85%; max-height: 85%;"></ion-icon>
         <ion-grid>
             <ion-row>
                 <ion-col>
                     <ion-row>
                         <ion-text>
-                            <strong>Food & Drinks</strong>
+                            <strong>{{ expenseModel.selected_category }}</strong>
                         </ion-text>
                     </ion-row>
                     <ion-row>
-                        <ion-text> Nasi lemak semalam </ion-text>
+                        <ion-text>{{ expenseModel.notes }}</ion-text>
                     </ion-row>
                     <ion-row>
-                        <ion-text> RM5.00 </ion-text>
+                        <ion-text>RM{{ expenseModel.amount }}</ion-text>
                     </ion-row>
                 </ion-col>
             </ion-row>
         </ion-grid>
     </ion-item>
     <ion-item-options>
-        <ion-item-option id="open-edit" color="medium" [routerLink]="['/expense/edit']">
+        <ion-item-option id="open-edit" color="medium" (click)="navigateToEditExpense(expenseModel.id)">
             <ion-icon slot="end" name="create-outline"></ion-icon>
             Edit
         </ion-item-option>
     </ion-item-options>
 </ion-item-sliding>
+<ion-item *ngIf="expenseModels.length === 0">
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-text>
+                    <strong>There are no expenses available.</strong>
+                </ion-text>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-item>

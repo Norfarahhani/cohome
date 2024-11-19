@@ -1,19 +1,43 @@
-<ion-item-sliding>
-    <ion-item>
-        <ion-icon name="cart-outline" slot="start" style="max-width: 85%; max-height: 85%;"></ion-icon>
-        <ion-grid>
-            <ion-row>
-                <ion-col>
-                    <ion-row>
-                        <ion-text>
-                            <strong>Grocery's</strong>
-                        </ion-text>
-                    </ion-row>
-                    <ion-row class="ion-margin-bottom">
-                        <ion-text> RM5.00 </ion-text>
-                    </ion-row>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
-    </ion-item>
-</ion-item-sliding>
+<ion-item *ngFor="let expenseMemberModel of expenseMemberModels">
+    <ion-checkbox [(ngModel)]="expenseMemberModel.status" slot="end" (ionChange)="onCheckboxChange($event, expenseMemberModel.id)"></ion-checkbox>
+    <ion-icon *ngIf="expenseMemberModel.expense.selected_category == 'Entertainment'" name="game-controller-outline"
+        slot="start" style="max-width: 85%; max-height: 85%;"></ion-icon>
+    <ion-icon *ngIf="expenseMemberModel.expense.selected_category == 'Food & Drinks'" name="fast-food-outline"
+        slot="start" style="max-width: 85%; max-height: 85%;"></ion-icon>
+    <ion-icon *ngIf="expenseMemberModel.expense.selected_category == 'Groceries'" name="basket-outline" slot="start"
+        style="max-width: 85%; max-height: 85%;"></ion-icon>
+    <ion-icon *ngIf="expenseMemberModel.expense.selected_category == 'Transport'" name="car-outline" slot="start"
+        style="max-width: 85%; max-height: 85%;"></ion-icon>
+    <ion-icon *ngIf="expenseMemberModel.expense.selected_category == 'Housing'" name="home-outline" slot="start"
+        style="max-width: 85%; max-height: 85%;"></ion-icon>
+    <ion-icon *ngIf="expenseMemberModel.expense.selected_category == 'Others'" name="help-circle-outline" slot="start"
+        style="max-width: 85%; max-height: 85%;"></ion-icon>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-row>
+                    <ion-text>
+                        <strong>{{ expenseMemberModel.expense.selected_category }}</strong>
+                    </ion-text>
+                </ion-row>
+                <ion-row>
+                    <ion-text>{{ expenseMemberModel.expense.notes }}</ion-text>
+                </ion-row>
+                <ion-row>
+                    <ion-text>RM{{ expenseMemberModel.expense.amount / expenseMemberModel.members }}</ion-text>
+                </ion-row>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-item>
+<ion-item *ngIf="expenseMemberModels.length === 0">
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-text>
+                    <strong>There are no expenses available.</strong>
+                </ion-text>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-item>

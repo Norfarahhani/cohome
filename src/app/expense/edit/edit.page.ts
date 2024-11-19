@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ExpenseService } from '../expense.service';
+import { ExpenseModel } from 'src/app/models/expense.model';
+import { HouseholdService } from 'src/app/household/household.service';
+import { HouseholdMemberModel } from 'src/app/models/household-member.model';
+import { getAuth } from '@angular/fire/auth';
 
 @Component({
     selector: 'app-expense-edit',
@@ -8,42 +12,66 @@ import { ExpenseService } from '../expense.service';
     styleUrls: ['./edit.page.scss'],
 })
 export class EditPage implements OnInit {
+    expenseId: string = this.route.snapshot.paramMap.get('id') ?? '';
+    expenseModel: ExpenseModel = new ExpenseModel();
+    householdMemberModels: HouseholdMemberModel[] = [];
 
-    amount: number = 0;
-    selected_category: string = '';
-    date: string = '';
-    notes: string = '';
-    members: string[] = [];  
-
-    constructor(private router: Router, private expenseService: ExpenseService) { }
+    constructor(
+        private router: Router,
+        private expenseService: ExpenseService,
+        private householdService: HouseholdService,
+        private route: ActivatedRoute
+    ) { }
 
     ngOnInit() {
         this.getExpenseDetails();
+        this.getHouseholdMembers();
     }
 
     async cancelCreate() {
         this.router.navigate(['/home/expense']);
-      }
+    }
 
-      async getExpenseDetails() {
-        const data: any = await this.expenseService.getExpenseDetails();
-        this.amount = data.amount;
-        this.selected_category = data.selected_category;
-        this.date = data.date;
-        this.notes = data.notes;
+    getExpenseDetails() {
+        this.expenseService.getExpenseDetails(this.expenseId).subscribe({
+            next: (data: any) => {
+                if (data) {
+                    this.expenseModel = data;
+                }
+            },
+            error: (error) => {
+                console.error('Error fetching household details:', error);
+            }
+        });
     }
 
     async updateExpenseDetails() {
-        const user: any = {
-            amount: this.amount,
-            selected_category: this.selected_category,
-            date: this.date,
-            notes: this.notes
-        };
+        if (!this.expenseId) {
+            console.error('Expense model is not defined.');
+            return;
+          }
+        
+          try {
+            await this.expenseService.updateExpenseDetails(this.expenseId, this.expenseModel);
+            console.log('Expense updated successfully');
+            this.router.navigate(['/home/expense']);
+          } catch (error) {
+            console.error('Error updating expense details:', error);
+          }
+    }
 
-        await this.expenseService.updateExpenseDetails(user);
-
-        this.router.navigate(['/home/expense']);
+    getHouseholdMembers() {
+        this.householdService.getHouseholdMembers().subscribe({
+            next: (data: any) => {
+                if (data) {
+                    this.householdMemberModels = data;
+                    this.householdMemberModels = this.householdMemberModels.filter(item => item.member_id !== getAuth().currentUser?.uid);
+                }
+            },
+            error: (error) => {
+                console.error('Error fetching household details:', error);
+            }
+        });
     }
 
 }
