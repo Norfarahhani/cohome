@@ -15,12 +15,22 @@ export class LoginPage implements OnInit {
 
   constructor(private authService: AuthService, private router: Router, private alertController: AlertController) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.authService.initializeSocialLogin();
   }
 
   async onLogin() {
     try {
       await this.authService.loginUser(this.email, this.password);
+      this.router.navigate(['/home']); // Navigate to home after successful login
+    } catch (error: any) {
+      await this.presentAlert('Error', error.message);
+    }
+  }
+
+  async onLoginWithGoogle() {
+    try {
+      await this.authService.loginUserWithGoogle();
       this.router.navigate(['/home']); // Navigate to home after successful login
     } catch (error: any) {
       await this.presentAlert('Error', error.message);

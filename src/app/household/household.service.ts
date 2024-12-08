@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collection, addDoc, doc, setDoc, query, where, getDocs, getFirestore, docData, collectionData, getDoc } from '@angular/fire/firestore';
 import { Auth, createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
-import { forkJoin, from, map, switchMap } from 'rxjs';
+import { firstValueFrom, forkJoin, from, map, switchMap } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HouseholdService {
+  private apiUrl = 'https://fcm.googleapis.com/v1/projects/cohome-4dc5d/messages:send';
   constructor(
     private firestore: Firestore,
-    private auth: Auth
+    private auth: Auth,
+    private http: HttpClient
   ) { }
 
   // Register a new user and add to Firestore
@@ -55,7 +58,7 @@ export class HouseholdService {
     const householdQuery = query(householdCollection, where('code', '==', code));
     const querySnapshot = await getDocs(householdQuery);
 
-    const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    const data: any = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 
     if (data.length > 0) {
       const householdMemberRef = collection(this.firestore, 'household_members');
@@ -64,16 +67,60 @@ export class HouseholdService {
         member_id: getAuth().currentUser?.uid
       });
 
+      const notificationsCollection = collection(this.firestore, 'notifications');
+      this.sendPushNotification(
+        localStorage.getItem('fcmToken') ?? '',
+        "A New Member Has Joined Your Household",
+        "A new member has just joined your household. Check your household details to welcome them!"
+      );
+
+      const notificationData = {
+        from: getAuth().currentUser?.uid,
+        to: data[0].leader_id,
+        title: "A New Member Has Joined Your Household",
+        body: "A new member has just joined your household. Check your household details to welcome them!",
+        created_at: new Date().toISOString(),
+        url: '/home/household'
+      };
+
+      try {
+        await addDoc(notificationsCollection, notificationData);
+        console.log('Notification saved successfully:', notificationData);
+      } catch (error) {
+        console.error('Error saving notification:', error);
+      }
+
       return { 'success': true, 'data': newData };
     }
 
     return { 'success': false };
   }
 
+  async sendPushNotification(fcmToken: string, title: string, body: string) {
+    const token = localStorage.getItem('accessToken');
+    const payload = {
+      message: {
+        token: fcmToken,
+        notification: {
+          title: title,
+          body: body,
+        },
+      },
+    };
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
+
+    // Send the notification
+    return firstValueFrom(this.http.post(this.apiUrl, payload, { headers }));
+  }
+
   async getHousehold(): Promise<any> {
     const household_id = JSON.parse(localStorage.getItem('household') ?? '').household_id;
     const householdDocRef = doc(getFirestore(), "households", household_id);
-  
+
     try {
       const householdSnapshot = await getDoc(householdDocRef); // Fetch the document snapshot
       if (householdSnapshot.exists()) {

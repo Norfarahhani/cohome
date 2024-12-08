@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, addDoc, collectionData, doc, getFirestore, docData, query, where, deleteDoc,updateDoc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, collectionData, doc, getFirestore, docData, query, where, deleteDoc, updateDoc, getDocs } from '@angular/fire/firestore';
 import { Auth, getAuth } from '@angular/fire/auth';
 import { Observable, of } from 'rxjs';
 import { TaskModel } from '../models/task.model';
 import { TaskRoutingModule } from './task-routing.module';
+import { LocalNotifications } from '@capacitor/local-notifications';
 
 
 @Injectable({
@@ -13,7 +14,7 @@ export class TaskService {
   constructor(
     private firestore: Firestore,
     private auth: Auth,
-   
+
   ) { }
 
   async createTask(taskModel: TaskModel) {
@@ -27,7 +28,6 @@ export class TaskService {
         'members': taskModel.members,
         'notes': taskModel.notes,
         'reminder': taskModel.reminder,
-        'selectedRepeatOption': taskModel.selectedRepeatOption,
         'tasks': taskModel.tasks
       });
 
@@ -38,12 +38,13 @@ export class TaskService {
     }
   }
 
-  getAllTasks(): Observable<any[]> {
+  async getAllTasks() {
     const household_id = JSON.parse(localStorage.getItem('household') ?? '').household_id;
     const collectionRef = collection(this.firestore, 'tasks');
     const tasksQuery = query(collectionRef, where('household_id', '==', household_id));
-    
-    return collectionData(tasksQuery, { idField: 'id' });
+
+    const querySnapshot = await getDocs(tasksQuery);
+    return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
   }
 
   getTaskDetails(id: string): Observable<any | null> {
@@ -62,10 +63,10 @@ export class TaskService {
     if (user) {
       const userId = user.uid; // Get authenticated user ID
       const taskDocRef = doc(getFirestore(), "tasks", id); // Reference to the specific task document by its ID
-  
+
       try {
         // Updating the task document with the provided data
-        await updateDoc(taskDocRef, taskModel as Record<string, any>); 
+        await updateDoc(taskDocRef, taskModel as Record<string, any>);
         console.log("Task updated successfully");
         return true;
       } catch (error) {
@@ -74,7 +75,7 @@ export class TaskService {
     } else {
       console.error("User not authenticated");
     }
-  
+
     return false;
   }
 

@@ -36,7 +36,7 @@ export class CreatePage implements OnInit {
 
   async create() {
     this.taskModel.household_id = JSON.parse(localStorage.getItem('household') ?? '').household_id;
-    const register = await this.taskService.createTask(this.taskModel);
+    await this.taskService.createTask(this.taskModel);
     this.router.navigate(['/home/task']);
   }
 

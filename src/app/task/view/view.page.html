@@ -1,88 +1,114 @@
 <ion-content class="ion-padding">
-    <ion-grid>
-        <ion-row>
-            <ion-col>
-                <ion-buttons (click)="cancelCreate()">
-                    <ion-icon style="font-size: 20px" name="chevron-back-outline"></ion-icon>
-                </ion-buttons>
-            </ion-col>
-            <!-- Center Title -->
-            <ion-col size="8" class="ion-text-center">
-                <p>Edit Tasks</p>
-            </ion-col>
-            <ion-col>
-                <ion-buttons class="ion-float-right" (click)="updateTaskDetails()">
-                    <ion-icon style="font-size: 20px" name="checkmark-done-outline"></ion-icon>
-                </ion-buttons>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-buttons (click)="cancelCreate()">
+          <ion-icon
+            style="font-size: 20px"
+            name="chevron-back-outline"
+          ></ion-icon>
+        </ion-buttons>
+      </ion-col>
+      <!-- Center Title -->
+      <ion-col size="8" class="ion-text-center">
+        <p>Edit Tasks</p>
+      </ion-col>
+      <ion-col>
+        <ion-buttons class="ion-float-right" (click)="updateTaskDetails()">
+          <ion-icon
+            style="font-size: 20px"
+            name="checkmark-done-outline"
+          ></ion-icon>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-    <ion-list [inset]="true" class="rounded-list">
-        <ion-item>
-            <ion-select [(ngModel)]="taskModel.tasks" label="Task" label-placement="floating">
-                <ion-select-option value="0">Mop floor</ion-select-option>
-                <ion-select-option value="1">Wash sink</ion-select-option>
-                <ion-select-option value="2">Clean windows</ion-select-option>
-                <ion-select-option value="3">Empty trash</ion-select-option>
-                <ion-select-option value="4">Others</ion-select-option>
-            </ion-select>
-        </ion-item>
+  <ion-list [inset]="true" class="rounded-list">
+    <ion-item>
+      <ion-select
+        [(ngModel)]="taskModel.tasks"
+        label="Task"
+        label-placement="floating"
+      >
+        <ion-select-option value="0">Mop floor</ion-select-option>
+        <ion-select-option value="1">Wash sink</ion-select-option>
+        <ion-select-option value="2">Clean windows</ion-select-option>
+        <ion-select-option value="3">Empty trash</ion-select-option>
+        <ion-select-option value="4">Others</ion-select-option>
+      </ion-select>
+    </ion-item>
 
-        <ion-item>
-            <ion-textarea [(ngModel)]="taskModel.notes" placeholder="Write your notes..." rows="3"></ion-textarea>
-        </ion-item>
-    </ion-list>
+    <ion-item>
+      <ion-textarea
+        [(ngModel)]="taskModel.notes"
+        placeholder="Write your notes..."
+        rows="3"
+      ></ion-textarea>
+    </ion-item>
+  </ion-list>
 
-    <ion-list [inset]="true" class="rounded-list">
-        <ion-item>
-            <ion-icon name="alarm-outline" slot="start" style="margin-right: 10px"></ion-icon>
-            <ion-label>Reminder</ion-label>
-            <ion-toggle slot="end" [(ngModel)]="taskModel.reminder"></ion-toggle>
-        </ion-item>
-    </ion-list>
+  <ion-list [inset]="true" class="rounded-list">
+    <ion-item>
+      <ion-icon
+        name="alarm-outline"
+        slot="start"
+        style="margin-right: 10px"
+      ></ion-icon>
+      <ion-label>Reminder</ion-label>
+      <ion-datetime
+        slot="end"
+        [(ngModel)]="taskModel.reminder"
+        presentation="time"
+      ></ion-datetime>
+    </ion-item>
+  </ion-list>
 
-    <ion-list [inset]="true" class="rounded-list">
-        <ion-item>
-            <ion-icon name="repeat-outline" slot="start" style="margin-right: 10px"></ion-icon>
-            <ion-label>Repeat</ion-label>
-            <ion-select slot="end" [(ngModel)]="taskModel.selectedRepeatOption">
-                <ion-select-option value="daily">Daily</ion-select-option>
-                <ion-select-option value="weekly">Every Week</ion-select-option>
-                <ion-select-option value="biweekly">Every 2 Weeks</ion-select-option>
-            </ion-select>
-        </ion-item>
-    </ion-list>
+  <ion-list [inset]="true" class="rounded-list">
+    <ion-item>
+      <ion-icon
+        name="person-outline"
+        slot="start"
+        style="margin-right: 10px"
+      ></ion-icon>
+      <ion-label>Assign Task</ion-label>
+      <ion-select slot="end" [(ngModel)]="taskModel.members" [multiple]="true">
+        <ion-select-option
+          *ngFor="let householdMemberModel of householdMemberModels"
+          [value]="householdMemberModel.userDetails.uid"
+          >{{ householdMemberModel.userDetails.name }}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+  </ion-list>
 
-    <ion-list [inset]="true" class="rounded-list">
-        <ion-item>
-            <ion-icon name="person-outline" slot="start" style="margin-right: 10px"></ion-icon>
-            <ion-label>Assign Task</ion-label>
-            <ion-select slot="end" [(ngModel)]="taskModel.members" [multiple]="true">
-                <ion-select-option *ngFor="let householdMemberModel of householdMemberModels"
-                    [value]="householdMemberModel.userDetails.uid">{{ householdMemberModel.userDetails.name
-                    }}</ion-select-option>
-            </ion-select>
-        </ion-item>
-    </ion-list>
+  <ion-list [inset]="true" class="rounded-list">
+    <ion-item>
+      <ion-icon
+        name="sunny-outline"
+        slot="start"
+        style="margin-right: 10px"
+      ></ion-icon>
+      <ion-label>Day</ion-label>
+      <ion-select slot="end" [(ngModel)]="taskModel.days" [multiple]="true">
+        <ion-select-option value="0">Monday</ion-select-option>
+        <ion-select-option value="1">Tuesday</ion-select-option>
+        <ion-select-option value="2">Wednesday</ion-select-option>
+        <ion-select-option value="3">Thursday</ion-select-option>
+        <ion-select-option value="4">Friday</ion-select-option>
+        <ion-select-option value="5">Saturday</ion-select-option>
+        <ion-select-option value="6">Sunday</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 
-    <ion-list [inset]="true" class="rounded-list">
-        <ion-item>
-            <ion-icon name="sunny-outline" slot="start" style="margin-right: 10px"></ion-icon>
-            <ion-label>Day</ion-label>
-            <ion-select slot="end" [(ngModel)]="taskModel.days" [multiple]="true">
-                <ion-select-option value="0">Monday</ion-select-option>
-                <ion-select-option value="1">Tuesday</ion-select-option>
-                <ion-select-option value="2">Wednesday</ion-select-option>
-                <ion-select-option value="3">Thursday</ion-select-option>
-                <ion-select-option value="4">Friday</ion-select-option>
-                <ion-select-option value="5">Saturday</ion-select-option>
-                <ion-select-option value="6">Sunday</ion-select-option>
-            </ion-select>
-        </ion-item>
-    </ion-list>
-
-    <ion-button (click)="deleteTask()" size="small" expand="block" color="danger" shape="round"
-        class="lowercase-button">Delete task</ion-button>
-
+  <ion-button
+    (click)="deleteTask()"
+    size="small"
+    expand="block"
+    color="danger"
+    shape="round"
+    class="lowercase-button"
+    >Delete task</ion-button
+  >
 </ion-content>

@@ -1,6 +1,7 @@
 import { Component, OnInit, } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { AuthService } from 'src/app/auth/auth.service';
 import { HouseholdService } from 'src/app/household/household.service';
 
 @Component({
@@ -11,7 +12,12 @@ import { HouseholdService } from 'src/app/household/household.service';
 export class JoinPage implements OnInit {
   code: string = '';
 
-  constructor(private router: Router, private householdService: HouseholdService, private alertController: AlertController) { }
+  constructor(
+    private router: Router,
+    private householdService: HouseholdService,
+    private alertController: AlertController,
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
   }
@@ -24,7 +30,9 @@ export class JoinPage implements OnInit {
     const join = await this.householdService.joinHousehold(this.code);
     if (join.success) {
       this.presentAlert('Success', 'You have successfully joined the household!');
-      this.router.navigate(['/home/household']);
+      this.authService.logoutUser();
+      window.location.reload();
+      // this.router.navigate(['/home/household']);
     } else {
       this.presentAlert('Error', 'Household not found, please try again.');
     }

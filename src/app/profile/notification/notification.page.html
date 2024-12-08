@@ -1,54 +1,58 @@
 <ion-content class="ion-padding">
-    <ion-grid>
-        <ion-row>
-            <ion-col>
-                <ion-buttons (click)="cancelCreate()">
-                    <ion-icon style="font-size: 20px;" name="chevron-back-outline"></ion-icon>
-                </ion-buttons>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-buttons (click)="cancelCreate()">
+          <ion-icon
+            style="font-size: 20px"
+            name="chevron-back-outline"
+          ></ion-icon>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-    <ion-label>
-        <div class="notification-header">
-            <ion-text>
-                <h2>Notifications</h2>
-            </ion-text>
+  <ion-label>
+    <div class="notification-header">
+      <ion-text>
+        <h2>Notifications</h2>
+      </ion-text>
+    </div>
+  </ion-label>
+
+  <ion-list class="rounded-list">
+    <ion-list>
+      <!-- Display a message if there are no notifications -->
+      <div *ngIf="notificationModels.length === 0">
+        <ion-item>
+          <ion-label>No notifications available</ion-label>
+        </ion-item>
+      </div>
+
+      <!-- Loop through notifications and display them -->
+      <ion-item
+        *ngFor="let notificationModel of notificationModels"
+        [button]="true"
+        detail="false"
+        (click)="redirectTo(notificationModel.url)"
+      >
+        <div class="unread-indicator-wrapper" slot="start">
+          <div class="unread-indicator"></div>
         </div>
-    </ion-label>
-
-    <ion-list class="rounded-list">
-        <ion-list>
-            <ion-item [button]="true" detail="false">
-                <div class="unread-indicator-wrapper" slot="start">
-                    <div class="unread-indicator"></div>
-                </div>
-                <ion-label>
-                    <strong>Rick Astley</strong>
-                    <ion-text>CoHome code</ion-text><br />
-                    <ion-note color="medium" class="ion-text-wrap">
-                        Has requested to join your...
-                    </ion-note>
-                </ion-label>
-                <div class="metadata-end-wrapper" slot="end">
-                    <ion-note color="medium">06:11</ion-note>
-                    <ion-icon color="medium" name="chevron-forward"></ion-icon>
-                </div>
-            </ion-item>
-
-            <ion-item [button]="true" detail="false">
-                <div class="unread-indicator-wrapper" slot="start"></div>
-                <ion-label>
-                    <strong>Emily Eric</strong>
-                    <ion-text>Welcome!</ion-text><br />
-                    <ion-note color="medium" class="ion-text-wrap"> Has requested to join your...</ion-note>
-                </ion-label>
-                <div class="metadata-end-wrapper" slot="end">
-                    <ion-note color="medium">yesterday</ion-note>
-                    <ion-icon color="medium" name="chevron-forward"></ion-icon>
-                </div>
-            </ion-item>
-
-        </ion-list>
+        <ion-label>
+          <strong>{{ notificationModel.fromName }}</strong>
+          <ion-text>{{ notificationModel.title }}</ion-text><br />
+          <ion-note color="medium" class="ion-text-wrap">
+            {{ notificationModel.body }}
+          </ion-note>
+        </ion-label>
+        <div class="metadata-end-wrapper" slot="end">
+          <ion-note color="medium">
+            {{ notificationModel.created_at | date: 'shortTime' }}
+          </ion-note>
+          <ion-icon color="medium" name="chevron-forward"></ion-icon>
+        </div>
+      </ion-item>
     </ion-list>
+  </ion-list>
 </ion-content>

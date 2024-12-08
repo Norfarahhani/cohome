@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { TaskService } from '../task.service';
 import { Router } from '@angular/router';
+import { ProfileService } from 'src/app/profile/profile.service';
 
 
 @Component({
@@ -37,7 +38,11 @@ export class IndexPage implements OnInit {
   today: string = this.days[this.current];
   isLeader: boolean = false;
 
-  constructor(private modalCtrl: ModalController, private taskService: TaskService, private router: Router) { }
+  constructor(
+    private taskService: TaskService,
+    private router: Router,
+    private profileService: ProfileService
+  ) { }
 
   ngOnInit() {
     this.getTasks();
@@ -60,18 +65,23 @@ export class IndexPage implements OnInit {
     return this.tasks[index];
   }
 
-  getTasks() {
-    this.taskService.getAllTasks().subscribe((data) => {
-      this.groupedByDays = {};
-      data.forEach(task => {
-        task.days.forEach((day: string | number) => {
-          if (!this.groupedByDays[day]) {
-            this.groupedByDays[day] = [];
-          }
-          this.groupedByDays[day].push(task);
-        });
+  async getTasks() {
+    const data: any[] = await this.taskService.getAllTasks();
+    this.groupedByDays = {};
+    data.forEach(async (task) => {
+      const users = await this.getUsersById(task.members);
+      task = { ...task, users: users.map((user: any) => user.name).join(', ') };
+      task.days.forEach((day: string | number) => {
+        if (!this.groupedByDays[day]) {
+          this.groupedByDays[day] = [];
+        }
+        this.groupedByDays[day].push(task);
       });
     });
+  }
+
+  async getUsersById(ids: string[]) {
+    return await this.profileService.getUsersByIds(ids);
   }
 
   navigateToEditTask(id: string) {
