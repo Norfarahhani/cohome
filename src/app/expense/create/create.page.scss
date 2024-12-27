@@ -12,3 +12,15 @@
   margin: 10px;
 }
 
+.header-title {
+  text-align: center;
+  font-size: 16px;
+  color: #ffff; /* Adjust color if needed */
+  //font-weight: bold;
+}
+
+ion-toolbar {
+  --background:#53923d;
+  --color: white; /* Text and icon color */
+  --border-color: transparent; /* Remove default border */
+}

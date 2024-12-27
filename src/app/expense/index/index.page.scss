@@ -29,44 +29,9 @@
 }
 
 .expense-header h2 {
-  font-size: 35px;
+  font-size: 20px;
   font-weight: bold;
   margin: 0;
-}
-
-.expense-header ion-icon {
-  font-size: 25px;
-  margin-top: -10px;
-}
-
-.expense-header ion-buttons {
-  align-self: flex-start;
-}
-
-.segment-container {
-  display: flex;
-  justify-content: space-around;
-}
-
-.rounded-list {
-  border-radius: 15px; 
-  overflow: hidden; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  margin: 10px;
-}
-
-.centered-title {
-  text-align: center;
-  font-weight: bold;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.transparent-toolbar {
-  --background: transparent; 
-  --ion-background-color: transparent; 
-  --border-width: 0px; 
 }
 
 .fab-button {

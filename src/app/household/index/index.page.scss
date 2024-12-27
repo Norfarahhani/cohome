@@ -1,3 +1,26 @@
+ion-header {
+  --background: transparent !important; /* Ensures the background is transparent */
+  --border-width: 0 !important;        /* Removes any border width */
+  box-shadow: none !important;         /* Completely removes the shadow */
+}
+
+ion-toolbar {
+  --background: transparent !important;
+  box-shadow: none !important;         /* Ensures no shadow on the toolbar */
+  --ion-shadow-elevation: 0 !important; /* Additional Ionic-specific shadow removal */
+  --border-color: transparent !important;
+  padding: 0;
+}
+
+.header-logo {
+  text-align: center;
+}
+
+.cohome-logo {
+  height: 70px; /* Adjust the logo height */
+  width: auto;  /* Keep the aspect ratio */
+  margin: auto;
+}
 
 .move-text {
     position: relative;
@@ -33,7 +56,7 @@
   }
   
   .household-header h2 {
-    font-size: 29px;
+    font-size: 20px;
     font-weight: bold;
     margin: 0;
   }

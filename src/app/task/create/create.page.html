@@ -1,27 +1,23 @@
-<ion-content class="ion-padding">
-  <!-- <ion-button fill="clear"> -->
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-buttons (click)="cancelCreate()">
-          <ion-icon
-            style="font-size: 20px"
-            name="chevron-back-outline"
-          ></ion-icon>
-        </ion-buttons>
-      </ion-col>
-      <ion-col>
-        <ion-buttons class="ion-float-right" (click)="create()">
-          <ion-icon
-            style="font-size: 20px"
-            name="checkmark-done-outline"
-          ></ion-icon>
-        </ion-buttons>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <!-- </ion-button> -->
+<ion-header>
+  <ion-toolbar>
+    <!-- Back Button -->
+    <ion-buttons slot="start" (click)="cancelCreate()">
+      <ion-icon style="font-size: 20px" name="chevron-back-outline"></ion-icon>
+    </ion-buttons>
 
+    <!-- Centered Title -->
+    <ion-title class="header-title">
+      Add Task
+    </ion-title>
+
+    <!-- Save Button -->
+    <ion-buttons slot="end" (click)="create()">
+      <ion-icon style="font-size: 20px" name="checkmark-done-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
   <ion-list [inset]="true" class="rounded-list">
     <ion-item>
       <ion-select

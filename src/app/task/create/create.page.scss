@@ -7,3 +7,15 @@ ion-note {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 10px;
 }
+
+.header-title {
+  text-align: center;
+  font-size: 16px;
+  color: #ffff; /* Adjust color if needed */
+}
+
+ion-toolbar {
+  --background:#53923d; /* Gradient background */
+  --color: white; /* Text and icon color */
+  --border-color: transparent; /* Remove default border */
+}

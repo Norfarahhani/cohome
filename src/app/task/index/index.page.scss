@@ -1,14 +1,3 @@
-.rounded-list {
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 10px;
-  color: #54923d;
-}
-
-.color-list {
-  background-color: #53923d !important;
-}
 
 .task-header {
   display: flex;
@@ -25,17 +14,47 @@
 }
 
 .task-header h2 {
-  font-size: 35px;
+  font-size: 20px;
   font-weight: bold;
   margin: 0;
 }
 
-.centered-title {
+
+.accordion-header {
+  --background: var(--ion-color-light);
+  --border-color: var(--ion-color-medium);
+}
+
+.task-item {
+  --background: var(--ion-color-light);
+  border-radius: 8px;
+  margin-bottom: 8px;
+
+  ion-label {
+    h2 {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    p {
+      margin: 4px 0 8px;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.no-task-message {
   text-align: center;
-  font-weight: bold;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  padding: 1rem 0;
+  color: var(--ion-color-medium);
+}
+
+.task-accordion-group {
+  margin-top: 16px;
+}
+
+ion-fab-button {
+  --ion-color-base: var(--ion-color-primary);
+  --ion-color-base-hover: var(--ion-color-primary-shade);
 }
 
 .fab-button {
@@ -43,15 +62,3 @@
   --color: #ffde59;
 }
 
-.rounded-list ion-item {
-  --background: #54923d; /* Card background color */
-  --border-radius: 12px; /* Rounded corners */
-  --color: #333;         /* Text color */
-  --ion-item-background: #ffde59; /* Background for the main content */
-}
-
-.no-task-item {
-  --background: #ffffff;
-  --color: #d33a3a;
-  font-style: italic;
-}
