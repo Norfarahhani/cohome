@@ -28,6 +28,7 @@ export class UnpaidPage implements OnInit {
       next: (expenses: any[]) => {
         if (expenses) {
           this.expenseModels = expenses;
+          console.log(this.expenseModels);
 
           expenses.forEach((expense) => {
             this.expenseService.getExpenseMembers(expense.id).subscribe({
