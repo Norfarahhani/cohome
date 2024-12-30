@@ -14,26 +14,6 @@
   text-align: center;
 }
 
-.expense-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.expense-header ion-text {
-  margin-top: 20px;
-}
-
-.expense-header h2 {
-  font-size: 20px;
-  font-weight: bold;
-  margin: 0;
-}
-
 .fab-button {
   --background: #53923d;
   --color: #ffde59;

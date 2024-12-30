@@ -31,26 +31,6 @@
     margin: 15px 15; /* Add space above and below the text */
   }
 
-  .notification-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-  
-  .notification-header ion-text {
-    margin-top: 20px;
-  }
-  
-  .notification-header h2 {
-    font-size: 20px;
-    font-weight: bold;
-    margin: 0;
-  }
-
   .rounded-list {
     border-radius: 15px;
     overflow: hidden;
@@ -58,3 +38,14 @@
     margin: 10px;
   }
   
+  .header-title {
+    text-align: center;
+    font-size: 16px;
+    color: #ffff; /* Adjust color if needed */
+  }
+  
+  ion-toolbar {
+    --background:#53923d; /* Gradient background */
+    --color: white; /* Text and icon color */
+    --border-color: transparent; /* Remove default border */
+  }

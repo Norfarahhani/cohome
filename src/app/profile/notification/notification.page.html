@@ -1,27 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- Back Button -->
+    <ion-buttons slot="start" (click)="cancelCreate()">
+      <ion-icon style="font-size: 20px" name="chevron-back-outline"></ion-icon>
+    </ion-buttons>
+
+    <!-- Centered Title -->
+    <ion-title class="header-title">
+      Notification
+    </ion-title>
+
+  </ion-toolbar>
+</ion-header>
 
 
 <ion-content class="ion-padding">
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-buttons (click)="cancelCreate()">
-          <ion-icon
-            style="font-size: 20px"
-            name="chevron-back-outline"
-          ></ion-icon>
-        </ion-buttons>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-  <ion-label>
-    <div class="notification-header">
-      <ion-text>
-        <h2>Notifications</h2>
-      </ion-text>
-    </div>
-  </ion-label>
-
   <ion-list class="rounded-list">
     <ion-list>
       <!-- Display a message if there are no notifications -->

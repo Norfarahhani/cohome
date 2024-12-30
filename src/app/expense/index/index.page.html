@@ -1,15 +1,13 @@
-<ion-content>
-  <ion-label class="ion-padding ">
-    <div class="expense-header">
-      <ion-text>
-        <h2>Expense</h2>
-      </ion-text>
-      <!-- <ion-buttons class="icon-move">
-        <ion-icon name="bar-chart-outline"></ion-icon>
-      </ion-buttons> -->
-    </div>
-  </ion-label>
+<ion-header>
+  <ion-toolbar>
+    <!-- Centered Title -->
+    <ion-title class="header-title">
+      Expense 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
+<ion-content class="ion-padding ">
   <!-- unpaid & paid segments -->
     <ion-segment [(ngModel)]="selectedSegment" color="primary" class="split-segment ion-padding-horizontal">
       <ion-segment-button value="card1">

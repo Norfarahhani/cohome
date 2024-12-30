@@ -7,6 +7,7 @@ import { PaymentPage } from './payment/payment.page';
 import { NotificationPage } from './notification/notification.page';
 import { SettingPage } from './setting/setting.page';
 import { JoinPage } from './join/join.page';
+import { SummaryPage } from './summary/summary.page';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'join',
     component: JoinPage
+  },
+  {
+    path: 'summary',
+    component: SummaryPage
   },
 ];
 

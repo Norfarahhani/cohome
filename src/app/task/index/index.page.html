@@ -1,12 +1,13 @@
-<ion-content>
-  <ion-label class="ion-padding ">
-    <div class="task-header">
-      <ion-text>
-        <h2>Task</h2>
-      </ion-text>
-    </div>
-  </ion-label>
+<ion-header>
+  <ion-toolbar>
+    <!-- Centered Title -->
+    <ion-title class="header-title">
+      Task 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
+<ion-content>
   <ion-accordion-group expand="inset" [value]="today">
 
     <ion-accordion *ngFor="let day of days; index as key" [value]="day">
