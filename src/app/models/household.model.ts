@@ -1,8 +1,13 @@
 export class HouseholdModel {
-  constructor(
-    public household_address: string = '',
-    public household_name: string = '',
-    public leader_id: string = '',
-    public code: string = ''
-  ) { }
+  id?: number;
+  code?: string;
+  household_address?: string;
+  household_name?: string;
+  user_id?: number;
+  created_at?: string;
+  updated_at?: string;
+
+  constructor(init?: Partial<HouseholdModel>) {
+    Object.assign(this, init);
+  }
 }

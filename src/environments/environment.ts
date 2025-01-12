@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8100'
+  apiUrl: 'https://indah.ump.edu.my/CB21094/cohome-backend/public/api'
 };
 
 /*

@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar class="modal-toolbar">
+    <ion-title>Receipt</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="dismissModal()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="modal-background">
+  <div class="qr-code-container">
+    <img
+      [src]="receiptUrl"
+      alt="Receipt"
+      class="receipt-image"
+    />
+  </div>
+</ion-content>

@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TaskService } from '../task.service';
 import { HouseholdService } from 'src/app/household/household.service';
-import { HouseholdMemberModel } from 'src/app/models/household-member.model';
 import { TaskModel } from 'src/app/models/task.model';
-
+import { ToastService } from 'src/app/service/toast.service';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-task-create',
@@ -13,45 +13,41 @@ import { TaskModel } from 'src/app/models/task.model';
 })
 export class CreatePage implements OnInit {
   taskModel: TaskModel = new TaskModel();
-  householdMemberModels: HouseholdMemberModel[] = [];
+  householdMembers: any;
 
-  constructor(private taskService: TaskService, private router: Router, private householdService: HouseholdService) { }
+  constructor(
+    private taskService: TaskService,
+    private router: Router,
+    private householdService: HouseholdService,
+    private toastService: ToastService,
+    private modalController: ModalController
+  ) { }
 
   ngOnInit() {
     this.getHouseholdMembers();
   }
 
-  async cancelCreate() {
-    this.router.navigate(['/home/task']);
+  async createTask() {
+    const response: any = await this.taskService.createTask(this.taskModel);
+    if (response.success) {
+      this.dismissModal();
+      this.toastService.showSuccess('Task created successfully');
+    } else {
+      this.toastService.showError('Error creating task');
+    }
   }
 
-  public alertButtons = ['Save'];
-  public alertInputs = [
-    {
-      type: 'task',
-      placeholder: 'Enter Task',
-    },
-
-  ];
-
-  async create() {
-    this.taskModel.household_id = JSON.parse(localStorage.getItem('household') ?? '').household_id;
-    await this.taskService.createTask(this.taskModel);
-    this.router.navigate(['/home/task']);
+  async getHouseholdMembers() {
+    const response: any = await this.householdService.getHouseholdDetails();
+    if (response.success) {
+      this.householdMembers = response.data.household_members;
+    }
   }
 
-  getHouseholdMembers() {
-    this.householdService.getHouseholdMembers().subscribe({
-      next: (data: any) => {
-        if (data) {
-          this.householdMemberModels = data;
-        }
-      },
-      error: (error) => {
-        console.error('Error fetching household details:', error);
-      }
-    });
+  dismissModal() {
+    this.modalController.dismiss({ refresh: false });
   }
+
 
 }
 

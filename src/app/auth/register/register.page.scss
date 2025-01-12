@@ -1,0 +1,65 @@
+.register-header {
+  background-color: #53923d;
+  position: relative;
+  text-align: center;
+}
+
+.logo-img {
+  display: block;
+  width: 170px;
+  margin: 0px auto;
+}
+
+.register-content {
+  --background: linear-gradient(135deg, #e3e8f0, #f8f9fc);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+}
+
+.register-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1), -5px -5px 15px rgba(255, 255, 255, 0.7);
+}
+
+.big-heading {
+  font-size: 1.8em;
+  color: #53923d;
+  margin-bottom: 5px;
+}
+
+.sub-heading {
+  color: #7a7e83;
+  font-size: 0.9em;
+  margin-bottom: 20px;
+}
+
+.input-item {
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 10px;
+  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.1), inset -4px -4px 8px rgba(255, 255, 255, 0.7);
+  margin-bottom: 10px !important;
+}
+
+.input-icon {
+  color: #000000;
+}
+
+.register-button {
+  margin-top: 20px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  background-color: #53923d;
+  color: #ffde59;
+}
+
+.login-link {
+  color: #4e54c8;
+  text-decoration: none;
+  font-weight: bold;
+}

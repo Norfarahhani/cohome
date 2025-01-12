@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProfileService } from '../profile.service';
-
+import { UserModel } from 'src/app/models/user.model';
+import { ToastService } from 'src/app/service/toast.service';
+import { ActionSheetController, LoadingController, NavController } from '@ionic/angular';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 @Component({
   selector: 'app-profile-details',
@@ -9,47 +12,84 @@ import { ProfileService } from '../profile.service';
   styleUrls: ['./details.page.scss'],
 })
 export class DetailsPage implements OnInit {
-  name: string = '';
-  age: number = 0;
-  email: string = '';
-  phone: string = '';
+  userModel: UserModel = new UserModel();
 
-  constructor(private router: Router, private profileService: ProfileService) { }
+  constructor(
+    private navCtrl: NavController,
+    private profileService: ProfileService,
+    private toastService: ToastService,
+    private actionSheetController: ActionSheetController,
+    private loadingController: LoadingController
+  ) { }
 
   ngOnInit() {
     this.getUserDetails();
   }
 
-  async cancelCreate() {
-    this.router.navigate(['/home/profile']);
+  async back() {
+    this.navCtrl.back();
   }
 
-  getUserDetails() {
-    this.profileService.getUserDetails().subscribe({
-      next: (data: any) => {
-        if (data) {
-          this.name = data.name;
-          this.age = data.age;
-          this.phone = data.phone;
-          this.email = data.email;
-        }
-      },
-      error: (error) => {
-        console.error('Error fetching user details:', error);
-      }
+  async getUserDetails() {
+    const response = await this.profileService.getUserDetails();
+    this.userModel = response;
+  }
+
+  async selectPhoto() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Set Profile Photo',
+      buttons: [
+        {
+          text: 'Take Photo',
+          icon: 'camera-outline',
+          handler: () => this.capturePhoto(CameraSource.Camera),
+        },
+        {
+          text: 'Choose from Gallery',
+          icon: 'images-outline',
+          handler: () => this.capturePhoto(CameraSource.Photos),
+        },
+        {
+          text: 'Cancel',
+          icon: 'close-outline',
+          role: 'cancel',
+        },
+      ],
     });
+
+    await actionSheet.present();
+  }
+
+  async capturePhoto(source: CameraSource) {
+    try {
+      const image = await Camera.getPhoto({
+        quality: 90,
+        source,
+        resultType: CameraResultType.DataUrl,
+      });
+
+      this.userModel.avatar_url = image.dataUrl;
+    } catch (error) {
+      console.error('Error capturing photo:', error);
+      this.toastService.showError('Failed to update profile photo.');
+    }
   }
 
   async updateUserDetails() {
-    const user: any = {
-      name: this.name,
-      age: this.age,
-      phone: this.phone
-    };
+    const loading = await this.loadingController.create({
+      spinner: 'crescent',
+    });
+    await loading.present();
 
-    await this.profileService.updateUserDetails(user);
-
-    this.router.navigate(['/home/profile']);
+    const response: any = await this.profileService.updateUserDetails(this.userModel);
+    await loading.dismiss();
+    if (response.success) {
+      this.userModel = response.data;
+      this.profileService.triggerRefreshProfile();
+      this.toastService.showSuccess(response.message);
+    } else {
+      this.toastService.showError(response.message);
+    }
   }
 
 }

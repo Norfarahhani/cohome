@@ -6,14 +6,12 @@ import { IonicModule } from '@ionic/angular';
 import { IndexPage } from './index/index.page';
 import { TaskRoutingModule } from './task-routing.module';
 import { CreatePage } from './create/create.page';
-import { ListPage } from './list/list.page';
-import { DayPage } from './day/day.page';
 import { ViewPage } from './view/view.page';
 
 
 
 @NgModule({
-  declarations: [IndexPage, CreatePage, ListPage, DayPage, ViewPage],
+  declarations: [IndexPage, CreatePage, ViewPage],
   imports: [
     CommonModule,
     FormsModule,

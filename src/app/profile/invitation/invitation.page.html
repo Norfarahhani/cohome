@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar class="task-management-toolbar">
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="back()">
+        <ion-icon name="chevron-back-outline" class="icon-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="toolbar-title">Household Invitation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="modern-background">
+  <div class="invitation-container">
+    <!-- Household Details -->
+    <div class="household-card">
+      <h2 class="household-title">{{ householdDetails?.household_name }}</h2>
+      <p class="household-address">{{ householdDetails?.household_address }}</p>
+    </div>
+
+    <!-- Members Section -->
+    <div class="members-section">
+      <h3 class="section-title">Household Members</h3>
+      <ion-list class="members-list">
+        <ion-item
+          *ngFor="let member of householdDetails?.household_members"
+          class="member-item"
+          lines="none"
+        >
+          <ion-avatar slot="start" class="member-avatar">
+            <img
+              [src]="member.user.avatar_url || 'https://ionicframework.com/docs/img/demos/avatar.svg'"
+              alt="Avatar"
+            />
+          </ion-avatar>
+          <ion-label>
+            <h2 class="member-name">{{ member.user.name }}</h2>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <!-- Join Household Button -->
+    <div class="action-group">
+      <ion-button
+        expand="block"
+        shape="round"
+        size="large"
+        color="tertiary"
+        class="join-button"
+        (click)="joinHousehold()"
+        [disabled]="hasHousehold"
+      >
+        Join Household
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

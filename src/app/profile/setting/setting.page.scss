@@ -1,18 +1,54 @@
-.header-title {
-  text-align: center;
-  font-size: 16px;
-  color: #ffff; /* Adjust color if needed */
+.task-management-toolbar {
+  --background: #ffffff;
+  --color: #1d1d1d;
+  display: flex;
+  align-items: center;
+  padding-top: env(safe-area-inset-top); /* Add safe area padding at the top */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Ensure padding is included in the height */
+
 }
 
-ion-toolbar {
-  --background:#53923d; /* Gradient background */
-  --color: white; /* Text and icon color */
-  --border-color: transparent; /* Remove default border */
+.modern-background {
+  --background: #f9f9f9;
 }
 
-.rounded-list {
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 10px;
+.info-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .form-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
   }
+
+  .form-input {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding-left: 10px !important;
+    font-size: 14px;
+  }
+}
+
+.action-group {
+  margin-top: 5px;
+
+  .logout-button {
+    --background: #e74c3c;
+    --color: #ffffff;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 8px;
+    height: 40px;
+  }
+}

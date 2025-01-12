@@ -1,10 +1,10 @@
 import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TaskService } from '../task.service';
-import { HouseholdService } from 'src/app/household/household.service';
-import { HouseholdMemberModel } from 'src/app/models/household-member.model';
 import { TaskModel } from 'src/app/models/task.model';
-
+import { HouseholdService } from 'src/app/household/household.service';
+import { ToastService } from 'src/app/service/toast.service';
+import { ModalController, NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-task-view',
@@ -12,71 +12,63 @@ import { TaskModel } from 'src/app/models/task.model';
   styleUrls: ['./view.page.scss'],
 })
 export class ViewPage implements OnInit {
-  taskId: string = this.route.snapshot.paramMap.get('id') ?? '';
+  taskId: string = '';
   taskModel: TaskModel = new TaskModel();
-  householdMemberModels: HouseholdMemberModel[] = [];
+  householdMembers: any;
 
   constructor(
-    private router: Router, 
-    private taskService: TaskService, 
-    private householdService: HouseholdService, 
-    private route: ActivatedRoute
-  ) { }
+    private router: Router,
+    private taskService: TaskService,
+    private householdService: HouseholdService,
+    private toastService: ToastService,
+    private navParams: NavParams,
+    private modalController: ModalController
+  ) {
+    this.taskId = this.navParams.get('id');
+  }
 
   ngOnInit() {
     this.getHouseholdMembers();
     this.getTaskDetails();
   }
 
-  async cancelCreate() {
-    this.router.navigate(['/home/task']);
+  async dismissModal() {
+    this.modalController.dismiss();
   }
 
-  getHouseholdMembers() {
-    this.householdService.getHouseholdMembers().subscribe({
-      next: (data: any) => {
-        if (data) {
-          this.householdMemberModels = data;
-        }
-      },
-      error: (error) => {
-        console.error('Error fetching household details:', error);
-      }
-    });
+  async getHouseholdMembers() {
+    const response: any = await this.householdService.getHouseholdDetails();
+    if (response.success) {
+      this.householdMembers = response.data.household_members;
+    }
   }
 
-  getTaskDetails() {
-    this.taskService.getTaskDetails(this.taskId).subscribe({
-      next: (data: any) => {
-        if (data) {
-          this.taskModel = data;
-        }
-      },
-      error: (error) => {
-        console.error('Error fetching household details:', error);
-      }
-    });
+  async getTaskDetails() {
+    const response: any = await this.taskService.getTaskDetails(this.taskId);
+    if (response) {
+      this.taskModel = response.data;
+      this.taskModel.members = response.data.task_members.map((member: any) => member.user.id);
+      this.taskModel.task_id = response.data.task_id.toString()
+      this.taskModel.days = JSON.parse(response.data.days);
+    }
   }
 
-  deleteTask() {
-    this.taskService.deleteTask(this.taskId);
-    this.router.navigate(['/home/task']);
+  async deleteTask() {
+    const response: any = await this.taskService.deleteTask(this.taskId);
+    if (response.success) {
+      this.dismissModal().then(() => {
+        this.toastService.showSuccess('Task deleted successfully');
+      });
+    }
   }
 
   async updateTaskDetails() {
-    if (!this.taskId) {
-      console.error('Task model is not defined.');
-      return;
-    }
-  
-    try {
-      await this.taskService.updateTaskDetails(this.taskId, this.taskModel);
-      console.log('Task updated successfully');
-      this.router.navigate(['/home/task']);
-    } catch (error) {
-      console.error('Error updating task details:', error);
+    const response: any = await this.taskService.updateTask(this.taskId, this.taskModel);
+    if (response.success) {
+      this.dismissModal().then(() => {
+        this.toastService.showSuccess('Task updated successfully');
+      });
     }
   }
-
 
 }

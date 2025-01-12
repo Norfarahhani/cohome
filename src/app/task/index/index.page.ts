@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { TaskService } from '../task.service';
 import { Router } from '@angular/router';
-import { ProfileService } from 'src/app/profile/profile.service';
-
+import { CreatePage } from '../create/create.page';
+import { ViewPage } from '../view/view.page';
 
 @Component({
   selector: 'app-task-index',
@@ -18,20 +18,17 @@ export class IndexPage implements OnInit {
     'thursday',
     'friday',
     'saturday',
-    'sunday'
+    'sunday',
   ];
   tasks: string[] = [
     'Mop Floor',
     'Wash Sink',
     'Clean windows',
     'Empty trash',
-    'Others'
-  ]
-  current: number = (
-    new Date().getDay() == 0 //condition
-      ? 6 //if true = 6
-      : new Date().getDay() - 1 //if false = -1
-  );
+    'Others',
+  ];
+  current: number =
+    new Date().getDay() == 0 ? 6 : new Date().getDay() - 1;
 
   groupedByDays: { [key: string]: any[] } = {};
 
@@ -41,47 +38,24 @@ export class IndexPage implements OnInit {
   constructor(
     private taskService: TaskService,
     private router: Router,
-    private profileService: ProfileService
+    private modalController: ModalController
   ) { }
 
   ngOnInit() {
+    this.getLocalStorage();
     this.getTasks();
-    this.leaderCheck();
-  }
-  public alertButtons = ['Save'];
-  public alertInputs = [
-    {
-      type: 'task',
-      placeholder: 'Enter Task',
-    },
-  ];
-
-  ucfirst(str: string): string {
-    if (!str) return str; // Handle empty string or null/undefined case
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
-
-  getTaskName(index: number) {
-    return this.tasks[index];
   }
 
   async getTasks() {
-    const data: any[] = await this.taskService.getAllTasks();
-    this.groupedByDays = {};
-    data.forEach(async (task) => {
-      const users = await this.getUsersById(task.members);
-      task = { ...task, users: users.map((user: any) => user.name).join(', ') };
-      task.days.forEach((day: string | number) => {
-        if (!this.groupedByDays[day]) {
-          this.groupedByDays[day] = [];
-        }
-        this.groupedByDays[day].push(task);
-      });
-    });
+    const response: any = await this.taskService.getTasks();
+    if (response.success) {
+      this.groupedByDays = response.data;
+    }
   }
 
-  async getUsersById(ids: string[]) {
-    return await this.profileService.getUsersByIds(ids);
+  ucfirst(str: string): string {
+    if (!str) return str;
+    return str.charAt(0).toUpperCase() + str.slice(1);
   }
 
   navigateToEditTask(id: string) {
@@ -89,9 +63,50 @@ export class IndexPage implements OnInit {
     this.router.navigate(['/task/view', id]);
   }
 
-  leaderCheck() {
-    const check = localStorage.getItem('isLeader');
-    this.isLeader = (check == 'true') ? true : false;
+  getLocalStorage() {
+    this.isLeader = localStorage.getItem('is_leader') === 'true';
   }
 
+  implodeUsers(users: any[]) {
+    return users.map((user: any) => user.user.name).join(', ');
+  }
+
+  async openCreateTaskModal() {
+    const modal = await this.modalController.create({
+      component: CreatePage,
+    });
+
+    modal.onDidDismiss().then((result) => {
+      if (result.data?.refresh) {
+        this.getTasks(); // Refresh tasks after creating a new one
+      }
+    });
+
+    await modal.present();
+  }
+
+  async openEditTaskModal(id: string) {
+    if (!this.isLeader) return;
+    const modal = await this.modalController.create({
+      component: ViewPage,
+      componentProps: {
+        id: id,
+      },
+    });
+
+    modal.onDidDismiss().then((result) => {
+      if (result.data?.refresh) {
+        this.getTasks();
+      }
+    });
+
+    await modal.present();
+  }
+
+  refreshData(event: any) {
+    setTimeout(() => {
+      this.getTasks();
+      event.target.complete();
+    }, 2000);
+  }
 }

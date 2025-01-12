@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ExpenseService } from '../expense.service';
 import { Router } from '@angular/router';
 import { ExpenseModel } from 'src/app/models/expense.model';
-import { HouseholdMemberModel } from 'src/app/models/household-member.model';
+import { ExpenseService } from '../expense.service';
 import { HouseholdService } from 'src/app/household/household.service';
-import { getAuth } from '@angular/fire/auth';
+import { ToastService } from 'src/app/service/toast.service';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-expense-create',
@@ -13,39 +13,40 @@ import { getAuth } from '@angular/fire/auth';
 })
 export class CreatePage implements OnInit {
   expense: ExpenseModel = new ExpenseModel();
-  householdMemberModels: HouseholdMemberModel[] = [];
+  householdMembers: any;
 
   constructor(
-    private expenseService: ExpenseService, 
-    private householdService: HouseholdService, 
-    private router: Router
+    private router: Router,
+    private expenseService: ExpenseService,
+    private householdService: HouseholdService,
+    private toastService: ToastService,
+    private modal: ModalController
   ) { }
 
   ngOnInit() {
     this.getHouseholdMembers();
   }
 
-  async cancelCreate() {
-    this.router.navigate(['/home/expense']);
+  async dismissModal() {
+    this.modal.dismiss();
   }
 
-  async create() {
-    const register = await this.expenseService.createExpense(this.expense);
-    this.router.navigate(['/home/expense']);
+  async createExpense() {
+    const response: any = await this.expenseService.createExpense(this.expense);
+    if (response.success) {
+      this.modal.dismiss().then(() => {
+        this.toastService.showSuccess(response.message);
+      });
+    } else {
+      this.toastService.showError(response.message);
+    }
   }
 
-  getHouseholdMembers() {
-    this.householdService.getHouseholdMembers().subscribe({
-      next: (data: any) => {
-        if (data) {
-          this.householdMemberModels = data;
-          this.householdMemberModels = this.householdMemberModels.filter(item => item.member_id !== getAuth().currentUser?.uid);
-        }
-      },
-      error: (error) => {
-        console.error('Error fetching household details:', error);
-      }
-    });
+  async getHouseholdMembers() {
+    const response = await this.householdService.getHouseholdDetails();
+    if (response.success) {
+      this.householdMembers = response.data.household_members;
+      this.householdMembers = this.householdMembers.filter((member: any) => member.user.id !== JSON.parse(localStorage.getItem('user') ?? '').id);
+    }
   }
-
 }

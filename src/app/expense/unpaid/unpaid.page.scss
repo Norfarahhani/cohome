@@ -1,6 +1,6 @@
 .custom-icon {
-    font-size: 24px;  /* Adjust the size */
-    margin-right: 10px;  /* Spacing */
+    font-size: 20px;  /* Adjust the size */
+    margin-right: 6px;  /* Spacing */
   }
 
   .centered-title {
@@ -16,7 +16,7 @@
     top: 20px;   /* Moves the text down by 20px */
     left: 10px;  /* Moves the text to the right by 10px */
   }
-  
+
   /* Or with margin */
   .move-text {
     margin-top: 20px;    /* Moves down */
@@ -27,13 +27,20 @@
     display: flex;
     justify-content: space-between;
   }
-  
+
   .split-segment ion-segment-button {
     flex: 1;
     text-align: center;
   }
-  
+
   .segment-container {
     display: flex;
     justify-content: space-around;
+  }
+
+  .expense-list-wrapper {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }

@@ -1,13 +1,12 @@
 <ion-header>
   <div class="login-header ion-padding">
-    <img class="logo-img" src="assets/icon/LOGO.png">
+    <img class="logo-img" src="assets/icon/LOGO.png" />
   </div>
 </ion-header>
 
 <ion-content class="login-content">
   <ion-row class="ion-justify-content-center">
     <ion-col size-md="6" size-lg="4">
-
       <ion-card class="login-card">
         <ion-card-header>
           <h1 class="big-heading">Login</h1>
@@ -16,55 +15,82 @@
 
         <ion-card-content>
           <form (ngSubmit)="onLogin()" #loginForm="ngForm">
-
             <ion-col>
-
-              <ion-row size="6" >
+              <ion-row size="6">
                 <ion-item class="input-item" lines="none">
-                  <ion-icon name="mail-outline" slot="start" class="input-icon"></ion-icon>
-                  <ion-input class="custom-input" placeholder="Email" type="email" [(ngModel)]="email" name="email"
-                    required></ion-input>
+                  <ion-icon
+                    name="mail-outline"
+                    slot="start"
+                    class="input-icon"
+                  ></ion-icon>
+                  <ion-input
+                    class="custom-input"
+                    placeholder="Email"
+                    type="email"
+                    [(ngModel)]="email"
+                    name="email"
+                    required
+                  ></ion-input>
                 </ion-item>
               </ion-row>
 
-              <ion-row size="6" >
+              <ion-row size="6">
                 <ion-item class="input-item" lines="none">
-                  <ion-icon name="lock-closed-outline" slot="start" class="input-icon"></ion-icon>
-                  <ion-input placeholder="Password" type="password" [(ngModel)]="password" name="password"
-                    required></ion-input>
+                  <ion-icon
+                    name="lock-closed-outline"
+                    slot="start"
+                    class="input-icon"
+                  ></ion-icon>
+                  <ion-input
+                    placeholder="Password"
+                    type="password"
+                    [(ngModel)]="password"
+                    name="password"
+                    required
+                  ></ion-input>
                 </ion-item>
               </ion-row>
-
             </ion-col>
 
-            <ion-button type="submit" expand="block" color="green" shape="round" class="login-button">
+            <ion-button
+              type="submit"
+              expand="block"
+              color="green"
+              shape="round"
+              class="login-button"
+            >
               Login
             </ion-button>
 
             <ion-row class="ion-justify-content-center">
               <ion-col size="auto" class="ion-text-center">
                 <ion-text>
-                  <p>Don't have an account? <a [routerLink]="['/auth/register']" class="signup-link">Sign Up</a></p>
+                  <p>
+                    <a
+                      [routerLink]="['/auth/forgot-password']"
+                      class="signup-link"
+                      >Forgot password?</a
+                    >
+                  </p>
                 </ion-text>
               </ion-col>
             </ion-row>
 
-            <!-- Social Login Options -->
-            <div class="social-login">
-              <p>Or login with</p>
-              <ion-row class="ion-justify-content-center">
-                <ion-col size="auto">
-                  <ion-button fill="clear" size="small" (click)="onLoginWithGoogle()">
-                    <ion-icon name="logo-google"></ion-icon>
-                  </ion-button>
-                </ion-col>
-              </ion-row>
-            </div>
-
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="auto" class="ion-text-center">
+                <ion-text>
+                  <p>
+                    Don't have an account?
+                    <a [routerLink]="['/auth/register']" class="signup-link"
+                      >Sign Up</a
+                    >
+                  </p>
+                </ion-text>
+              </ion-col>
+            </ion-row>
           </form>
         </ion-card-content>
       </ion-card>
-
     </ion-col>
   </ion-row>
 </ion-content>

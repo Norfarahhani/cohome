@@ -1,63 +1,75 @@
- .save-button {
-   text-transform: none !important;
- }
-
- ion-label strong {
-   display: block;
-   max-width: calc(100% - 60px);
-   overflow: hidden;
-   text-overflow: ellipsis;
- }
-
- unread-indicator {
-   background: var(--ion-color-primary);
-   width: 10px;
-   height: 10px;
-   border-radius: 100%;
-   position: absolute;
-   inset-inline-start: 12px;
-   top: 12px;
- }
-
- .metadata-end-wrapper {
-   position: absolute;
-   top: 10px;
-   inset-inline-end: 10px;
-   font-size: 0.8rem;
-   display: flex;
-   align-items: center;
- }
-
- .rounded-list {
-   border-radius: 15px;
-   overflow: hidden;
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-   margin: 10px;
- }
-
- .profile-header {
+/***** Toolbar *****/
+.task-management-toolbar {
+  --background: #ffffff;
+  --color: #1d1d1d;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  padding-top: env(safe-area-inset-top); /* Add safe area padding at the top */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Ensure padding is included in the height */
+
+  .toolbar-icon {
+    color: #53923d;
+  }
 }
 
-.profile-header ion-text {
-  margin-top: 20px;
+/***** Background *****/
+.modern-background {
+  --background: #f9f9f9;
 }
 
-.profile-header h2 {
-  font-size: 20px;
-  font-weight: bold;
-  margin: 0;
+/***** Profile Header *****/
+.profile-header {
+  text-align: center;
+  padding: 20px 15px;
+
+  .profile-avatar {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 10px;
+    border: 3px solid #53923d;
+    border-radius: 50%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .profile-name {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #333;
+  }
+
+  .profile-email {
+    font-size: 14px;
+    color: #888;
+  }
 }
 
- .notification-icon {
-   font-size: 24px;
-   width: 30px;
-   height: 30px;
-   margin-top: 1%;
- }
+/***** Navigation List *****/
+.navigation-list {
+  .nav-item {
+    --background: #ffffff;
+    border-radius: 8px;
+    margin: 10px 15px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    ion-icon.nav-icon {
+      font-size: 20px;
+      color: #53923d;
+    }
+
+    ion-label {
+      font-size: 16px;
+      font-weight: 500;
+      color: #333;
+    }
+  }
+}

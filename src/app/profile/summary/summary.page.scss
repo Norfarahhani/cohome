@@ -1,12 +1,41 @@
-
-.header-title {
-  text-align: center;
-  font-size: 16px;
-  color: #ffff; /* Adjust color if needed */
+.task-management-toolbar {
+  --background: #ffffff;
+  --color: #1d1d1d;
+  display: flex;
+  align-items: center;
+  padding-top: env(safe-area-inset-top); /* Add safe area padding at the top */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Ensure padding is included in the height */
 }
 
-ion-toolbar {
-  --background:#53923d; /* Gradient background */
-  --color: white; /* Text and icon color */
-  --border-color: transparent; /* Remove default border */
+.toolbar-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.task-management-background {
+  --background: #f9f9f9;
+}
+
+.summary-section {
+  padding-left: 15px;
+  padding-right: 15px;
+
+  .chart-card,
+  .analytics-card {
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  ion-item {
+    --background: #ffffff;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+
+  .monthly-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }

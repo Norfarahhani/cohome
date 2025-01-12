@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ExpenseService } from '../expense.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ExpenseModel } from 'src/app/models/expense.model';
-import { ExpenseMemberModel } from 'src/app/models/expense-member.model';
 import { Router } from '@angular/router';
+import { EditPage } from '../edit/edit.page';
+import { ModalController } from '@ionic/angular';
+import { ExpenseMemberModel } from 'src/app/models/expense-member.model';
+import { ReceiptComponent } from '../receipt/receipt.page';
 
 
 @Component({
@@ -10,46 +12,41 @@ import { Router } from '@angular/router';
   templateUrl: './unpaid.page.html',
   styleUrls: ['./unpaid.page.scss'],
 })
-export class UnpaidPage implements OnInit {
-  expenseModels: ExpenseModel[] = [];
+export class UnpaidPage {
   paid: boolean = false;
+  @Input() expenseModels: ExpenseModel[] = [];
+  @Output() notifyParent: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(
-    private expenseService: ExpenseService,
-    private router: Router
+    private modalController: ModalController
   ) { }
 
-  ngOnInit() {
-    this.getOwnExpenses();
-  }
-
-  getOwnExpenses() {
-    this.expenseService.getOwnExpenses().subscribe({
-      next: (expenses: any[]) => {
-        if (expenses) {
-          this.expenseModels = expenses;
-          console.log(this.expenseModels);
-
-          expenses.forEach((expense) => {
-            this.expenseService.getExpenseMembers(expense.id).subscribe({
-              next: (members: any[]) => {
-                this.paid = members.every(item => item.status === true);
-              },
-              error: (error) => {
-                console.error('Error fetching expense members:', error);
-              }
-            });
-          });
-        }
-      },
-      error: (error) => {
-        console.error('Error fetching expenses:', error);
+  async openEditExpenseModal(id: number) {
+    const expenseModal = await this.modalController.create({
+      component: EditPage,
+      componentProps: {
+        expenseId: id
       }
     });
+
+    expenseModal.onDidDismiss().then((result) => {
+      this.notifyParent.emit();
+    });
+
+    await expenseModal.present();
   }
 
-  navigateToEditExpense(id: string) {
-    this.router.navigate(['/expense/edit', id]);
+  getPaidStatus(expenseMembers: ExpenseMemberModel[]) {
+    return expenseMembers?.every(member => member.is_paid === 1) ? true : false;
   }
 
+  openReceiptModal(receiptUrl: any) {
+    this.modalController
+      .create({
+        component: ReceiptComponent,
+        componentProps: { receiptUrl },
+      })
+      .then((modal) => modal.present());
+  }
 }
+

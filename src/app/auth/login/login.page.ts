@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
 import { AuthService } from '../auth.service';
+import { ToastService } from '../../service/toast.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -13,37 +13,46 @@ export class LoginPage implements OnInit {
   email: string = '';
   password: string = '';
 
-  constructor(private authService: AuthService, private router: Router, private alertController: AlertController) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private toastService: ToastService,
+    private loadingController: LoadingController
+  ) { }
 
-  async ngOnInit() {
-    await this.authService.initializeSocialLogin();
+  ngOnInit() {
+    this.authService.checkAuth().then((auth) => {
+      if (auth) {
+        this.router.navigate(['/home']);
+      }
+    });
   }
 
   async onLogin() {
-    try {
-      await this.authService.loginUser(this.email, this.password);
-      this.router.navigate(['/home']); // Navigate to home after successful login
-    } catch (error: any) {
-      await this.presentAlert('Error', error.message);
+    const loading = await this.loadingController.create({
+      spinner: 'crescent',
+    });
+    await loading.present();
+
+    const result = await this.authService.loginUser(this.email, this.password);
+    await loading.dismiss();
+    if (result.success) {
+      await this.toastService.showSuccess(result.message);
+      this.router.navigate(['/home']);
+    } else {
+      await this.toastService.showError(result.message);
     }
+
   }
 
   async onLoginWithGoogle() {
     try {
       await this.authService.loginUserWithGoogle();
-      this.router.navigate(['/home']); // Navigate to home after successful login
+      await this.toastService.showSuccess('Google login successful!');
+      this.router.navigate(['/home']);
     } catch (error: any) {
-      await this.presentAlert('Error', error.message);
+      console.error('Google login failed:', error);
+      await this.toastService.showError('Google login is not implemented yet.');
     }
   }
-
-  async presentAlert(header: string, message: string) {
-    const alert = await this.alertController.create({
-      header,
-      message,
-      buttons: ['OK']
-    });
-    await alert.present();
-  }
-
 }

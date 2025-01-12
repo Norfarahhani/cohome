@@ -1,65 +1,124 @@
-<ion-content class="ion-padding">
+<ion-header>
+  <ion-toolbar class="modal-toolbar">
+    <ion-title>Edit Expense</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()" fill="clear" class="close-button">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-buttons (click)="cancelCreate()">
-          <ion-icon style="font-size: 20px;" name="chevron-back-outline"></ion-icon>
-        </ion-buttons>
-      </ion-col>
-      <ion-col>
-        <ion-buttons class="ion-float-right" (click)="updateExpenseDetails()">
-          <ion-icon style="font-size: 20px;" name="checkmark-done-outline"></ion-icon>
-        </ion-buttons>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+<ion-content class="modal-background">
+  <div class="modal-container">
+    <!-- Amount Input -->
+    <div class="form-group">
+      <ion-label class="form-label">Amount</ion-label>
+      <ion-item class="form-item" lines="none">
+        <ion-input
+          [(ngModel)]="expense.amount"
+          type="number"
+          placeholder="Enter amount"
+        ></ion-input>
+        <ion-icon name="cash-outline" slot="end"></ion-icon>
+      </ion-item>
+    </div>
 
-  <ion-list [inset]="true" class="rounded-list">
-    <ion-item>
-      <ion-input [(ngModel)]="expenseModel.amount" placeholder="Amount"></ion-input>
-      <ion-icon name="cash-outline" slot="end" style="margin-left: 10px;"></ion-icon>
-    </ion-item>
-  </ion-list>
-  <ion-list [inset]="true" class="rounded-list">
-    <ion-item>
-      <!-- Dynamically change the label based on user selection -->
-      <ion-label>{{ expenseModel.selected_category ? expenseModel.selected_category : 'Category' }}</ion-label>
-      <!-- Select Button for Category Options -->
-      <ion-select [(ngModel)]="expenseModel.selected_category" slot="end" placeholder="Select a Category" interface="popover"
-        style="width: 0; opacity: 0">
-        <ion-select-option value="Entertainment">Entertainment</ion-select-option>
-        <ion-select-option value="Food & Drinks">Food & Drinks</ion-select-option>
-        <ion-select-option value="Groceries">Groceries</ion-select-option>
-        <ion-select-option value="Transport">Transport</ion-select-option>
-        <ion-select-option value="Housing">Housing</ion-select-option>
-        <ion-select-option value="Others">Others</ion-select-option>
-      </ion-select>
-      <ion-icon name="chevron-forward-outline" slot="end" style="margin-left: 10px"></ion-icon>
-    </ion-item>
-  </ion-list>
-  <ion-list [inset]="true" class="rounded-list">
-    <ion-item>
-      <ion-input [(ngModel)]="expenseModel.date" type="date"></ion-input>
-    </ion-item>
-  </ion-list>
-  <ion-list [inset]="true" class="rounded-list">
-    <ion-item>
-      <ion-input [(ngModel)]="expenseModel.notes" placeholder="Notes"></ion-input>
-      <ion-icon name="clipboard-outline" slot="end" style="margin-left: 10px;"></ion-icon>
-    </ion-item>
-  </ion-list>
+    <!-- Category Selection -->
+    <div class="form-group">
+      <ion-label class="form-label">Category</ion-label>
+      <ion-item class="form-item" lines="none">
+        <ion-select
+          [(ngModel)]="expense.selected_category"
+          placeholder="Select a category"
+          label="Category"
+        >
+          <ion-select-option value="Entertainment"
+            >Entertainment</ion-select-option
+          >
+          <ion-select-option value="Food & Drinks"
+            >Food & Drinks</ion-select-option
+          >
+          <ion-select-option value="Groceries">Groceries</ion-select-option>
+          <ion-select-option value="Transport">Transport</ion-select-option>
+          <ion-select-option value="Housing">Housing</ion-select-option>
+          <ion-select-option value="Others">Others</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
 
-  <!-- Assign members -->
-  <ion-list [inset]="true" class="rounded-list">
-    <ion-item>
-      <ion-icon name="person-outline" slot="start" style="margin-right: 10px;"></ion-icon>
-      <ion-label>Assign Expense</ion-label>
-      <ion-select [(ngModel)]="expenseModel.members" slot="end" [multiple]="true">
-        <ion-select-option *ngFor="let householdMemberModel of householdMemberModels"
-          [value]="householdMemberModel.userDetails.uid">{{ householdMemberModel.userDetails.name }}</ion-select-option>
-      </ion-select>
-    </ion-item>
-  </ion-list>
+    <!-- Expense Date -->
+    <div class="form-group">
+      <ion-label class="form-label">Date</ion-label>
+      <ion-item class="form-item" lines="none">
+        <ion-datetime-button datetime="expenseDatePicker"></ion-datetime-button>
+      </ion-item>
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime
+            id="expenseDatePicker"
+            presentation="date"
+            [(ngModel)]="expense.expense_date"
+          ></ion-datetime>
+        </ng-template>
+      </ion-modal>
+    </div>
 
+    <!-- Notes Input -->
+    <div class="form-group">
+      <ion-label class="form-label">Notes</ion-label>
+      <ion-item class="form-item" lines="none">
+        <ion-textarea
+          [(ngModel)]="expense.notes"
+          placeholder="Write your notes..."
+          rows="3"
+        ></ion-textarea>
+      </ion-item>
+    </div>
+
+    <!-- Assign Members -->
+    <div class="form-group">
+      <ion-label class="form-label">Assign Members</ion-label>
+      <ion-item class="form-item" lines="none">
+        <ion-select
+          [(ngModel)]="expense.expense_members"
+          [multiple]="true"
+          placeholder="Select members"
+          label="Members"
+          disabled
+        >
+          <ion-select-option
+            *ngFor="let member of householdMembers"
+            [value]="member.user.id"
+          >
+            {{ member.user.name }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+    <!-- Save Button -->
+    <div class="action-group">
+      <ion-button
+        expand="block"
+        shape="round"
+        size="large"
+        color="success"
+        class="action-button"
+        (click)="updateExpenseDetails()"
+      >
+        Update Expense
+      </ion-button>
+      <ion-button
+        expand="block"
+        shape="round"
+        size="large"
+        color="danger"
+        class="action-button ion-margin-top"
+        (click)="deleteExpense()"
+      >
+        Delete Expense
+      </ion-button>
+    </div>
+  </div>
 </ion-content>

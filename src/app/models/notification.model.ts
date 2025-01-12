@@ -1,11 +1,14 @@
 export class NotificationModel {
-  constructor(
-    public body: string = '',
-    public created_at: string = '',
-    public from: string = '',
-    public title: string = '',
-    public to: string = '',
-    public url: string = '',
-    public fromName: string = ''
-  ) { }
+  data?: {
+    title?: string;
+    message?: string;
+    url?: string;
+    avatar?: string;
+  };
+  created_at?: string;
+  read_at?: string;
+
+  constructor(init?: Partial<NotificationModel>) {
+    Object.assign(this, init);
+  }
 }

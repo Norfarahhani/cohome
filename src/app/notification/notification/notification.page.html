@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar class="task-management-toolbar">
+    <ion-title class="toolbar-title">Notifications</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="modern-background">
+  <ion-refresher slot="fixed" (ionRefresh)="refreshData($event)" style="background: #ffffff;">
+    <ion-refresher-content
+      pulling-icon="chevron-down-outline"
+      refreshing-spinner="crescent"
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+  <div class="notification-container">
+    <!-- No Notifications Message -->
+    <div *ngIf="notificationModels.length === 0" class="no-notifications">
+      <ion-icon name="notifications-outline" class="no-notifications-icon"></ion-icon>
+      <ion-text class="no-notifications-text">No notifications available</ion-text>
+    </div>
+
+    <!-- Notifications List -->
+    <div *ngIf="notificationModels.length > 0">
+      <ion-list class="notification-list">
+        <ion-item
+          *ngFor="let notification of notificationModels"
+          button="true"
+          class="notification-item"
+          (click)="redirectTo(notification.data?.url ?? '')"
+          lines="none"
+        >
+          <!-- Avatar -->
+          <ion-avatar slot="start" class="notification-avatar">
+            <img
+              [src]="notification.data?.avatar || 'https://ionicframework.com/docs/img/demos/avatar.svg'"
+              alt="Avatar"
+            />
+          </ion-avatar>
+
+          <!-- Notification Details -->
+          <ion-label>
+            <h2 class="notification-title">{{ notification.data?.title }}</h2>
+            <p class="notification-message">{{ notification.data?.message }}</p>
+            <ion-note class="notification-date">{{ notification.created_at | date: 'short' }}</ion-note>
+          </ion-label>
+
+          <!-- Read Status Icon -->
+          <ion-icon
+            slot="end"
+            [name]="notification.read_at ? 'checkmark-done-outline' : 'ellipse-outline'"
+            [color]="notification.read_at ? 'success' : 'primary'"
+            class="notification-status-icon"
+          ></ion-icon>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

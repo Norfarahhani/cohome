@@ -1,45 +1,120 @@
-<ion-item-sliding *ngFor="let expenseModel of expenseModels">
-    <ion-item>
-        <ion-checkbox slot="end" disabled [(ngModel)]="paid"></ion-checkbox>
-        <ion-icon *ngIf="expenseModel.selected_category == 'Entertainment'" name="game-controller-outline" slot="start" style="max-width: 85%; max-height: 85%;"></ion-icon>
-        <ion-icon *ngIf="expenseModel.selected_category == 'Food & Drinks'" name="fast-food-outline" slot="start" style="max-width: 85%; max-height: 85%;"></ion-icon>
-        <ion-icon *ngIf="expenseModel.selected_category == 'Groceries'" name="basket-outline" slot="start" style="max-width: 85%; max-height: 85%;"></ion-icon>
-        <ion-icon *ngIf="expenseModel.selected_category == 'Transport'" name="car-outline" slot="start" style="max-width: 85%; max-height: 85%;"></ion-icon>
-        <ion-icon *ngIf="expenseModel.selected_category == 'Housing'" name="home-outline" slot="start" style="max-width: 85%; max-height: 85%;"></ion-icon>
-        <ion-icon *ngIf="expenseModel.selected_category == 'Others'" name="help-circle-outline" slot="start" style="max-width: 85%; max-height: 85%;"></ion-icon>
-        <ion-grid>
+<div *ngFor="let expenseModel of expenseModels" class="ion-margin-bottom expense-list-wrapper">
+  <ion-item-sliding>
+    <ion-item lines="none">
+      <ion-checkbox
+        slot="end"
+        disabled
+        [checked]="getPaidStatus(expenseModel?.expense_members ?? [])"
+      ></ion-checkbox>
+      <ion-icon
+        *ngIf="expenseModel.selected_category === 'Entertainment'"
+        name="game-controller-outline"
+        slot="start"
+        style="max-width: 85%; max-height: 85%"
+      ></ion-icon>
+      <ion-icon
+        *ngIf="expenseModel.selected_category === 'Food & Drinks'"
+        name="fast-food-outline"
+        slot="start"
+        style="max-width: 85%; max-height: 85%"
+      ></ion-icon>
+      <ion-icon
+        *ngIf="expenseModel.selected_category === 'Groceries'"
+        name="basket-outline"
+        slot="start"
+        style="max-width: 85%; max-height: 85%"
+      ></ion-icon>
+      <ion-icon
+        *ngIf="expenseModel.selected_category === 'Transport'"
+        name="car-outline"
+        slot="start"
+        style="max-width: 85%; max-height: 85%"
+      ></ion-icon>
+      <ion-icon
+        *ngIf="expenseModel.selected_category === 'Housing'"
+        name="home-outline"
+        slot="start"
+        style="max-width: 85%; max-height: 85%"
+      ></ion-icon>
+      <ion-icon
+        *ngIf="expenseModel.selected_category === 'Others'"
+        name="help-circle-outline"
+        slot="start"
+        style="max-width: 85%; max-height: 85%"
+      ></ion-icon>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
             <ion-row>
-                <ion-col>
-                    <ion-row>
-                        <ion-text>
-                            <strong>{{ expenseModel.selected_category }}</strong>
-                        </ion-text>
-                    </ion-row>
-                    <ion-row>
-                        <ion-text>{{ expenseModel.notes }}</ion-text>
-                    </ion-row>
-                    <ion-row>
-                        <ion-text>RM{{ expenseModel.amount }}</ion-text>
-                    </ion-row>
-                </ion-col>
+              <ion-text>
+                <strong
+                  >{{ expenseModel?.selected_category }} ({{
+                  expenseModel?.expense_date | date: 'dd/MM/yy' }})</strong
+                >
+              </ion-text>
             </ion-row>
-        </ion-grid>
+            <ion-row>
+              <ion-text color="medium">{{ expenseModel?.notes }}</ion-text>
+            </ion-row>
+            <ion-row>
+              <ion-text>RM{{ expenseModel?.amount }}</ion-text>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-item>
     <ion-item-options>
-        <ion-item-option id="open-edit" color="medium" (click)="navigateToEditExpense(expenseModel.id)">
-            <ion-icon slot="end" name="create-outline"></ion-icon>
-            Edit
-        </ion-item-option>
+      <ion-item-option
+        id="open-edit"
+        color="medium"
+        (click)="openEditExpenseModal(expenseModel?.id ?? 0)"
+      >
+        <ion-icon slot="end" size="large" name="create-outline"></ion-icon>
+      </ion-item-option>
     </ion-item-options>
-</ion-item-sliding>
-<ion-item *ngIf="expenseModels.length === 0">
+  </ion-item-sliding>
+  <ion-item lines="none">
     <ion-grid>
-        <ion-row>
-            <ion-col>
-                <ion-text>
-                    <strong>There are no expenses available.</strong>
-                </ion-text>
-            </ion-col>
-        </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-list>
+            <ion-item
+              *ngFor="let member of expenseModel.expense_members"
+              lines="none"
+            >
+              <ion-label>
+                <strong>{{ member.user?.name }}</strong>
+              </ion-label>
+              <ion-buttons slot="end">
+                <ion-button
+                  *ngIf="member.receipt_url !== null"
+                  (click)="openReceiptModal(member.receipt_url)"
+                  class="ion-margin-end"
+                >
+                  <ion-icon name="image-outline" color="primary"></ion-icon>
+                </ion-button>
+                <ion-button>
+                  <ion-icon
+                    [name]="member.is_paid === 1 ? 'checkmark-circle-outline' : 'close-circle-outline'"
+                    [color]="member.is_paid === 1 ? 'success' : 'danger'"
+                  ></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
     </ion-grid>
+  </ion-item>
+</div>
+<ion-item *ngIf="expenseModels.length === 0" lines="none" class="expense-list-wrapper">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-text>
+          <strong>There are no expenses available.</strong>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-item>

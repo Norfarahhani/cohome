@@ -9,11 +9,12 @@ import { CreatePage } from './create/create.page';
 import { PaidPage } from './paid/paid.page';
 import { UnpaidPage } from './unpaid/unpaid.page';
 import { EditPage } from './edit/edit.page';
+import { ReceiptComponent } from './receipt/receipt.page';
 
 
 
 @NgModule({
-  declarations: [IndexPage, CreatePage, PaidPage, UnpaidPage, EditPage],
+  declarations: [IndexPage, CreatePage, PaidPage, UnpaidPage, EditPage, ReceiptComponent],
   imports: [
     CommonModule,
     FormsModule,

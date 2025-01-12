@@ -1,12 +1,14 @@
-import { Timestamp } from "@angular/fire/firestore";
-
 export class TaskModel {
-  constructor(
-    public household_id: string = '',
-    public days: string[] = [],
-    public members: string[] = [],
-    public notes: string = '',
-    public reminder: string = '',
-    public tasks: number = 0
-  ) { }
+  id?: number;
+  household_id?: number;
+  days?: string[];
+  notes?: string;
+  task_id?: number;
+  members?: string[];
+  created_at?: string;
+  updated_at?: string;
+
+  constructor(init?: Partial<TaskModel>) {
+    Object.assign(this, init);
+  }
 }

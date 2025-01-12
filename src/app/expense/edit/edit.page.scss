@@ -1,6 +1,77 @@
-.rounded-list {
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 10px;
+/***** Expense Create Modal Styles *****/
+
+/* Toolbar */
+.modal-toolbar {
+  --background: #ffffff;
+  --color: #1d1d1d;
+  padding-top: env(safe-area-inset-top);
+  border-bottom: 1px solid #e0e0e0;
+
+  ion-title {
+    font-size: 18px;
+    font-weight: 600;
   }
+
+  .close-button {
+    ion-icon {
+      font-size: 24px;
+      color: #888;
+    }
+  }
+}
+
+/* Content Background */
+.modal-background {
+  --background: #f9f9f9;
+}
+
+/* Modal Container */
+.modal-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Form Groups */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .form-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .form-item {
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    font-size: 14px;
+
+    ion-icon {
+      color: #53923d;
+    }
+  }
+
+  ion-textarea {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+/* Action Group */
+.action-group {
+  margin-top: 10px;
+
+  .action-button {
+    --background: #53923d;
+    --color: #ffffff;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 8px;
+    height: 50px;
+  }
+}

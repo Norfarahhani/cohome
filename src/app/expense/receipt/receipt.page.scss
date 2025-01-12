@@ -1,0 +1,38 @@
+.modal-toolbar {
+  --background: #ffffff;
+  --color: #1d1d1d;
+  padding-top: env(safe-area-inset-top);
+  border-bottom: 1px solid #e0e0e0;
+
+  ion-title {
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
+.modal-background {
+  --background: #f9f9f9;
+}
+
+.qr-code-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+
+  .qr-code-image {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+
+  .qr-code-caption {
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+  }
+}

@@ -1,67 +1,81 @@
 <ion-header>
-  <ion-toolbar>
-    <!-- Centered Title -->
-    <ion-title class="header-title">
-      Task 
-    </ion-title>
+  <ion-toolbar class="task-toolbar">
+    <ion-title class="toolbar-title">Tasks</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-accordion-group expand="inset" [value]="today">
-
-    <ion-accordion *ngFor="let day of days; index as key" [value]="day">
-      <ion-item class="rounded-list" slot="header">
-        <ion-label class="drop-down"> {{ ucfirst(day) }}</ion-label>
-      </ion-item>
-
-      <div class="ion-padding" slot="content">
-        <!-- Tasks for the given day -->
-        <ion-list *ngFor="let groupedByDay of groupedByDays[key]" [inset]="true" class="rounded-list">
-          <ion-item (click)="navigateToEditTask(groupedByDay.id)">
-            <ion-grid>
-              <ion-row>
-                <ion-col>
-                  <ion-row>
-                    <ion-item>
-                      <ion-text><strong>{{ getTaskName(groupedByDay.tasks) }}</strong></ion-text>
-                    </ion-item>
-                  </ion-row>
-                  <ion-row>
-                    <ion-item>
-                      <ion-text>{{ groupedByDay.notes }}</ion-text>
-                    </ion-item>
-                  </ion-row>
-                  <ion-row>
-                    <ion-item>
-                      <ion-icon name="person-outline" slot="start"></ion-icon>
-                      <ion-text>{{ groupedByDay.users }}</ion-text>
-                    </ion-item>
-                  </ion-row>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-item>
-        </ion-list>
-        <!-- Message when there are no tasks -->
-        <ion-item class="no-task-item" *ngIf="!groupedByDays[key] || groupedByDays[key].length === 0">
-          <ion-grid>
-            <ion-row>
-              <ion-col>
-                <ion-text>No task for today.</ion-text>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
+<ion-content class="task-background">
+  <ion-refresher slot="fixed" (ionRefresh)="refreshData($event)" style="background: #ffffff;">
+    <ion-refresher-content
+      pulling-icon="chevron-down-outline"
+      refreshing-spinner="crescent"
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+  <section class="task-section">
+    <!-- Accordion Group -->
+    <ion-accordion-group expand="inset" class="accordion-group" [value]="today">
+      <ion-accordion *ngFor="let day of days; index as key" [value]="day">
+        <!-- Accordion Header -->
+        <ion-item slot="header" class="accordion-header" lines="none">
+          <div class="header-content">
+            <h3 class="day-title">{{ ucfirst(day) }}</h3>
+            <ion-badge
+              *ngIf="groupedByDays[key]?.length ?? 0 > 0"
+              class="task-badge"
+            >
+              {{ groupedByDays[key].length }}
+            </ion-badge>
+          </div>
         </ion-item>
-      </div>
 
-    </ion-accordion>
-  </ion-accordion-group>
+        <!-- Accordion Content -->
+        <div class="accordion-content" slot="content">
+          <!-- Task List -->
+          <ion-list
+            *ngIf="groupedByDays[key]?.length ?? 0 > 0"
+            class="task-list"
+          >
+            <ion-item
+              *ngFor="let groupedByDay of groupedByDays[key]"
+              class="task-item"
+              (click)="openEditTaskModal(groupedByDay.id)"
+            >
+              <ion-icon
+                name="clipboard-outline"
+                slot="start"
+                class="task-icon"
+              ></ion-icon>
+              <ion-label>
+                <h3 class="task-title">{{ tasks[groupedByDay.task_id] }}</h3>
+                <p class="task-notes">{{ groupedByDay.notes }}</p>
+                <div class="task-meta">
+                  <ion-icon name="person-outline"></ion-icon>
+                  <span>{{ implodeUsers(groupedByDay.task_members) }}</span>
+                </div>
+              </ion-label>
+            </ion-item>
+          </ion-list>
 
+          <!-- No Task Message -->
+          <div
+            *ngIf="!groupedByDays[key] || groupedByDays[key].length === 0"
+            class="no-task-message"
+          >
+            <ion-icon name="calendar-outline" class="no-task-icon"></ion-icon>
+            <ion-text class="no-task-text">
+              No tasks scheduled for {{ ucfirst(day) }}.
+            </ion-text>
+          </div>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </section>
 
-  <!-- FAB Button -->
+  <!-- Floating Action Button -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="isLeader">
-    <ion-fab-button class="fab-button" [routerLink]="['/task/create']">
+    <ion-fab-button (click)="openCreateTaskModal()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+</ion-content>

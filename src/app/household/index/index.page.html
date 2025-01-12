@@ -1,84 +1,119 @@
-<ion-content class="ion-padding">
-<!-- Header with Logo -->
 <ion-header>
-  <ion-toolbar class="transparent-toolbar">
-    <ion-title class="header-logo">
-      <img src="assets/icon/cohome.png" class="cohome-logo" />
-    </ion-title>
+  <ion-toolbar class="task-management-toolbar">
+    <ion-title class="toolbar-title">Household</ion-title>
   </ion-toolbar>
 </ion-header>
 
-  <ion-list class="rounded-list" *ngIf="!hasHousehold">
-    <ion-list>
-      <ion-item>
-        <ion-input [(ngModel)]="household_name" label="Household Name" labelPlacement="floating"
-          placeholder="Enter name"></ion-input>
+<ion-content class="task-management-background">
+  <ion-refresher slot="fixed" (ionRefresh)="refreshData($event)" style="background: #ffffff;">
+    <ion-refresher-content
+      pulling-icon="chevron-down-outline"
+      refreshing-spinner="crescent"
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+  <!-- Create Household Section -->
+  <section class="create-household-section" *ngIf="!hasHousehold">
+    <div class="section-header">
+      <h2>Create Your Household</h2>
+      <p class="section-description">Organize and invite members seamlessly.</p>
+    </div>
+    <div class="form-container">
+      <ion-item class="modern-item" lines="none">
+        <ion-label position="floating">Household Name</ion-label>
+        <ion-input
+          [(ngModel)]="householdModel.household_name"
+          placeholder="Enter name"
+          class="modern-input"
+        ></ion-input>
       </ion-item>
-      <ion-item>
-        <ion-input [(ngModel)]="household_address" label="Household Address" labelPlacement="floating"
-          placeholder="Enter address"></ion-input>
+      <ion-item class="modern-item" lines="none">
+        <ion-label position="floating">Address</ion-label>
+        <ion-textarea
+          [(ngModel)]="householdModel.household_address"
+          placeholder="Enter address"
+          class="modern-input"
+        ></ion-textarea>
       </ion-item>
-    </ion-list>
-    <ion-button (click)="create()" size="small" expand="block" color="success" shape="round"
-      class="lowercase-button">Create</ion-button>
-  </ion-list>
+      <ion-button
+        expand="block"
+        color="primary"
+        class="modern-button"
+        (click)="createHousehold()"
+      >
+        Create Household
+      </ion-button>
+    </div>
+  </section>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="hasHousehold && isLeader">
-    <ion-fab-button class="fab-button">
-      <ion-icon id="present-alert" name="add"></ion-icon>
-      <ion-alert trigger="present-alert" header="Invite Member" [buttons]="alertButtons"
-        [inputs]="alertInputs"></ion-alert>
+  <!-- Household Details Section -->
+  <section class="household-details-section" *ngIf="hasHousehold">
+    <!-- Household Info -->
+    <div class="household-info-card">
+      <h2 class="household-title">{{ householdData?.household_name }}</h2>
+      <p class="household-address">{{ householdData?.household_address }}</p>
+    </div>
+
+    <!-- Members Section -->
+    <div class="members-section">
+      <div class="section-header">
+        <h3>Members</h3>
+      </div>
+      <ion-list class="modern-list">
+        <ion-item
+          *ngFor="let member of householdData?.household_members"
+          class="modern-member-item"
+          lines="none"
+        >
+          <!-- Avatar -->
+          <ion-avatar slot="start" class="modern-avatar">
+            <img
+              [src]="member.user?.avatar_url"
+              alt="Avatar"
+              onError="this.src = 'https://ionicframework.com/docs/img/demos/avatar.svg'"
+            />
+          </ion-avatar>
+
+          <!-- Member Details -->
+          <ion-label class="member-details">
+            <h3 class="member-name">{{ member.user?.name }}</h3>
+            <p class="member-role">
+              {{ member.user?.role === 'leader' ? 'Leader' : 'Member' }}
+            </p>
+            <p class="member-role">{{ member.user?.phone_no }}</p>
+          </ion-label>
+          <ion-button
+            *ngIf="member.user?.qr_code_url"
+            fill="clear"
+            slot="end"
+            (click)="openQrCodeModal(member.user)"
+            class="qr-button"
+          >
+            <ion-icon name="qr-code-outline"></ion-icon>
+          </ion-button>
+          <ion-button
+            *ngIf="isLeader && member.user?.id !== currentUser?.id"
+            fill="clear"
+            slot="end"
+            (click)="deleteMember(member.id)"
+            class="qr-button"
+          >
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-list>
+    </div>
+  </section>
+
+  <!-- Floating Action Button -->
+  <ion-fab
+    vertical="bottom"
+    horizontal="end"
+    slot="fixed"
+    *ngIf="hasHousehold && isLeader"
+  >
+    <ion-fab-button (click)="presentInviteAlert()">
+      <ion-icon name="person-add-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
-  <!-- household name -->
-  <div *ngIf="hasHousehold">
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <div class="household-header">
-            <ion-text>
-              <h2>{{ householdModel.household_name }}</h2>
-            </ion-text>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-
-    <!-- household list of members -->
-    <ion-list [inset]="true" class="rounded-list" *ngFor="let householdMemberModel of householdMemberModels">
-      <ion-item-sliding>
-        <ion-item>
-          <ion-grid>
-            <ion-item>
-              <ion-row>
-                <ion-col>
-                  <ion-avatar>
-                    <img style="max-width: 85%; max-height: 85%" alt="Silhouette of a person's head"
-                      src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-                  </ion-avatar>
-                </ion-col>
-              </ion-row>
-              <ion-col>
-                <ion-row>
-                  <ion-text>
-                    <strong>{{ householdMemberModel.userDetails.name }}</strong>
-                  </ion-text>
-                </ion-row>
-                <ion-row class="ion-margin-bottom">
-                  <a>{{ householdMemberModel.userDetails.email }}</a>
-                </ion-row>
-              </ion-col>
-            </ion-item>
-          </ion-grid>
-        </ion-item>
-        <ion-item-options side="end">
-          <ion-item-option color="danger">
-            <ion-icon slot="end" name="trash-outline"></ion-icon>
-            Delete
-          </ion-item-option>
-        </ion-item-options>
-      </ion-item-sliding>
-    </ion-list>
-  </div>
 </ion-content>

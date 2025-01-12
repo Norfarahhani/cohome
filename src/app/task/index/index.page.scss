@@ -1,64 +1,132 @@
-
-.task-header {
+.task-toolbar {
+  --background: #ffffff;
+  --color: #1d1d1d;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  padding-top: env(safe-area-inset-top); /* Add safe area padding at the top */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Ensure padding is included in the height */
+
+  .toolbar-title {
+    font-size: 18px;
+    font-weight: 600;
+  }
 }
 
-.task-header ion-text {
-  margin-top: 20px;
+.task-background {
+  --background: #f8f9fa;
 }
 
-.task-header h2 {
-  font-size: 20px;
-  font-weight: bold;
-  margin: 0;
-}
+.task-section {
+  .accordion-group {
+    --background: transparent;
 
+    .accordion-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-.accordion-header {
-  --background: var(--ion-color-light);
-  --border-color: var(--ion-color-medium);
-}
+      .header-content {
+        display: flex;
+        align-items: center;
+        // justify-content: space-between;
+        width: 100%;
 
-.task-item {
-  --background: var(--ion-color-light);
-  border-radius: 8px;
-  margin-bottom: 8px;
+        .day-title {
+          font-size: 16px;
+          font-weight: 600;
+          color: #333;
+        }
 
-  ion-label {
-    h2 {
-      font-size: 1.2rem;
-      font-weight: bold;
+        .task-badge {
+          --background: #53923d;
+          margin-left: 10px;
+          font-size: 12px;
+          padding: 5px 10px;
+          border-radius: 20px;
+        }
+      }
     }
-    p {
-      margin: 4px 0 8px;
-      font-size: 0.9rem;
+
+    .accordion-content {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+      .task-list {
+        padding: 0;
+
+        .task-item {
+          margin-bottom: 10px;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          padding: 10px;
+
+          .task-icon {
+            font-size: 24px;
+            color: #53923d;
+          }
+
+          .task-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+          }
+
+          .task-notes {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+          }
+
+          .task-meta {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+
+            ion-icon {
+              font-size: 14px;
+              margin-right: 5px;
+              color: #888;
+            }
+
+            span {
+              font-size: 14px;
+              color: #888;
+            }
+          }
+        }
+      }
+
+      .no-task-message {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+
+        .no-task-icon {
+          font-size: 48px;
+          color: #ddd;
+        }
+
+        .no-task-text {
+          font-size: 16px;
+          color: #888;
+          margin-top: 10px;
+        }
+      }
     }
   }
 }
 
-.no-task-message {
-  text-align: center;
-  padding: 1rem 0;
-  color: var(--ion-color-medium);
-}
-
-.task-accordion-group {
-  margin-top: 16px;
-}
-
 ion-fab-button {
-  --ion-color-base: var(--ion-color-primary);
-  --ion-color-base-hover: var(--ion-color-primary-shade);
-}
-
-.fab-button {
   --background: #53923d;
-  --color: #ffde59;
+  --background-activated: #40762d;
+  --border-radius: 50%;
 }
-

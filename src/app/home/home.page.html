@@ -1,22 +1,38 @@
-
 <ion-tabs>
-
-  <ion-tab-bar slot="bottom">
+  <ion-tab-bar slot="bottom" class="modern-tab-bar">
+    <!-- Household Tab -->
     <ion-tab-button tab="household">
-      <ion-icon name="home-outline"></ion-icon>
+      <div class="icon-wrapper">
+        <ion-icon name="home-outline"></ion-icon>
+      </div>
     </ion-tab-button>
 
+    <!-- Task Tab -->
     <ion-tab-button tab="task" *ngIf="hasHousehold">
-      <ion-icon name="folder-open-outline"></ion-icon>
+      <div class="icon-wrapper">
+        <ion-icon name="body-outline"></ion-icon>
+      </div>
     </ion-tab-button>
 
+    <!-- Expense Tab -->
     <ion-tab-button tab="expense" *ngIf="hasHousehold">
-      <ion-icon name="bar-chart-outline"></ion-icon>
+      <div class="icon-wrapper">
+        <ion-icon name="cash-outline"></ion-icon>
+      </div>
     </ion-tab-button>
 
+    <!-- Notification Tab -->
+    <ion-tab-button tab="notification">
+      <div class="icon-wrapper">
+        <ion-icon name="notifications-outline"></ion-icon>
+      </div>
+    </ion-tab-button>
+
+    <!-- Profile Tab -->
     <ion-tab-button tab="profile">
-      <ion-icon name="person-circle-outline"></ion-icon>
+      <div class="icon-wrapper">
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </div>
     </ion-tab-button>
   </ion-tab-bar>
-
 </ion-tabs>

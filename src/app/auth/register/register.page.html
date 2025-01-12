@@ -1,48 +1,119 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button [routerLink]="['/auth/login']">
-        <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title>Register</ion-title>
-  </ion-toolbar>
+  <div class="register-header ion-padding">
+    <img class="logo-img" src="assets/icon/LOGO.png" />
+  </div>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-grid>
-    <ion-row class="ion-justify-content-center">
-      <ion-col size-md="6" size-lg="4">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title class="ion-text-center">Register</ion-card-title>
-          </ion-card-header>
+<ion-content class="register-content">
+  <ion-row class="ion-justify-content-center">
+    <ion-col size-md="6" size-lg="4">
+      <ion-card class="register-card">
+        <ion-card-header>
+          <h1 class="big-heading">Register</h1>
+          <p class="sub-heading">Join us and experience seamless co-living</p>
+        </ion-card-header>
 
-          <ion-card-content>
-            <form (ngSubmit)="register()">
-              <ion-input [(ngModel)]="user.name" name="name" label="Name" label-placement="floating" fill="outline" placeholder="Enter your name" required></ion-input>
-              <br />
+        <ion-card-content>
+          <form (ngSubmit)="register()" #registerForm="ngForm">
+            <ion-col>
+              <ion-row>
+                <ion-item class="input-item" lines="none">
+                  <ion-icon name="person-outline" slot="start" class="input-icon"></ion-icon>
+                  <ion-input
+                    [(ngModel)]="user.name"
+                    name="name"
+                    placeholder="Name"
+                    required
+                  ></ion-input>
+                </ion-item>
+              </ion-row>
 
-              <ion-input [(ngModel)]="user.age" name="age" label="Age" label-placement="floating" min="0" max="120" fill="outline" placeholder="Enter your age" required></ion-input>
-              <br />
+              <ion-row>
+                <ion-item class="input-item" lines="none">
+                  <ion-icon name="calendar-outline" slot="start" class="input-icon"></ion-icon>
+                  <ion-input
+                    [(ngModel)]="user.age"
+                    name="age"
+                    placeholder="Age"
+                    required
+                    type="number"
+                    min="0"
+                  ></ion-input>
+                </ion-item>
+              </ion-row>
 
-              <ion-input [(ngModel)]="email" name="email" label="Email" label-placement="floating" fill="outline" placeholder="Enter your email" required type="email"></ion-input>
-              <br />
+              <ion-row>
+                <ion-item class="input-item" lines="none">
+                  <ion-icon name="mail-outline" slot="start" class="input-icon"></ion-icon>
+                  <ion-input
+                    [(ngModel)]="user.email"
+                    name="email"
+                    placeholder="Email"
+                    required
+                    type="email"
+                  ></ion-input>
+                </ion-item>
+              </ion-row>
 
-              <ion-input [(ngModel)]="user.phone" name="phone" label="Phone number" label-placement="floating" fill="outline" placeholder="Enter phone number" required></ion-input>
-              <br />
+              <ion-row>
+                <ion-item class="input-item" lines="none">
+                  <ion-icon name="call-outline" slot="start" class="input-icon"></ion-icon>
+                  <ion-input
+                    [(ngModel)]="user.phone_no"
+                    name="phone_no"
+                    placeholder="Phone Number"
+                    required
+                  ></ion-input>
+                </ion-item>
+              </ion-row>
 
-              <ion-input [(ngModel)]="password" name="password" label="Password" label-placement="floating" fill="outline" placeholder="Enter password" required type="password"></ion-input>
-              <br />
+              <ion-row>
+                <ion-item class="input-item" lines="none">
+                  <ion-icon name="lock-closed-outline" slot="start" class="input-icon"></ion-icon>
+                  <ion-input
+                    [(ngModel)]="user.password"
+                    name="password"
+                    placeholder="Password"
+                    required
+                    type="password"
+                  ></ion-input>
+                </ion-item>
+              </ion-row>
 
-              <ion-input [(ngModel)]="confirmPassword" name="confirmPassword" label="Confirm Password" label-placement="floating" fill="outline" placeholder="Confirm your password" required type="password"></ion-input>
-              <br />
+              <ion-row>
+                <ion-item class="input-item" lines="none">
+                  <ion-icon name="checkmark-outline" slot="start" class="input-icon"></ion-icon>
+                  <ion-input
+                    [(ngModel)]="user.confirm_password"
+                    name="confirm_password"
+                    placeholder="Confirm Password"
+                    required
+                    type="password"
+                  ></ion-input>
+                </ion-item>
+              </ion-row>
+            </ion-col>
 
-              <ion-button type="submit" size="small" expand="block" color="primary" shape="round" class="ion-margin-top">Sign Up</ion-button>
-            </form>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+            <ion-button
+              type="submit"
+              expand="block"
+              color="green"
+              shape="round"
+              class="register-button"
+            >
+              Sign Up
+            </ion-button>
+
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="auto" class="ion-text-center">
+                <ion-text>
+                  <p>Already have an account? <a (click)="back()" class="login-link">Login</a></p>
+                </ion-text>
+              </ion-col>
+            </ion-row>
+          </form>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 </ion-content>

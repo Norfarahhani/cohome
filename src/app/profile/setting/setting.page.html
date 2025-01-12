@@ -1,41 +1,69 @@
 <ion-header>
-    <ion-toolbar>
-      <!-- Back Button -->
-      <ion-buttons slot="start" (click)="cancelCreate()">
-        <ion-icon style="font-size: 20px" name="chevron-back-outline"></ion-icon>
-      </ion-buttons>
-  
-      <!-- Centered Title -->
-      <ion-title class="header-title">
-        Setting
-      </ion-title>
-  
-      <!-- Save Button -->
-      <ion-buttons slot="end" (click)="cancelCreate()">
-        <ion-icon style="font-size: 20px" name="checkmark-done-outline"></ion-icon>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar class="task-management-toolbar">
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="back()">
+        <ion-icon name="chevron-back-outline" class="icon-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="toolbar-title">Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-<ion-content class="ion-padding">
-    <ion-list class="rounded-list">
-        <ion-item>
-            <ion-input type="password" placeholder="Current password"></ion-input>
-        </ion-item>
-    </ion-list>
-    <ion-list class="rounded-list">
-        <ion-item>
-            <ion-input type="password" placeholder="New password"></ion-input>
-        </ion-item>
-    </ion-list>
-    <ion-list class="rounded-list">
-        <ion-item>
-            <ion-input type="password" placeholder="Confirm new password"></ion-input>
-        </ion-item>
-    </ion-list>
+<ion-content class="modern-background">
+  <div class="info-container">
+    <!-- Current Password -->
+    <div class="form-group">
+      <ion-label class="form-label">Current Password</ion-label>
+      <ion-input
+        type="password"
+        placeholder="Enter current password"
+        class="form-input"
+        [(ngModel)]="currentPassword"
+      ></ion-input>
+    </div>
+
+    <!-- New Password -->
+    <div class="form-group">
+      <ion-label class="form-label">New Password</ion-label>
+      <ion-input
+        type="password"
+        placeholder="Enter new password"
+        class="form-input"
+        [(ngModel)]="newPassword"
+      ></ion-input>
+    </div>
+
+    <!-- Confirm New Password -->
+    <div class="form-group">
+      <ion-label class="form-label">Confirm New Password</ion-label>
+      <ion-input
+        type="password"
+        placeholder="Confirm new password"
+        class="form-input"
+        [(ngModel)]="confirmPassword"
+      ></ion-input>
+    </div>
 
     <!-- Logout Button -->
-    <ion-button (click)="logout()" size="small" expand="block" shape="round" class="lowercase-button">
+    <div class="action-group">
+      <ion-button
+        expand="block"
+        color="primary"
+        shape="round"
+        class="logout-button"
+        (click)="save()"
+      >
+        Save
+      </ion-button>
+      <ion-button
+        expand="block"
+        color="danger"
+        shape="round"
+        class="logout-button"
+        (click)="logout()"
+      >
         Logout
-    </ion-button>
+      </ion-button>
+    </div>
+  </div>
 </ion-content>

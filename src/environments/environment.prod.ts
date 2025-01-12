@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://cohome-4dc5d.web.app'
+  apiUrl: 'https://indah.ump.edu.my/CB21094/cohome-backend/public/api'
 };

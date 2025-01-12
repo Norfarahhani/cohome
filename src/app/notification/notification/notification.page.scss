@@ -1,0 +1,97 @@
+.task-management-toolbar {
+  --background: #ffffff;
+  --color: #1d1d1d;
+  display: flex;
+  align-items: center;
+  padding-top: env(safe-area-inset-top); /* Add safe area padding at the top */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Ensure padding is included in the height */
+
+  .icon-back {
+    font-size: 24px;
+    color: #888;
+  }
+
+  .toolbar-title {
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
+.modern-background {
+  --background: #f9f9f9;
+}
+
+.notification-container {
+  padding: 20px;
+}
+
+.no-notifications {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  margin-top: 40px;
+
+  .no-notifications-icon {
+    font-size: 50px;
+    color: #cccccc;
+  }
+
+  .no-notifications-text {
+    font-size: 16px;
+    color: #666666;
+  }
+}
+
+.notification-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.notification-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+  .notification-avatar {
+    --border-radius: 50%;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .notification-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1d1d1d;
+    margin-bottom: 5px;
+  }
+
+  .notification-message {
+    font-size: 14px;
+    color: #666666;
+    margin-bottom: 5px;
+  }
+
+  .notification-date {
+    font-size: 12px;
+    color: #999999;
+  }
+
+  .notification-status-icon {
+    font-size: 20px;
+  }
+}

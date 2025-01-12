@@ -1,69 +1,157 @@
-ion-header {
-  --background: transparent !important; /* Ensures the background is transparent */
-  --border-width: 0 !important;        /* Removes any border width */
-  box-shadow: none !important;         /* Completely removes the shadow */
+.task-management-toolbar {
+  --background: #ffffff;
+  --color: #1d1d1d;
+  display: flex;
+  align-items: center;
+  padding-top: env(safe-area-inset-top); /* Add safe area padding at the top */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Ensure padding is included in the height */
 }
 
-ion-toolbar {
-  --background: transparent !important;
-  box-shadow: none !important;         /* Ensures no shadow on the toolbar */
-  --ion-shadow-elevation: 0 !important; /* Additional Ionic-specific shadow removal */
-  --border-color: transparent !important;
-  padding: 0;
+.toolbar-title {
+  font-size: 18px;
+  font-weight: 600;
 }
 
-.header-logo {
+.task-management-background {
+  --background: #f8f9fa;
+}
+
+.create-household-section {
+  padding: 20px;
   text-align: center;
+
+  .section-header {
+    margin-bottom: 20px;
+
+    h2 {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .section-description {
+      font-size: 14px;
+      color: #666;
+    }
+  }
+
+  .form-container {
+    ion-item {
+      margin-bottom: 15px;
+    }
+
+    .modern-button {
+      font-size: 16px;
+      border-radius: 8px;
+      height: 50px;
+    }
+
+    ion-label {
+      margin-bottom: 20px;
+    }
+
+    .modern-item {
+      padding-bottom: 10px !important;
+    }
+
+    .modern-input {
+      padding-left: 10px !important;
+      margin-bottom: 10px !important;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+  }
 }
 
-.cohome-logo {
-  height: 70px; /* Adjust the logo height */
-  width: auto;  /* Keep the aspect ratio */
-  margin: auto;
+.household-details-section {
+  padding: 20px;
+
+  .household-info-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+    .household-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #1d1d1d;
+    }
+
+    .household-address {
+      font-size: 14px;
+      color: #666;
+    }
+  }
+
+  .members-section {
+    .section-header {
+      margin-bottom: 10px;
+
+      h3 {
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+      }
+    }
+
+    .modern-list {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+      .modern-member-item {
+        display: flex;
+        align-items: center;
+        padding: 10px 0;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid #eaeaea;
+        }
+
+        .modern-avatar {
+          height: 45px;
+          width: 45px;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 2px solid #53923d; /* Primary color border */
+        }
+
+        .member-details {
+          flex: 1;
+          margin-left: 10px;
+
+          .member-name {
+            font-size: 14px;
+            font-weight: bold;
+            color: #1d1d1d;
+          }
+
+          .member-role {
+            font-size: 12px;
+            color: #777;
+          }
+        }
+
+        .qr-button {
+          --background: transparent;
+          --color: #e74c3c;
+
+          ion-icon {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
 }
 
-.move-text {
-    position: relative;
-    top: 20px;   /* Moves the text down by 20px */
-    left: 10px;  /* Moves the text to the right by 10px */
-  }
-  
-  /* Or with margin */
-  .move-text {
-    margin-top: 20px;    /* Moves down */
-    margin-left: 10px;   /* Moves right */
-  }
-
-  .rounded-list {
-    border-radius: 15px; 
-    overflow: hidden; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    margin: 10px; 
-  }
-
-  .household-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-  
-  .household-header ion-text {
-    margin-top: 20px;
-  }
-  
-  .household-header h2 {
-    font-size: 20px;
-    font-weight: bold;
-    margin: 0;
-  }
-
-  .fab-button {
-    --background: #53923d;
-    --color: #ffde59;
-  }
-
-  
+ion-fab-button {
+  --background: #53923d;
+  --background-activated: #40762d;
+  --border-radius: 50%;
+}

@@ -1,24 +1,21 @@
 import { CanActivateFn, Router } from '@angular/router';
 import { inject } from '@angular/core';
-import { Auth } from '@angular/fire/auth';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 
-export const authGuard: CanActivateFn = (route, state) => {
-  const auth = inject(Auth); // Inject Firebase Auth service
-  const router = inject(Router); // Inject Router for navigation
+export const authGuard: CanActivateFn = async (route, state) => {
+  const router = inject(Router);
 
-  return new Observable<boolean>((observer) => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        // User is authenticated, allow access to the route
-        observer.next(true);
-      } else {
-        // User is not authenticated, redirect to login page
-        router.navigate(['/auth/login']);
-        observer.next(false);
-      }
-      observer.complete();
-    });
-  });
+  try {
+    const authenticated = localStorage.getItem('access_token') !== null;
+
+    if (authenticated) {
+      return true;
+    } else {
+      router.navigate(['/auth/login']);
+      return false;
+    }
+  } catch (error) {
+    console.error('Error checking authentication status:', error);
+    router.navigate(['/auth/login']);
+    return false;
+  }
 };

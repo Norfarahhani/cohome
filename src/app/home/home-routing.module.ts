@@ -29,7 +29,10 @@ const routes: Routes = [
         path: 'expense',
         loadChildren: () => import('../expense/expense.module').then((m) => m.ExpenseModule),
       },
-      
+      {
+        path: 'notification',
+        loadChildren: () => import('../notification/notification.module').then((m) => m.NotificationModule),
+      },
     ],
   },
 ];

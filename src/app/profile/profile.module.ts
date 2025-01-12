@@ -8,15 +8,22 @@ import { IndexPage } from './index/index.page';
 import { DetailsPage } from './details/details.page';
 import { HousePage } from './house/house.page';
 import { PaymentPage } from './payment/payment.page';
-import { NotificationPage } from './notification/notification.page';
 import { SettingPage } from './setting/setting.page';
 import { JoinPage } from './join/join.page';
 import { SummaryPage } from './summary/summary.page';
-
-
+import { InvitationPage } from './invitation/invitation.page';
 
 @NgModule({
-  declarations: [IndexPage, DetailsPage, HousePage, PaymentPage, NotificationPage, SettingPage, JoinPage, SummaryPage,],
+  declarations: [
+    IndexPage,
+    DetailsPage,
+    HousePage,
+    PaymentPage,
+    SettingPage,
+    JoinPage,
+    SummaryPage,
+    InvitationPage,
+  ],
   imports: [
     CommonModule,
     FormsModule,

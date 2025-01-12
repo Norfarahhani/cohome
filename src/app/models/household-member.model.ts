@@ -1,9 +1,11 @@
-import { UserModel } from "./user.model";
-
 export class HouseholdMemberModel {
-  constructor(
-    public household_id: string = '',
-    public member_id: string = '',
-    public userDetails: UserModel = new UserModel()
-  ) { }
+  id?: number;
+  household_id?: number;
+  user_id?: number;
+  created_at?: string;
+  updated_at?: string;
+
+  constructor(init?: Partial<HouseholdMemberModel>) {
+    Object.assign(this, init);
+  }
 }

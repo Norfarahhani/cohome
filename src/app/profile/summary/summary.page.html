@@ -1,19 +1,51 @@
 <ion-header>
-    <ion-toolbar>
-      <!-- Back Button -->
-      <ion-buttons slot="start" (click)="cancelCreate()">
-        <ion-icon style="font-size: 20px" name="chevron-back-outline"></ion-icon>
-      </ion-buttons>
-  
-      <!-- Centered Title -->
-      <ion-title class="header-title">
-        Expense Summary
-      </ion-title>
-  
-      <!-- Save Button -->
-      <ion-buttons slot="end" (click)="cancelCreate()">
-        <ion-icon style="font-size: 20px" name="checkmark-done-outline"></ion-icon>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar class="task-management-toolbar">
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="back()">
+        <ion-icon name="chevron-back-outline" class="icon-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="toolbar-title">Expense Summary</ion-title>
+  </ion-toolbar>
+</ion-header>
 
+<ion-content class="task-management-background">
+  <!-- Chart Section -->
+  <section class="summary-section">
+    <ion-card class="chart-card">
+      <ion-card-header>
+        <ion-card-title>Expense Breakdown</ion-card-title>
+        <ion-card-subtitle>By Category</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <canvas id="expenseChart"></canvas>
+      </ion-card-content>
+    </ion-card>
+  </section>
+
+  <!-- Additional Analytics Section -->
+  <section class="summary-section">
+    <ion-card class="analytics-card">
+      <ion-card-header>
+        <ion-card-title>Monthly Spending</ion-card-title>
+        <ion-card-subtitle>Insights</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="monthly-stats">
+          <ion-item lines="none">
+            <ion-label>Total Expenses</ion-label>
+            <ion-text color="danger">RM{{ totalExpense | number: '1.2-2' }}</ion-text>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label>Highest Category</ion-label>
+            <ion-text color="success">{{ highestCategory }}</ion-text>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label>Average Expense</ion-label>
+            <ion-text>RM{{ avgExpense | number: '1.2-2' }}</ion-text>
+          </ion-item>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </section>
+</ion-content>

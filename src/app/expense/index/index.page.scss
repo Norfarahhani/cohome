@@ -1,20 +1,55 @@
-
-.move-text {
-  margin-top: 20px;
-  margin-left: 10px;
-}
-
-.split-segment {
+.task-toolbar {
+  --background: #ffffff;
+  --color: #1d1d1d;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  padding-top: env(safe-area-inset-top); /* Add safe area padding at the top */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Ensure padding is included in the height */
+
+  .toolbar-title {
+    font-size: 18px;
+    font-weight: 600;
+  }
 }
 
-.split-segment ion-segment-button {
-  flex: 1;
-  text-align: center;
-}
+/* Content */
+ion-content {
+  .modern-background {
+    background-color: #f8f8f8;
+  }
 
-.fab-button {
-  --background: #53923d;
-  --color: #ffde59;
+  .content-wrapper {
+    padding: 16px;
+
+    .segment-container {
+      margin-bottom: 16px;
+
+      .modern-segment {
+        --background: #ffffff;
+        --indicator-color: #53923d;
+        --indicator-height: 4px;
+        --button-color-checked: #53923d;
+        --button-color: #999;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    .expense-content {
+      .expense-list-wrapper {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  /* FAB */
+  .modern-fab {
+    --background: #53923d;
+    --background-activated: #40762d;
+    --border-radius: 50%;
+  }
 }

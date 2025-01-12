@@ -1,36 +1,62 @@
 <ion-header>
-  <ion-toolbar>
-    <!-- Centered Title -->
-    <ion-title class="header-title">
-      Expense 
-    </ion-title>
+  <ion-toolbar class="task-toolbar">
+    <ion-title class="toolbar-title">Expenses</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding ">
-  <!-- unpaid & paid segments -->
-    <ion-segment [(ngModel)]="selectedSegment" color="primary" class="split-segment ion-padding-horizontal">
-      <ion-segment-button value="card1">
-        <ion-label>Me</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="card2">
-        <ion-label>Others</ion-label>
-      </ion-segment-button>
-    </ion-segment>
+<ion-content class="modern-background">
+  <ion-refresher
+    slot="fixed"
+    (ionRefresh)="refreshData($event)"
+    style="background: #ffffff"
+  >
+    <ion-refresher-content
+      pulling-icon="chevron-down-outline"
+      refreshing-spinner="crescent"
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+  <div class="content-wrapper">
+    <!-- Segmented Header -->
+    <div class="segment-container">
+      <ion-segment
+        [(ngModel)]="selectedSegment"
+        class="modern-segment"
+        color="tertiary"
+      >
+        <ion-segment-button value="card1">
+          <ion-label>My Expenses</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="card2">
+          <ion-label>Shared Expenses</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
 
+    <!-- Content Section -->
+    <div class="expense-content">
+      <!-- My Expenses -->
+      <div *ngIf="selectedSegment === 'card1'">
+        <app-expense-unpaid
+          [expenseModels]="expenseModels"
+          (notifyParent)="notifyParent()"
+        ></app-expense-unpaid>
+      </div>
 
-  <!-- call unpaid and paid pages -->
-  <ion-list [inset]="true" class="rounded-list" *ngIf="selectedSegment === 'card1'">
-    <app-expense-unpaid></app-expense-unpaid>
-  </ion-list>
-  <ion-list [inset]="true" class="rounded-list" *ngIf="selectedSegment === 'card2'">
-    <app-expense-paid></app-expense-paid>
-  </ion-list>
+      <!-- Shared Expenses -->
+      <div *ngIf="selectedSegment === 'card2'">
+        <app-expense-paid
+          [expenseMemberModels]="expenseMemberModels"
+          (getOtherExpenses)="getOtherExpenses()"
+        ></app-expense-paid>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Action Button -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button class="modern-fab" (click)="openCreateExpenseModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
-
- <!-- FAB Button -->
- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-  <ion-fab-button class="fab-button" [routerLink]="['/expense/create']">
-    <ion-icon name="add"></ion-icon>
-  </ion-fab-button>
-</ion-fab>
