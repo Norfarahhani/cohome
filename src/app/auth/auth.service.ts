@@ -83,7 +83,6 @@ export class AuthService {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
-    localStorage.clear();
 
     return { success: response.success, message: response.message };
   }

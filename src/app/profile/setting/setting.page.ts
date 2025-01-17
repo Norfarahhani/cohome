@@ -48,13 +48,11 @@ export class SettingPage {
 
   async logout() {
     const response: any = await this.authService.logoutUser();
-    if (response.success) {
-      this.toastService.showSuccess(response.message);
-      this.router.navigate(['/auth/login']).then(() => {
-        window.location.reload();
-      });
-    } else {
-      this.toastService.showError(response.message);
-    }
+    this.toastService.showSuccess(response.message);
+    this.router.navigate(['/auth/login']).then(() => {
+      localStorage.clear();
+      window.location.reload();
+    });
   }
 }
+
